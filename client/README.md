@@ -4,4 +4,6 @@
 
 1. Added Bootstrap CDN for styling.
 2. Added font-awesome CDN.
-3. Decide Basic routes?
+3. npm i react-router
+4. initially three routes. HOME, ABOUT, CONTACT.
+5. Navbar setup. (Topbar and NavMenu).
