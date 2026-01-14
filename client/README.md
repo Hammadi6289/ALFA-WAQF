@@ -7,3 +7,4 @@
 3. npm i react-router
 4. initially three routes. HOME, ABOUT, CONTACT.
 5. Navbar setup. (Topbar and NavMenu).
+6. Slider block, npm i swiper

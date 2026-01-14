@@ -1,0 +1,66 @@
+[
+  {
+    "title": "General Care",
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "title": "Dental Care",
+    "icon": "fa-solid fa-tooth"
+  },
+  {
+    "title": "Neurology",
+    "icon": "fa-solid fa-brain"
+  },
+  {
+    "title": "27x7 Emergency Care",
+    "icon": "fa-solid fa-truck-medical"
+  },
+  {
+    "title": "Heart Care",
+    "icon": "fa-solid fa-heart-pulse"
+  },
+  {
+    "title": "Dermatologist",
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "title": "Urologiy",
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "title": "Pathology Laboratory",
+    "icon": "fa-solid fa-flask"
+  },
+  {
+    "title": "Eye Care",
+    "icon": "fa-solid fa-eye"
+  },
+  {
+    "title": "Orthopedics",
+    "icon": "fa-solid fa-bone"
+  },
+  {
+    "title": "Pediatrics",
+    "icon": "fa-solid fa-baby"
+  },
+  {
+    "title": "Gynecology",
+    "icon": "fa-solid fa-person-pregnant"
+  },
+  {
+    "title": "Psychiatry",
+    "icon": "fa-solid fa-head-side-virus"
+  },
+  {
+    "title": "ENT Care",
+    "icon": "fa-solid fa-ear-listen"
+  },
+  {
+    "title": "Physiotherapy",
+    "icon": "fa-solid fa-dumbbell"
+  },
+  {
+    "title": "Radiology",
+    "icon": "fa-solid fa-x-ray"
+  }
+]

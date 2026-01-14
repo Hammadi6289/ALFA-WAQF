@@ -46,3 +46,6 @@
   object-fit: contain;
   margin-left: 20px;
 }
+.alfa-brand-logo:hover {
+  opacity: 0.9;
+}
