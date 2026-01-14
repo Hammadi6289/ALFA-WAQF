@@ -31,12 +31,11 @@
 .navbar {
   background-color: #ffff;
   margin-bottom: 10px;
-
-  .nav-link {
-    font-weight: 600;
-    margin-left: 20px;
-    color: #37145a;
-  }
+}
+.nav-link {
+  font-weight: 600;
+  margin-left: 20px;
+  color: #37145a;
 }
 .alfa-brand-logo {
   max-height: 110px;

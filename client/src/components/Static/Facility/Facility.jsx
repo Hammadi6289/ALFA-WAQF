@@ -11,8 +11,8 @@ const Facility = () => {
           return (
             <div className="facility-container-card" key={index}>
               <i className={`${facility.icon} card-img-top`}></i>
-              <div className="card-body">
-                <h5 className="card-title">{facility.title}</h5>
+              <div className="facility-card-body">
+                <h5 className="facility-card-title">{facility.title}</h5>
               </div>
             </div>
           );

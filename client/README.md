@@ -8,3 +8,7 @@
 4. initially three routes. HOME, ABOUT, CONTACT.
 5. Navbar setup. (Topbar and NavMenu).
 6. Slider block, npm i swiper
+7. Static blocks -
+   7.1. Facility Blocks.
+   7.2. our-work Block.
+   7.3. Why Us.
