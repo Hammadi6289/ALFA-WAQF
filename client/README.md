@@ -12,3 +12,5 @@
    7.1. Facility Blocks.
    7.2. our-work Block.
    7.3. Why Us.
+   7.4. Contact Us.
+8. Footer component
