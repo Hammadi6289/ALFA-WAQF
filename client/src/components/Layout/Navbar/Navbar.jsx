@@ -7,7 +7,7 @@ import logo from "../../../assets/alfaLogo.jpg";
 const Navbar = () => {
   return (
     <>
-      <div className="navbar-container">
+      <div className="navbar-container sticky-top">
         <div className="row">
           <div className="col-md-1">
             <NavLink to="/">

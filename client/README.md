@@ -13,4 +13,6 @@
    7.2. our-work Block.
    7.3. Why Us.
    7.4. Contact Us.
+   7.5. KeyFacts Block
 8. Footer component
+9. About Us Page

@@ -1,0 +1,42 @@
+ {
+  /* Contact us page styling*/
+}
+
+.contact-hero {
+  width: 100%;
+  height: 350px;
+  background-image: url("../../assets/images/banner1.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* dark overlay */
+}
+
+.contact-hero__title {
+  position: relative;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 1;
+}
+.contact-hero__subtitle {
+  position: relative;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 1;
+}
+ {
+  /* End of Contact us page styling*/
+}
