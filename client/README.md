@@ -16,3 +16,4 @@
    7.5. KeyFacts Block
 8. Footer component
 9. About Us Page
+10. Gallery Page
