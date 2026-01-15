@@ -17,3 +17,4 @@
 8. Footer component
 9. About Us Page
 10. Gallery Page
+11. Authentication Pages
