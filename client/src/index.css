@@ -5,3 +5,43 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --color-primary: #37145a;
+  --color-primary-dark: #2a0f45;
+  --color-primary-light: #7332aa;
+}
+.button-primary {
+  padding: 19px 20px 15px;
+  border-radius: 2px;
+  font-size: 0.9375rem;
+  font-family: "DIN Next", sans-serif;
+  font-weight: bold;
+  line-height: 1.21429;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.125s ease-out;
+}
+
+.button-secondary {
+  min-width: 172px;
+  border-radius: 2px;
+  height: 52px;
+  background-color: #e10032;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #e10032;
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary-light);
+  color: white;
+}
+
+.button-secondary:hover {
+  background-color: #cf4463;
+  color: white;
+}

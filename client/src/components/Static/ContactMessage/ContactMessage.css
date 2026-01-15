@@ -1,0 +1,28 @@
+.contact-message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
+.location-map-wrapper {
+  box-shadow: 5px 5px rgb(207, 207, 207);
+}
+
+.message-mform {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-mform h2 {
+  color: var(--color-primary-dark);
+}
+
+.message-mform input,
+textarea {
+  padding: 10px;
+  color: var(--color-primary-dark);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}

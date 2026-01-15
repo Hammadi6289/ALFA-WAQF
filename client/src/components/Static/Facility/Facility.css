@@ -26,9 +26,12 @@
   background: #7332aa;
   color: white;
 }
-i {
+.facility-container-card i {
   font-size: 50px;
-  display: flex;
+  //display: flex;
   align-items: center;
   justify-content: center;
+}
+.facility-card-title {
+  margin-top: 10px;
 }
