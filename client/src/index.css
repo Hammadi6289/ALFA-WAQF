@@ -36,6 +36,16 @@
   border: 1px solid #e10032;
 }
 
+.button-tertiary {
+  background-color: var(--color-primary-light);
+  min-width: 172px;
+  border-radius: 2px;
+  height: 52px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
 .button-primary:hover {
   background-color: var(--color-primary-light);
   color: white;
@@ -43,5 +53,10 @@
 
 .button-secondary:hover {
   background-color: #cf4463;
+  color: white;
+}
+
+.button-tertiary:hover {
+  background-color: var(--color-primary);
   color: white;
 }

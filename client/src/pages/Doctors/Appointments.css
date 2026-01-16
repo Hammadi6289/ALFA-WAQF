@@ -1,0 +1,202 @@
+.docinfo-container {
+  margin: 70px auto;
+  padding: 50px 40px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  max-width: 1100px;
+}
+
+.docinfo-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.12);
+}
+
+/* Left column (doctor profile) */
+.docinfo-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--color-primary);
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.docinfo-name {
+  margin-top: 12px;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
+.docinfo-status {
+  margin-top: 10px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.docinfo-status.available {
+  background: #e6f6ee;
+  color: #198754;
+}
+
+.docinfo-status.not-available {
+  background: #fdeaea;
+  color: #dc3545;
+}
+
+/* Right column content */
+.docinfo-container h6 {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.docinfo-container p {
+  margin: 8px 0 20px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  text-align: center;
+  max-width: 650px;
+}
+
+.docinfo-container h5 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+/* Date & Time block */
+.date-time {
+  margin-top: 30px;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, #f7f4fb, #fdfcff);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(115, 50, 170, 0.08);
+}
+
+.date-time p {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+}
+
+/* Date picker input */
+.calender {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.calender:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(115, 50, 170, 0.15);
+}
+
+/* Book button */
+.docinfo-btn {
+  margin-top: 35px;
+  padding: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.docinfo-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(115, 50, 170, 0.35);
+}
+
+.docinfo-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive refinements */
+@media (max-width: 768px) {
+  .docinfo-container {
+    padding: 35px 25px;
+  }
+
+  .docinfo-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .date-time {
+    padding: 20px;
+  }
+}
+
+/* Skeleton base */
+.is-loading {
+  pointer-events: none;
+}
+
+.skeleton {
+  background: linear-gradient(100deg, #eeeeee 40%, #f5f5f5 50%, #eeeeee 60%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: 8px;
+}
+
+/* Specific skeleton shapes */
+.skeleton-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.skeleton-text {
+  height: 14px;
+  width: 70%;
+  margin: 10px auto;
+}
+
+.skeleton-text.small {
+  width: 40%;
+  height: 12px;
+}
+
+.skeleton-box {
+  width: 100%;
+  height: 56px;
+  margin-top: 15px;
+  border-radius: 12px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Hide real content while loading */
+.is-loading .real-content {
+  display: none;
+}

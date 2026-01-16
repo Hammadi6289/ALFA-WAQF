@@ -16,10 +16,8 @@ const Slider = () => {
         modules={[Autoplay, EffectFade]}
         effect="fade"
         spaceBetween={10}
-        slidePerView={1}
         loop={true}
         autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
-        disableOnInteraction={false}
         fadeEffect={{ crossFade: true }}
       >
         {images.map((data, index) => {

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1000,
+    "name": "Fareed Khan",
+    "address": "B-17 Islamabad",
+    "commentTitle": "Best Hospital",
+    "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
+    "rating": 4,
+    "commentDescription": "Best service I have ever seen in my life. I have been to many hospitals but this is the best. I highly recommend this hospital to anyone in need of medical care."
+  },
+  {
+    "id": 1001,
+    "name": "Ayesha Malik",
+    "address": "C-17 CDA Islamabad",
+    "commentTitle": "Professional & Caring Staff",
+    "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
+    "rating": 5,
+    "commentDescription": "The doctors and nurses were extremely professional and caring. The emergency department handled my case quickly and efficiently. Truly grateful for the quality of care provided."
+  },
+  {
+    "id": 1002,
+    "name": "Usman Ali",
+    "address": "F-11 Islamabad",
+    "commentTitle": "Clean & Well Managed",
+    "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
+    "rating": 4,
+    "commentDescription": "The hospital environment was very clean and well managed. From registration to consultation, everything was smooth. A reliable healthcare facility in Islamabad."
+  }
+]

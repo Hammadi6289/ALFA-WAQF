@@ -13,4 +13,13 @@
    7.2. our-work Block.
    7.3. Why Us.
    7.4. Contact Us.
+   7.5. KeyFacts Block
 8. Footer component
+9. About Us Page
+10. Gallery Page
+11. Authentication Pages
+12. Doctors Page.
+13. Doctor Details Page / Appointment page
+14. NavMenu (User Profile)
+15. Profile => Edit Profile
+16. Profile => My Appointments page
