@@ -18,3 +18,8 @@
 9. About Us Page
 10. Gallery Page
 11. Authentication Pages
+12. Doctors Page.
+13. Doctor Details Page / Appointment page
+14. NavMenu (User Profile)
+15. Profile => Edit Profile
+16. Profile => My Appointments page

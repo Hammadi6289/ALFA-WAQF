@@ -1,0 +1,75 @@
+.doctor-heading {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* *** container spacing *** */
+.doc-container {
+  padding: 30px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* *** Card base styling *** */
+.doc-container .card {
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.doc-container .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* *** Image styling (doctor avatar look) *** */
+.doc-container .card img {
+  display: block;
+  margin: 20px auto 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+}
+
+.doc-container .card-body {
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.doc-container .card-body h6 {
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.doc-container .card-body p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* *** card footer *** */
+.doc-container .card-footer {
+  background: #f6f2fb;
+  border-top: none;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.doc-container .card-footer i {
+  margin-right: 6px;
+}
+
+.doc-container a {
+  text-decoration: none;
+  color: inherit;
+}
