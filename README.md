@@ -1,4 +1,4 @@
-# React + Vite Project for the Alfalah Hospital
+# React + Vite Project for the AGH.
 
 ### Project Features & Setup Overview --- This project is a full-stack hospital management web application built using React, Node.js, Express, and MongoDB.
 
@@ -41,6 +41,7 @@
 25. Admin Panel. Pages and components e.g Menu Bar and footers etc.
 26. creating env file for the admin dashboard.
 27. Create redux store. created slices & actions for get users , login, logout, loadToken.
+28. Admin Panel (All Users / User Details / Doctors)
 
 ###### Features
 
