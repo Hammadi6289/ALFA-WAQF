@@ -5,6 +5,7 @@ const doctorSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "name is required"],
+      trim: true,
     },
     about: {
       type: String,
@@ -36,12 +37,14 @@ const doctorSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
+      trim: true,
     },
     address: {
       type: String,
     },
     gender: {
       type: String,
+      enum: ["male", "female", "other"],
     },
     available: {
       type: Boolean,

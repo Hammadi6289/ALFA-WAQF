@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "name is required"],
+      trim: true,
     },
     email: {
       type: String,
@@ -14,6 +15,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
+      minlength: [6, "Password must be at least 6 characters"],
     },
     image: {
       type: String,
@@ -29,6 +31,7 @@ const userSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
+      enum: ["male", "female", "other"],
     },
     isAdmin: {
       type: Boolean,

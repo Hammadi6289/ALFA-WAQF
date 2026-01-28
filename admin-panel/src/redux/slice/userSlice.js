@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllUsers, getUserDetails } from "../actions/userActions";
-//import {} from "../actions/userActions";
 
 const userSlice = createSlice({
   name: "user",
