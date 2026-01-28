@@ -1,0 +1,29 @@
+.why-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 30px 0px;
+}
+.why-container div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid gray;
+  margin: 10px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #f6f6f6;
+}
+.why-container h2 {
+  margin-top: 18px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-primary-dark);
+}
+.why-container p {
+  text-align: left;
+  font-weight: normal;
+  color: var(--color-primary-dark);
+}

@@ -1,0 +1,98 @@
+/* Modal backdrop enhancement */
+.modal {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Modal width & centering */
+.user-profile-modal {
+  max-width: 420px;
+}
+
+/* Card styling */
+.user-profile-card {
+  border-radius: 18px;
+  border: none;
+  padding: 10px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* Header */
+.user-profile-card .modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+  justify-content: center;
+  position: relative;
+}
+
+.user-profile-card .modal-title {
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  width: 100%;
+}
+
+/* Body spacing */
+.user-profile-card .modal-body {
+  padding: 25px;
+}
+
+/* Profile image */
+.mod-details img {
+  align-self: center;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
+.mod-details input,
+.mod-details select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.mod-details input:focus,
+.mod-details select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15);
+}
+
+/* File input */
+.mod-details input[type="file"] {
+  padding: 8px;
+  background: var(--color-primary-light);
+  cursor: pointer;
+  color: #ffff;
+}
+
+/* Row inputs */
+.mod-details .d-flex {
+  gap: 10px;
+}
+
+/* Footer */
+.user-profile-card .modal-footer {
+  border-top: none;
+  padding: 20px;
+}
+
+/* Buttons */
+.user-profile-card .btn-primary {
+  background: var(--color-primary);
+  border: none;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+}
+
+.user-profile-card .btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.user-profile-card .btn-secondary {
+  border-radius: 10px;
+}

@@ -1,0 +1,62 @@
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
+import EditUserProfile from "./EditUserProfile";
+
+const UserProfile = () => {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogout = () => {
+    navigate("/login");
+    toast.success("Logged out successfully");
+  };
+  return (
+    <>
+      <div className="container mt-5">
+        <div className="row">
+          <h4 className="text-center"> Manage your Account</h4>
+          <div className="col-md-3">
+            <img className="card p-2" src="" alt="user pic" width={200} />
+          </div>
+          <div className="col-md-8 mb-3">
+            <div className="user-container mb-3">
+              <h6>Name: </h6>
+              <h6>Gender: </h6>
+              <h6>Date of Birth: </h6>
+              <h6>Email: </h6>
+              <h6>Phone: </h6>
+              <h6>Address: </h6>
+            </div>
+            <div className="button-container mt-5">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="btn btn-warning"
+              >
+                <i className="fa-solid fa-pen-to-square"></i>
+                Edit Profile
+              </button>
+              <button
+                onClick={() => navigate("/user/appointments")}
+                className="btn btn-primary ms-3"
+              >
+                <i className="fa-solid fa-list"></i>
+                My Appointments
+              </button>
+              <button onClick={handleLogout} className="btn btn-danger ms-3">
+                <i className="fa-solid fa-power-off"></i>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Edit modal */}
+      {isOpen && (
+        <EditUserProfile isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      )}
+    </>
+  );
+};
+
+export default UserProfile;

@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #37145a;
+  --color-primary-dark: #2a0f45;
+  --color-primary-light: #7332aa;
+}
+.button-primary {
+  padding: 19px 20px 15px;
+  border-radius: 2px;
+  font-size: 0.9375rem;
+  font-family: "DIN Next", sans-serif;
+  font-weight: bold;
+  line-height: 1.21429;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.125s ease-out;
+}
+
+.button-secondary {
+  min-width: 172px;
+  border-radius: 2px;
+  height: 52px;
+  background-color: #e10032;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #e10032;
+}
+
+.button-tertiary {
+  background-color: var(--color-primary-light);
+  min-width: 172px;
+  border-radius: 2px;
+  height: 52px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary-light);
+  color: white;
+}
+
+.button-secondary:hover {
+  background-color: #cf4463;
+  color: white;
+}
+
+.button-tertiary:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+///////////////////////////////////////
+/* ******  Main admin layout ******* */
+///////////////////////////////////////
+.admin-layout {
+  min-height: 100vh;
+}
+
+/* Right content column */
+.admin-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page content should expand */
+.admin-content > :first-child {
+  flex: 1;
+}
+
+/////////////////////////////////////
+/* ******  Navigation manu ******* */
+/////////////////////////////////////
+.nav {
+  background-color: #000;
+  color: #fff;
+}
+/* Sidebar layout */
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background-color: #000;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+.sidebar__title {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  padding-left: 12px;
+}
+
+/* Navigation */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Links */
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 12px;
+  color: #cfcfcf;
+  padding: 12px 14px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Hover */
+.sidebar__link:hover {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* Active link */
+.sidebar__link.active {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.sidebar__icon {
+  font-size: 18px;
+  opacity: 0.85;
+}
+.sidebar__link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  background-color: #fff;
+  border-radius: 0 4px 4px 0;
+}
+
+.sidebar__logout {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: transparent;
+  border: 1px solid #333;
+  color: #ff6b6b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sidebar__logout:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+//////////////////////////////////////
+/* ******  Dashboard layout ******* */
+//////////////////////////////////////
+.dashboard {
+  padding: 24px;
+}
+
+/* Header */
+.dashboard__header {
+  margin-bottom: 44px;
+}
+
+.dashboard__header h1 {
+  font-size: 1.95rem;
+  font-weight: 700;
+  margin: 14px 0 8px 0;
+  color: #2a0f45;
+}
+
+.dashboard__subtitle {
+  color: #2a0f45;
+  font-size: 0.95rem;
+}
+
+/* Welcome box */
+.dashboard__welcome {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__welcome p {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.dashboard__welcome span {
+  color: #6c757d;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+/* Stat cards */
+.dashboard__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.dashboard__card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dashboard__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard__card h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 8px;
+}
+
+.dashboard__card span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+//////////////////////////////////
+/* ******  Admin footer ******* */
+//////////////////////////////////
+
+.admin-footer {
+  margin-top: auto;
+  padding: 14px 24px;
+  font-size: 0.75rem;
+  background: linear-gradient(to right, #0f0f0f, #1a1a1a);
+  color: #bcbcbc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Left text */
+.admin-footer__left {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+/* Right meta */
+.admin-footer__right {
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #9f9f9f;
+}
+
+/* Subtle hover polish*/
+.admin-footer__right span:hover {
+  color: #ffffff;
+}

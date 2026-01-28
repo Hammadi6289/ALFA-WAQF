@@ -1,0 +1,91 @@
+/* viewport-level styling */
+.auth-register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0px;
+}
+.auth-register-container .auth-register-card {
+  padding: 30px;
+  width: 400px;
+  border: 1px solid gray;
+  box-shadow: -10px 15px 5px lightgray;
+}
+
+/* Card styling */
+.auth-register-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 35px 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Card Headings & text hierarchy styling */
+.auth-register-card h2 {
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.auth-register-card p {
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+  color: #666;
+}
+.auth-register-card .form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-register-card .form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(115, 50, 170, 0.15);
+}
+
+.auth-register-card button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.auth-register-card button:disabled {
+  background-color: #e10032;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #e10032;
+  cursor: not-allowed;
+}
+
+/* Login link styling */
+.auth-register-card p:last-child {
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+.auth-register-card a {
+  margin-left: 5px;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-register-card a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .auth-register-card {
+    padding: 25px 20px;
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": 2000,
+    "name": "Dr. Seema Khan",
+    "speciality": "Neurologist",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, MD (Neurology)",
+    "about": "Dr Seema has worked with over 10,000 patients and has been awarded 2 national and 1 international awards for her exceptional dedication and dedication to patient care.",
+    "experience": "10",
+    "available": true,
+    "fee": 5000,
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "id": 2001,
+    "name": "Dr. Ahsan Nayyer",
+    "speciality": "General & Laproscopic Surgeon",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, MD (Laproscopic)",
+    "about": "Department of General Surgery",
+    "experience": "1",
+    "available": false,
+    "fee": 500,
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "id": 2002,
+    "name": "Dr. Faiza Safdar",
+    "speciality": "Gynecologist",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, FCPS, MRCOG",
+    "about": "Ex-Assistant Professor POF Hospital & Wah Medical College",
+    "experience": "7",
+    "available": false,
+    "fee": 2000,
+    "icon": "fa-solid fa-child"
+  },
+  {
+    "id": 2003,
+    "name": "Dr. Aiza Khalid",
+    "speciality": "Child Specialist",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, FCPS(Senior Registrar CDA)",
+    "about": "Senior Registrar CDA",
+    "experience": "5",
+    "available": true,
+    "fee": 500,
+    "icon": "fa-solid fa-child"
+  },
+  {
+    "id": 2040,
+    "name": "Dr. Hazrat Akbar",
+    "speciality": "Orthopedic Surgeon",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, FCPS (Orthopedic & Spine Surgeon)",
+    "about": "AO Spine Switzerland.",
+    "experience": "25",
+    "available": true,
+    "fee": 15000,
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "id": 2004,
+    "name": "Dr. Seema Khan",
+    "speciality": "Neurologist",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, MD (Neurology)",
+    "about": "Dr Seema has worked with over 10,000 patients and has been awarded 2 national and 1 international awards for her exceptional dedication and dedication to patient care.",
+    "experience": "3",
+    "available": true,
+    "fee": 2000,
+    "icon": "fa-solid fa-user-doctor"
+  },
+  {
+    "id": 2005,
+    "name": "Dr. Usman Ilyas",
+    "speciality": "General Surgeon",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    "degree": "MBBS, MS General Surgery",
+    "about": " Ex-Registrar PIMS Islamabad.",
+    "experience": "8",
+    "available": true,
+    "fee": 500,
+    "icon": "fa-solid fa-user-doctor"
+  }
+]
