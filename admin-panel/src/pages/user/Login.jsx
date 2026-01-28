@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import { reset } from "../../redux/slice/authSlice";
@@ -35,32 +35,40 @@ const Login = () => {
         <div className="admin-login-card">
           <h1 className="admin-login-title">Admin Login</h1>
 
-          <div className="form-group">
-            <label>Email Address</label>
-            <input
-              type="email"
-              className="form-control"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <form>
+            <div className="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                value={email}
+                autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                value={password}
+                autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </form>
           <button className="btn button-secondary w-100" onClick={handleLogin}>
             Login
           </button>
-          <span className="text-center d-block mt-2 text-primary">
+          <Link
+            to={"/https://mail.google.com/mail/"}
+            className="text-center d-block mt-2"
+          >
             Trouble logging in? Please Contact IT Support Team
-          </span>
+          </Link>
         </div>
       </div>
     </>

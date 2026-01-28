@@ -8,6 +8,7 @@ import AllUsers from "./pages/user/AllUsers";
 import DoctorDetails from "./pages/doctors/DoctorDetails";
 import AllAppointments from "./pages/appointments/AllAppointments";
 import AppointmentDetails from "./pages/appointments/AppointmentDetails";
+import UserDetails from "./pages/user/UserDetails";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 
         <Route path="/all-doctors" element={<AllDoctors />} />
         <Route path="/all-users" element={<AllUsers />} />
+        <Route path="/user-details/:id" element={<UserDetails />} />
         <Route path="/all-appointments" element={<AllAppointments />} />
 
         <Route path="/doctor-details/:id" element={<DoctorDetails />} />

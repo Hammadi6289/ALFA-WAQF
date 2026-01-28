@@ -74,9 +74,9 @@
 }
 
 /* Page content should expand */
-.admin-content > :first-child {
+/* .admin-content > :first-child {
   flex: 1;
-}
+} */
 
 /////////////////////////////////////
 /* ******  Navigation manu ******* */

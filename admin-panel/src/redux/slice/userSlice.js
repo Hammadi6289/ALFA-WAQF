@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getAllUsers, getUserDetails } from "../actions/userActions";
 //import {} from "../actions/userActions";
 
 const userSlice = createSlice({
@@ -19,23 +20,36 @@ const userSlice = createSlice({
       state.error = null;
     },
   },
-  //   extraReducers: (builder) => {
-  //     builder
-  //       //LOGIN
-  //       .addCase(login.pending, (state) => {
-  //         state.loading = true;
-  //       })
-  //       .addCase(login.fulfilled, (state, action) => {
-  //         state.loading = false;
-  //         state.success = true;
-  //         state.user = action.payload.user;
-  //         state.token = action.payload.token;
-  //       })
-  //       .addCase(login.rejected, (state, action) => {
-  //         state.loading = false;
-  //         state.error = action.payload;
-  //       });
-  //   },
+  extraReducers: (builder) => {
+    builder
+      //GET ALL USERS || getAllUsers
+      .addCase(getAllUsers.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.users = action.payload.users;
+      })
+      .addCase(getAllUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //GET USER DETAILS || getUserDetails
+      .addCase(getUserDetails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getUserDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.user = action.payload.user;
+        state.appointments = action.payload.appointments;
+      })
+      .addCase(getUserDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { reset } = userSlice.actions;
