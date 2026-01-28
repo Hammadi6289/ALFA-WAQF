@@ -69,17 +69,16 @@
 .status-badge {
   padding: 4px 10px;
   border-radius: 12px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: white;
-  display: inline-block;
   text-align: center;
   transition: background-color 0.2s ease;
 }
 
 /* Status mapping */
 .status-badge.completed {
-  background-color: #009b78;
+  background-color: var(--color-primary-hope);
 }
 
 .status-badge.cancel {
@@ -91,7 +90,7 @@
 }
 
 .status-badge.active {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-hope);
 }
 
 .status-badge.inactive {
