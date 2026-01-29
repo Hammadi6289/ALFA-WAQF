@@ -39,3 +39,26 @@ export const getDoctorDetails = createAsyncThunk(
     }
   }
 );
+
+// ADD NEW DOCTOR
+export const addNewDoctor = createAsyncThunk(
+  "doctor/addNewDoctor",
+  async (formData, thunkApi) => {
+    try {
+      const res = await API.post("/doctor/add", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in adding new doctor";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);

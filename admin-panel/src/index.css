@@ -94,6 +94,7 @@
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
+  position: fixed;
 }
 
 /* Title */

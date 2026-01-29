@@ -22,6 +22,32 @@
 .doctors-table-wrapper {
   overflow-x: auto;
 }
+.add-doctor-btn {
+  background: var(--color-primary-hope);
+  color: #fff;
+  border: none;
+  padding: 15px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(108, 99, 255, 0.25);
+  transition: all 0.25s ease;
+}
+
+.add-doctor-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(108, 99, 255, 0.35);
+}
+
+.add-doctor-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.25);
+}
+.FaAngleRight-btn-icon {
+  position: relative;
+  top: -1px;
+}
 
 /* Table Styling */
 .doctors-table {

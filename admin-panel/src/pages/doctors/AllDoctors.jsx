@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getAllDoctors } from "../../redux/actions/doctorActions";
 import { reset } from "../../redux/slice/doctorSlice";
 import "./AllDoctors.css";
+import { FaAngleRight } from "react-icons/fa";
 
 const AllDoctors = () => {
   const dispatch = useDispatch();
@@ -27,9 +28,10 @@ const AllDoctors = () => {
 
           <button
             onClick={() => navigate("/add-doctor")}
-            className="btn btn-primary"
+            className="add-doctor-btn"
           >
-            + Add Doctor
+            Add Doctor{" "}
+            <FaAngleRight className="FaAngleRight-btn-icon" size={16} />
           </button>
         </div>
       </div>
@@ -44,9 +46,10 @@ const AllDoctors = () => {
               <th>Speciality</th>
               <th>Experience</th>
               <th>Fees</th>
-              <th>Contact</th>
+              <th>Contact Number & Address</th>
               <th>Gender</th>
               <th>Status</th>
+              <th>Details</th>
             </tr>
           </thead>
 
@@ -97,6 +100,14 @@ const AllDoctors = () => {
                   >
                     {doctor.available ? "Available" : "Unavailable"}
                   </span>
+                </td>
+                <td>
+                  <Link
+                    to={`/doctor-details/${doctor?._id}`}
+                    className="text-primary"
+                  >
+                    View more
+                  </Link>
                 </td>
               </tr>
             ))}

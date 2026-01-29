@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllDoctors, getDoctorDetails } from "../actions/doctorActions";
+import {
+  addNewDoctor,
+  getAllDoctors,
+  getDoctorDetails,
+} from "../actions/doctorActions";
 
 const doctorSlice = createSlice({
   name: "doctor",
@@ -43,6 +47,19 @@ const doctorSlice = createSlice({
         state.doctor = action.payload.doctor;
       })
       .addCase(getDoctorDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //ADD DOCTOR || addNewDoctor
+      .addCase(addNewDoctor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addNewDoctor.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.doctor = action.payload.doctor;
+      })
+      .addCase(addNewDoctor.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

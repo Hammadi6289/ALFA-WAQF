@@ -23,7 +23,7 @@ export const addDoctorController = async (req, res) => {
       !name ||
       !email ||
       !about ||
-      // !image ||
+      !image ||
       !speciality ||
       !degree ||
       !experience ||
