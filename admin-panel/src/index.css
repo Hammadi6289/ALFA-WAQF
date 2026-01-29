@@ -9,6 +9,9 @@
   --color-primary-dark: #2a0f45;
   --color-primary-light: #7332aa;
   --color-primary-hope: #009b78;
+  --brand-purple: #6c63ff;
+  --brand-purple-light: #f0efff;
+  --brand-purple-soft: rgba(108, 99, 255, 0.08);
 }
 .button-primary {
   padding: 19px 20px 15px;
@@ -94,6 +97,7 @@
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
+  position: fixed;
 }
 
 /* Title */

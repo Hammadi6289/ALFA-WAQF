@@ -9,6 +9,7 @@ import DoctorDetails from "./pages/doctors/DoctorDetails";
 import AllAppointments from "./pages/appointments/AllAppointments";
 import AppointmentDetails from "./pages/appointments/AppointmentDetails";
 import UserDetails from "./pages/user/UserDetails";
+import AddDoctor from "./pages/doctors/AddDoctor";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -31,8 +32,8 @@ function App() {
         <Route path="/all-users" element={<AllUsers />} />
         <Route path="/user-details/:id" element={<UserDetails />} />
         <Route path="/all-appointments" element={<AllAppointments />} />
-
         <Route path="/doctor-details/:id" element={<DoctorDetails />} />
+        <Route path="/add-doctor" element={<AddDoctor />} />
         <Route
           path="/appointment-details/:id"
           element={<AppointmentDetails />}
