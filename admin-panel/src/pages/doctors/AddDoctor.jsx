@@ -7,19 +7,20 @@ import toast from "react-hot-toast";
 import { FaAngleLeft } from "react-icons/fa";
 import InputForm from "../../components/Forms/InputForm";
 import InputSelect from "../../components/Forms/InputSelect";
+import "./AddDoctor.css";
 
 const AddDoctor = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("Dr. ");
+  const [email, setEmail] = useState("@email.com");
   const [image, setImage] = useState(null);
   const [speciality, setSpeciality] = useState("");
   const [experience, setExperience] = useState("");
   const [degree, setDegree] = useState("");
   const [about, setAbout] = useState("");
-  const [fees, setFees] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
+  const [fees, setFees] = useState("1000");
+  const [address, setAddress] = useState("Islamabad");
+  const [phone, setPhone] = useState("+92");
+  const [gender, setGender] = useState("Female");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const AddDoctor = () => {
       formData.append("fees", fees);
       formData.append("address", address);
       formData.append("phone", phone);
-      formData.append("gender", gender);
+      formData.append("gender", gender.toLowerCase());
 
       dispatch(addNewDoctor(formData));
       if (success) {
@@ -66,7 +67,7 @@ const AddDoctor = () => {
   const { success, error } = useSelector((state) => state.doctor);
   return (
     <Layout>
-      <div className="doctors-page">
+      <div className="add-new-doctors-page">
         <div className="doctors-header d-flex justify-content-between align-items-start">
           <div>
             <h2>Doctor Details</h2>
@@ -81,7 +82,7 @@ const AddDoctor = () => {
             Previous Page
           </button>
         </div>
-        <div className="w-75">
+        <div className="add-doctor-form-card">
           <InputForm label={"Name"} value={name} setValue={setName} />
           <InputForm
             label={"Email"}
@@ -129,6 +130,7 @@ const AddDoctor = () => {
               "Laparoscopic Surgeon",
               "Ophthalmologist",
               "Otolaryngologist",
+              "Peads",
             ]}
           />
           <InputSelect
