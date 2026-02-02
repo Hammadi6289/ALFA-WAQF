@@ -42,7 +42,7 @@
 26. creating env file for the admin dashboard.
 27. Create redux store. created slices & actions for get users , login, logout, loadToken.
 28. Admin Panel (All Users / User Details / Doctors) along with some more solution cleanup and architecture updates.
-    9.11
+    9.26
 
 ###### Features
 

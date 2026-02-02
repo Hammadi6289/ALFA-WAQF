@@ -144,6 +144,10 @@ export const updateDoctorController = async (req, res) => {
     }
     const data = req.body;
     const photoBase64 = req.file && req.file.buffer.toString("base64");
+    // Add image to data if it exists
+    if (photoBase64) {
+      data.image = photoBase64;
+    }
     const doctor = await doctorModel.findByIdAndUpdate(
       id,
       {

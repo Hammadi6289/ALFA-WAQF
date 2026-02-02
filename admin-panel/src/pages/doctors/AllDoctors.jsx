@@ -89,7 +89,10 @@ const AllDoctors = () => {
                   <div className="muted">{doctor.address || "—"}</div>
                 </td>
 
-                <td>{doctor.gender || "—"}</td>
+                <td>
+                  {doctor.gender.charAt(0).toUpperCase() +
+                    doctor.gender.slice(1) || "—"}
+                </td>
 
                 {/* Availability */}
                 <td>
