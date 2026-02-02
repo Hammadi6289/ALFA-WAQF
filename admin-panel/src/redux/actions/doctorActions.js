@@ -52,10 +52,85 @@ export const addNewDoctor = createAsyncThunk(
       });
       return res?.data;
     } catch (error) {
+      if (error.response?.status === 400 && error.response?.data?.errors) {
+        // Format validation errors
+        const validationErrors = error.response.data.errors
+          .map((err) => `${err.field}: ${err.message}`)
+          .join(", ");
+
+        return thunkApi.rejectWithValue(
+          `Validation failed: ${validationErrors}`
+        );
+      }
+
       const message =
         error?.response?.data?.message ||
         error.message ||
         "Error occured in adding new doctor";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+
+// UPDATE DOCTOR
+export const updateDoctor = createAsyncThunk(
+  "doctor/updateDoctor",
+  async ({ id, formData }, thunkApi) => {
+    try {
+      const res = await API.patch(`/doctor/update/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in updating doctor";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+
+// DELETE DOCTOR
+export const deleteDoctor = createAsyncThunk(
+  "doctor/deleteDoctor",
+  async ({ id }, thunkApi) => {
+    try {
+      const res = await API.delete(`/doctor/delete/${id}`);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in deleting doctor";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+
+// UPDATE DOCTOR STATUS
+export const updateStatus = createAsyncThunk(
+  "doctor/updateStatus",
+  async ({ id, availableStatus }, thunkApi) => {
+    try {
+      const res = await API.patch(
+        `/doctor/update-status/${id}`,
+        availableStatus
+      );
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in updating doctor status";
 
       // Reject with error message
       return thunkApi.rejectWithValue(message);

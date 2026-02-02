@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addNewDoctor,
+  deleteDoctor,
   getAllDoctors,
   getDoctorDetails,
+  updateDoctor,
+  updateStatus,
 } from "../actions/doctorActions";
 
 const doctorSlice = createSlice({
@@ -60,6 +63,45 @@ const doctorSlice = createSlice({
         state.doctor = action.payload.doctor;
       })
       .addCase(addNewDoctor.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //UPDATE DOCTOR || addNewDoctor
+      .addCase(updateDoctor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateDoctor.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.doctor = action.payload.doctor;
+      })
+      .addCase(updateDoctor.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      //DELETE DOCTOR || deleteDoctor
+      .addCase(deleteDoctor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteDoctor.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(deleteDoctor.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      //UPDATE DOCTOR STATUS || updateStatus
+      .addCase(updateStatus.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateStatus.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(updateStatus.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
