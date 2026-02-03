@@ -8,11 +8,11 @@ import {
   updateDoctor,
   updateStatus,
 } from "../../redux/actions/doctorActions";
-import { FaAngleLeft } from "react-icons/fa";
 import InputForm from "../../components/Forms/InputForm";
 import InputSelect from "../../components/Forms/InputSelect";
 import toast from "react-hot-toast";
 import { reset } from "../../redux/slice/doctorSlice";
+import "./DoctorDetails.css";
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -162,26 +162,26 @@ const DoctorDetails = () => {
           <div>
             <h2>Doctor Details</h2>
             <p>Alfalah General Hospital Admin Panel</p>
-            <div className="ms-auto">
-              <button
-                className="btn btn-warning ms-3"
-                onClick={() => {
-                  if (edit) {
-                    setEdit(false); // Enter edit mode
-                  } else {
-                    handleCancelEdit(); // Cancel and reset
-                  }
-                }}
-              >
-                {edit ? "Edit" : "Cancel"}
-              </button>
-              <button
-                className="btn btn-danger ms-3"
-                onClick={() => handleDelete(doctor?._id)}
-              >
-                Remove
-              </button>
-            </div>
+          </div>
+          <div className="doctor-action-buttons">
+            <button
+              className="doctor-action-btn doctor-edit-btn"
+              onClick={() => {
+                if (edit) {
+                  setEdit(false); // Enter edit mode
+                } else {
+                  handleCancelEdit(); // Cancel and reset
+                }
+              }}
+            >
+              {edit ? "Edit" : "Cancel"}
+            </button>
+            <button
+              className="doctor-action-btn doctor-remove-btn"
+              onClick={() => handleDelete(doctor?._id)}
+            >
+              Remove
+            </button>
           </div>
         </div>
         <div className="add-doctor-form-card">
@@ -306,56 +306,48 @@ const DoctorDetails = () => {
               />
               {/* Show preview of new image */}
               {preview && (
-                <div className="mt-2">
+                <div className="image-preview-container">
                   <img
                     src={preview}
                     alt="New Preview"
                     className="edit-doctor-detail-profile-img"
-                    height={200}
-                    width={200}
                   />
-                  <small className="text-muted d-block">
-                    New image (preview)
-                  </small>
+                  <div className="preview-label">New image preview</div>
                 </div>
               )}
             </div>
           )}
 
-          <div className="flex" style={{ marginBottom: "50px" }}>
+          <div
+            className="doctor-action-buttons"
+            style={{ marginBottom: "50px" }}
+          >
             <button
-              className="btn btn-primary"
+              className="doctor-action-btn doctor-update-btn"
               onClick={() => handleUpdate(doctor?._id)}
             >
-              Update
+              Update Doctor
             </button>
             {doctor?.available ? (
               <button
-                className="btn btn-danger ms-3"
+                className="doctor-action-btn doctor-unavailable-btn"
                 onClick={() =>
                   handleAvailability(doctor?._id, { availableStatus: "false" })
                 }
               >
-                Mark Unavailable
+                Mark as Unavailable
               </button>
             ) : (
               <button
-                className="btn btn-success ms-3"
+                className="doctor-action-btn doctor-available-btn"
                 onClick={() =>
                   handleAvailability(doctor?._id, { availableStatus: "true" })
                 }
               >
-                Mark Available
+                Mark as Available
               </button>
             )}
           </div>
-
-          {/* <button
-            className="btn btn-primary"
-            onClick={() => handleUpdate(doctor?._id)}
-          >
-            Update
-          </button> */}
         </div>
       </div>
     </Layout>

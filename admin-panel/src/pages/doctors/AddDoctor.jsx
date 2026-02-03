@@ -40,28 +40,56 @@ const AddDoctor = () => {
       !phone
     ) {
       return toast.error("Please Provide all the fields to add a Doctor");
-    } else {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("image", image);
-      formData.append("speciality", speciality);
-      formData.append("experience", experience);
-      formData.append("degree", degree);
-      formData.append("about", about);
-      formData.append("fees", fees);
-      formData.append("address", address);
-      formData.append("phone", phone);
-      formData.append("gender", gender.toLowerCase());
+    }
+    const expNumber = parseInt(experience);
+    if (isNaN(expNumber)) {
+      return toast.error("Experience must be a number (e.g., 5, 10)");
+    }
+    if (expNumber < 0) {
+      return toast.error("Experience cannot be negative");
+    }
+    if (expNumber > 70) {
+      return toast.error("Experience cannot exceed 70 years");
+    }
+    const feesNumber = parseFloat(fees);
+    if (isNaN(feesNumber)) {
+      return toast.error("Fees must be a number");
+    }
+    if (feesNumber < 0) {
+      return toast.error("Fees cannot be negative");
+    }
+    if (feesNumber > 50000) {
+      return toast.error(
+        "Fees cannot exceed 50,000, Think about patients Damn!"
+      );
+    }
+    const phoneRegex = /^[\+]?[1-9][0-9]{7,14}$/;
+    if (!phoneRegex.test(phone.replace(/\s/g, ""))) {
+      return toast.error(
+        "Please enter a valid phone number (e.g., +923001234567)"
+      );
+    }
+    // All validations passed - proceed with submission
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("image", image);
+    formData.append("speciality", speciality);
+    formData.append("experience", experience);
+    formData.append("degree", degree);
+    formData.append("about", about);
+    formData.append("fees", fees);
+    formData.append("address", address);
+    formData.append("phone", phone);
+    formData.append("gender", gender.toLowerCase());
 
-      dispatch(addNewDoctor(formData));
-      if (success) {
-        toast.success("Doctor added successfully");
-        navigate("/all-doctors");
-      }
-      if (error) {
-        toast.error(error);
-      }
+    dispatch(addNewDoctor(formData));
+    if (success) {
+      toast.success("Doctor added successfully");
+      navigate("/all-doctors");
+    }
+    if (error) {
+      toast.error(error);
     }
   };
   const { success, error } = useSelector((state) => state.doctor);
@@ -104,10 +132,13 @@ const AddDoctor = () => {
             type="tel"
           />
           <InputForm
-            label={"Experience"}
+            label={"Experience (years)"}
             value={experience}
             setValue={setExperience}
             type="number"
+            min="0"
+            max="80"
+            placeholder="e.g., 5"
           />
           <InputForm label={"Degree"} value={degree} setValue={setDegree} />
           <InputSelect
@@ -117,6 +148,7 @@ const AddDoctor = () => {
             options={[
               "Select Speciality",
               "Eyes",
+              "PEADS",
               "General Physician ",
               "Cardiologist",
               "Dentist",
@@ -139,7 +171,12 @@ const AddDoctor = () => {
             setValue={setGender}
             options={["Select Gender", "Male", "Female", "Other"]}
           />
-          <InputForm label={"About"} value={about} setValue={setAbout} />
+          <InputForm
+            label={"About"}
+            value={about}
+            setValue={setAbout}
+            placeholder="e.g., Ex Registrar Department of General Surgery PIMS, Islamabad"
+          />
           <div className="mb-3">
             <label htmlFor="form-label" className="form-label">
               Profile Image
