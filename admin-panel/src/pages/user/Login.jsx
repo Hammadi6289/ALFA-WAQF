@@ -12,10 +12,17 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
+  // const handleLogin = () => {
+  //   if (!email || !password) return toast.error("Please fill all the fields");
+  //   dispatch(login({ email, password }));
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload
     if (!email || !password) return toast.error("Please fill all the fields");
     dispatch(login({ email, password }));
   };
+
   const { success, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -35,7 +42,7 @@ const Login = () => {
         <div className="admin-login-card">
           <h1 className="admin-login-title">Admin Login</h1>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Email Address</label>
               <input
@@ -44,6 +51,7 @@ const Login = () => {
                 className="form-control"
                 value={email}
                 autoComplete="email"
+                required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
@@ -59,10 +67,15 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
+            <button
+              type="submit"
+              className="btn button-secondary w-100"
+              // onClick={handleLogin}
+            >
+              Login
+            </button>
           </form>
-          <button className="btn button-secondary w-100" onClick={handleLogin}>
-            Login
-          </button>
           <Link
             to={"/https://mail.google.com/mail/"}
             className="text-center d-block mt-2"

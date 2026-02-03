@@ -46,7 +46,7 @@ const AllDoctors = () => {
               <th>Speciality</th>
               <th>Experience</th>
               <th>Fees</th>
-              <th>Contact Number & Address</th>
+              <th>Contact details</th>
               <th>Gender</th>
               <th>Status</th>
               <th>Details</th>
