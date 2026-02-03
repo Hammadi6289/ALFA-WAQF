@@ -107,9 +107,9 @@ const AllDoctors = () => {
                 <td>
                   <Link
                     to={`/doctor-details/${doctor?._id}`}
-                    className="text-primary"
+                    className="view-details-link"
                   >
-                    View more
+                    View Details
                   </Link>
                 </td>
               </tr>
