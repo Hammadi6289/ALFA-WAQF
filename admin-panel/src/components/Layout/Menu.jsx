@@ -20,6 +20,12 @@ const Menu = () => {
     toast.success("Logged out successfully");
     navigate("/"); //login Page
   };
+  // Add onClick to each NavLink for mobile
+  const handleMobileClick = () => {
+    if (window.innerWidth < 768) {
+      onCloseMobile?.(); // Call parent function to close sidebar
+    }
+  };
 
   return (
     <div className="sidebar">
@@ -31,6 +37,7 @@ const Menu = () => {
               `nav-link sidebar__link ${isActive ? "active" : ""}`
             }
             to={"/dashboard"}
+            onClick={handleMobileClick}
           >
             <FiHome className="sidebar__icon" />
             <span>Dashboard</span>

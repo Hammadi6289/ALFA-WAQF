@@ -74,7 +74,7 @@ const Dashboard = () => {
 
           <div className="stat-card earnings-card">
             <div className="stat-icon">
-              <i className="fas fa-rupee-sign"></i>
+              <i className="fas fa-dollar-sign"></i>
             </div>
             <h4 className="stat-value">Rs. {stats?.earnings}/-</h4>{" "}
             <span className="stat-label">Total Earnings</span>
