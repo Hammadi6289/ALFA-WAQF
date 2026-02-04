@@ -41,7 +41,9 @@
 25. Admin Panel. Pages and components e.g Menu Bar and footers etc.
 26. creating env file for the admin dashboard.
 27. Create redux store. created slices & actions for get users , login, logout, loadToken.
-28. Admin Panel (All Users / User Details / Doctors) along with some more solution cleanup and architecture updates.941
+28. Admin Panel (All Users / User Details / Doctors / Appointments) along with some more solution cleanup and architecture updates.
+29. Admin Panel Homepage Analytics & reports.
+30. Adding actions and slices for the Analytics in admin-panel.
 
 ###### Features
 

@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getAllUsersController,
+  getStatsController,
   getUserDetailsController,
   passwordResetController,
   updateUserController,
@@ -34,5 +35,8 @@ router.patch(
 
 // RESET USER PASSWORD || patch
 router.patch("/reset-password/:id", userAuth, passwordResetController);
+
+// STATISTICS || GET
+router.get("/get-stats", userAuth, isAdmin, getStatsController);
 
 export default router;

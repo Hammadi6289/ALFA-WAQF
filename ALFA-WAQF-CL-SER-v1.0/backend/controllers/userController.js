@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import appointmentModel from "../models/appointmentsModel.js";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
+import doctorModel from "../models/doctorModel.js";
 
 ///////////////////
 // REGISTER USER //
@@ -283,6 +284,41 @@ export const getUserDetailsController = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Something went wrong while getting user details",
+      error,
+    });
+  }
+};
+
+export const getStatsController = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    const doctors = await doctorModel.find({});
+    const appointments = await appointmentModel.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalEarning: { $sum: { $toDouble: "$amount" } },
+          // $sum operator requires numbers and our value is string, so we need to convert it
+        },
+      },
+    ]);
+    const total = appointments.length > 0 ? appointments[0].totalEarning : 0;
+
+    res.status(200).send({
+      success: true,
+      message: "All Stats fetched successfully",
+      stats: {
+        totalUsers: users.length,
+        totalDoctors: doctors.length,
+        totalAppointments: appointments.length,
+        earnings: total,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong while getting stats",
       error,
     });
   }
