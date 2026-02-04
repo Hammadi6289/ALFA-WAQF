@@ -40,6 +40,50 @@ export const getAppointmentDetails = createAsyncThunk(
   }
 );
 
+// UPDATE appointment status
+export const updateAppointmentStatus = createAsyncThunk(
+  "appointment/updateAppointmentStatus",
+  async ({ id, appointmentStatus }, thunkApi) => {
+    try {
+      const res = await API.patch(`/appointment/update-status/${id}`, {
+        appointmentStatus,
+      });
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in updating appointment status";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+
+// // // UPDATE APPOINTMENT
+// export const updateAppointment = createAsyncThunk(
+//   "appointment/updateAppointment",
+//   async ({ id, formData }, thunkApi) => {
+//     try {
+//       const res = await API.patch(`/doctor/update/${id}`, formData, {
+//         headers: {
+//           "Content-Type": "multipart/form-data",
+//         },
+//       });
+//       return res?.data;
+//     } catch (error) {
+//       const message =
+//         error?.response?.data?.message ||
+//         error.message ||
+//         "Error occured in updating doctor";
+
+//       // Reject with error message
+//       return thunkApi.rejectWithValue(message);
+//     }
+//   }
+// );
+
 // // ADD NEW DOCTOR
 // export const addNewDoctor = createAsyncThunk(
 //   "doctor/addNewDoctor",
@@ -74,29 +118,6 @@ export const getAppointmentDetails = createAsyncThunk(
 //   }
 // );
 
-// // UPDATE DOCTOR
-// export const updateDoctor = createAsyncThunk(
-//   "doctor/updateDoctor",
-//   async ({ id, formData }, thunkApi) => {
-//     try {
-//       const res = await API.patch(`/doctor/update/${id}`, formData, {
-//         headers: {
-//           "Content-Type": "multipart/form-data",
-//         },
-//       });
-//       return res?.data;
-//     } catch (error) {
-//       const message =
-//         error?.response?.data?.message ||
-//         error.message ||
-//         "Error occured in updating doctor";
-
-//       // Reject with error message
-//       return thunkApi.rejectWithValue(message);
-//     }
-//   }
-// );
-
 // // DELETE DOCTOR
 // export const deleteDoctor = createAsyncThunk(
 //   "doctor/deleteDoctor",
@@ -109,28 +130,6 @@ export const getAppointmentDetails = createAsyncThunk(
 //         error?.response?.data?.message ||
 //         error.message ||
 //         "Error occured in deleting doctor";
-
-//       // Reject with error message
-//       return thunkApi.rejectWithValue(message);
-//     }
-//   }
-// );
-
-// // UPDATE DOCTOR STATUS
-// export const updateStatus = createAsyncThunk(
-//   "doctor/updateStatus",
-//   async ({ id, availableStatus }, thunkApi) => {
-//     try {
-//       const res = await API.patch(
-//         `/doctor/update-status/${id}`,
-//         availableStatus
-//       );
-//       return res?.data;
-//     } catch (error) {
-//       const message =
-//         error?.response?.data?.message ||
-//         error.message ||
-//         "Error occured in updating doctor status";
 
 //       // Reject with error message
 //       return thunkApi.rejectWithValue(message);

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllAppointments,
   getAppointmentDetails,
+  updateAppointmentStatus,
 } from "../actions/appointmentActions";
 
 const appointmentSlice = createSlice({
@@ -46,6 +47,19 @@ const appointmentSlice = createSlice({
         state.appointment = action.payload.appointmentDetails;
       })
       .addCase(getAppointmentDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //UPDATE APPOINTMENT STATUS || updateAppointmentStatus
+      .addCase(updateAppointmentStatus.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateAppointmentStatus.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+        // state.appointment = action.payload.appointmentDetails;
+      })
+      .addCase(updateAppointmentStatus.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
