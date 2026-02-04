@@ -6,8 +6,8 @@ import {
   getAppointmentDetails,
   updateAppointmentStatus,
 } from "../../redux/actions/appointmentActions";
-import InputSelect from "../../components/Forms/InputSelect";
 import toast from "react-hot-toast";
+import "./AppointmentDetails.css";
 
 const AppointmentDetails = () => {
   const { id } = useParams();
@@ -46,68 +46,117 @@ const AppointmentDetails = () => {
   };
   return (
     <Layout>
-      <h1>Appointment Details</h1>
-      <table>
-        <tbody>
-          <tr>
-            <th>Client Name</th>
-            <td>{appointment?.clientName}</td>
-          </tr>
-          <tr>
-            <th>Client Phone</th>
-            <td>{appointment?.clientPhone}</td>
-          </tr>
-          <tr>
-            <th>Client Email</th>
-            <td>{appointment?.clientEmail}</td>
-          </tr>
-          <tr>
-            <th>Doctor Name</th>
-            <td>{appointment?.doctorName}</td>
-          </tr>
-          <tr>
-            <th>Doctor Phone</th>
-            <td>{appointment?.doctorPhone}</td>
-          </tr>
-          <tr>
-            <th>Doctor Email</th>
-            <td>{appointment?.doctorEmail}</td>
-          </tr>
-          <tr>
-            <th>Booking Date</th>
-            <td>{appointment?.bookingDate}</td>
-          </tr>
-          <tr>
-            <th>Booking Time</th>
-            <td>{appointment?.bookingTime}</td>
-          </tr>
-          <tr>
-            <th>Booking Amount</th>
-            <td>{appointment?.amount}</td>
-          </tr>
-          <tr>
-            <th>Booking Status</th>
-            <td>{appointment?.bookingStatus}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div className="mt-4 w-50">
-        <h4>Update Booking Status</h4>
-        <div className="mb-3">
-          <label className="form-label">Status</label>
-          <select
-            className="form-select"
-            value={appointmentStatus}
-            onChange={(e) => setAppointmentStatus(e.target.value)}
-          >
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
+      <div className="appointments-page">
+        <div className="appointments-header d-flex justify-content-between align-items-start">
+          <div>
+            <h2>Appointment Details</h2> {/* Change from h1 to h2 */}
+            <p>Alfalah General Hospital Admin Panel</p> {/* Add this */}
+          </div>
         </div>
-        <button onClick={handleUpdateStatus} className="btn btn-primary">
-          Update Status
-        </button>
+        <div className="appointment-details-grid">
+          <div className="detail-card">
+            <div className="detail-label">Client Information</div>
+            <div className="detail-group">
+              <span className="detail-item-label">Name:</span>
+              <span className="detail-item-value">
+                {appointment?.clientName}
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Phone:</span>
+              <span className="detail-item-value">
+                {appointment?.clientPhone}
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Email:</span>
+              <span className="detail-item-value">
+                {appointment?.clientEmail}
+              </span>
+            </div>
+          </div>
+
+          <div className="detail-card">
+            <div className="detail-label">Doctor Information</div>
+            <div className="detail-group">
+              <span className="detail-item-label">Name:</span>
+              <span className="detail-item-value">
+                {appointment?.doctorName}
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Phone:</span>
+              <span className="detail-item-value">
+                {appointment?.doctorPhone}
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Email:</span>
+              <span className="detail-item-value">
+                {appointment?.doctorEmail}
+              </span>
+            </div>
+          </div>
+
+          <div className="detail-card">
+            <div className="detail-label">Appointment Details</div>
+            <div className="detail-group">
+              <span className="detail-item-label">Date:</span>
+              <span className="detail-item-value">
+                {appointment?.bookingDate}
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Time:</span>
+              <span className="detail-item-value">
+                {appointment?.bookingTime}
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Amount:</span>
+              <span className="detail-item-value amount-highlight">
+                Rs. {appointment?.amount}/-
+              </span>
+            </div>
+            <div className="detail-group">
+              <span className="detail-item-label">Status:</span>
+              <span className={`status-badge ${appointment?.bookingStatus}`}>
+                {appointment?.bookingStatus?.charAt(0).toUpperCase() +
+                  appointment?.bookingStatus?.slice(1)}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="status-update-card">
+          <h4 className="section-title">
+            <i className="fas fa-sync-alt me-2"></i>
+            Update Appointment Status
+          </h4>
+          <div className="status-select-wrapper">
+            <label className="form-label">Select New Status</label>
+            <div className="status-options">
+              {["pending", "completed", "cancelled"].map((status) => (
+                <button
+                  key={status}
+                  className={`status-option-btn ${
+                    appointmentStatus === status ? "active" : ""
+                  }`}
+                  onClick={() => setAppointmentStatus(status)}
+                >
+                  {status.charAt(0).toUpperCase() + status.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+          <button
+            onClick={handleUpdateStatus}
+            className="doctor-update-btn w-100 mt-3"
+          >
+            <i className="fas fa-check-circle me-2"></i>
+            Confirm Status Update
+          </button>
+        </div>
       </div>
     </Layout>
   );
