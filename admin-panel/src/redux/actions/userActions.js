@@ -20,6 +20,25 @@ export const getAllUsers = createAsyncThunk(
     }
   }
 );
+// GET STATS
+export const getStats = createAsyncThunk(
+  "user/getStats",
+  async (_, thunkApi) => {
+    //underscore here mean no arguments passed
+    try {
+      const res = await API.get("/user/get-stats");
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in getting stats";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
 
 // GET USER DETAILS
 export const getUserDetails = createAsyncThunk(

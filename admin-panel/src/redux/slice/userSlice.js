@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getUserDetails } from "../actions/userActions";
+import { getAllUsers, getStats, getUserDetails } from "../actions/userActions";
 
 const userSlice = createSlice({
   name: "user",
@@ -10,6 +10,7 @@ const userSlice = createSlice({
     user: null,
     error: null,
     appointments: null,
+    stats: null,
   },
   reducers: {
     reset: (state) => {
@@ -31,6 +32,19 @@ const userSlice = createSlice({
         state.users = action.payload.users;
       })
       .addCase(getAllUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //GET ALL STATS || getStats
+      .addCase(getStats.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getStats.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.stats = action.payload.stats;
+      })
+      .addCase(getStats.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
