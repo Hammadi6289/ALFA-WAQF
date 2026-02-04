@@ -15,7 +15,9 @@ const AllAppointments = () => {
     dispatch(reset());
   }, [dispatch]);
 
-  const { appointments } = useSelector((state) => state.appointment);
+  const { appointments, appointment } = useSelector(
+    (state) => state.appointment
+  );
   return (
     <Layout>
       <div className="appointments-page">
@@ -118,7 +120,7 @@ const AllAppointments = () => {
                 {/* Doctor Info - You might need to fetch doctor data */}
                 <td>
                   <div className="d-flex flex-column">
-                    <strong>Dr. {appointment.doctorId?.name || "N/A"}</strong>
+                    <strong>Dr. {appointment?.doctorName || "N/A"}</strong>
                     <small className="text-muted">
                       {appointment.doctorId?.speciality || "N/A"}
                     </small>
