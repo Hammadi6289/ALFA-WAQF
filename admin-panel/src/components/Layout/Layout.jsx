@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     <div className="admin-layout">
       {/* Mobile Burger Menu */}
       <button
-        className="sidebar-toggle-btn d-md-none"
+        className="sidebar-toggle-btn d-lg-none"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         {sidebarOpen ? <FiX size={34} /> : <FiMenu size={34} />}
