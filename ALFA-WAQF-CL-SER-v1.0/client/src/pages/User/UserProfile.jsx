@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import EditUserProfile from "./EditUserProfile";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/slice/authSlice";
 
 const UserProfile = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("appData");
     navigate("/login");
     toast.success("Logged out successfully");
   };

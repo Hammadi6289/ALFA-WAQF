@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from "react";
 import "./Appointments.css";
-import { useParams } from "react-router";
-import DoctorData from "./DoctorsData.json";
+import { useNavigate, useParams } from "react-router";
+// import DoctorData from "./DoctorsData.json"; // for static data testing.
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { setHours, setMinutes } from "date-fns";
+import { useDispatch, useSelector } from "react-redux";
+import { getDoctorDetails } from "../../redux/actions/doctorActions";
 
 const Appointments = () => {
   const { id } = useParams();
-  const [docInfo, setDocInfo] = useState([]);
+  const [docInfo, setDocInfo] = useState(null);
   const [SelectedDateTime, setSelectedDateTime] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
 
-  // Find a doctor based on the id
-  const getDocInfo = async () => {
-    let docInfo = DoctorData.find((doc) => doc.id == id);
-    setDocInfo(docInfo);
-    console.log(docInfo);
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getDocInfo();
-  }, [id]);
+    dispatch(getDoctorDetails(id));
+  }, [dispatch, id]);
+
+  const { doctor } = useSelector((state) => state.doctor);
+
+  useEffect(() => {
+    if (doctor) {
+      setDocInfo(doctor);
+      // setIsLoading(true);
+    }
+  }, [doctor]);
+
+  // Find a doctor based on the id (Static data from json for the testing purpose)
+  // const getDocInfo = async () => {
+  //   let docInfo = DoctorData.find((doc) => doc.id == id);
+  //   setDocInfo(docInfo);
+  //   console.log(docInfo);
+  // };
+
+  // useEffect(() => {
+  //   getDocInfo();
+  // }, [id]);
 
   return (
     <>
@@ -45,7 +63,7 @@ const Appointments = () => {
             <div className="col-md-3 d-flex flex-column justify-content-center align-items-center">
               <img
                 className="docinfo-image"
-                src={docInfo?.image}
+                src={`data:image/jpeg;base64,${docInfo?.image}`}
                 alt="docImage"
                 height={200}
                 width={200}
@@ -63,7 +81,7 @@ const Appointments = () => {
               <h6>Experience: {docInfo?.experience} Years</h6>
               <h6>About Doctor</h6>
               <p>{docInfo?.about}</p>
-              <h5>Consultation Fee: {docInfo?.fee}</h5>
+              <h5>Consultation Fee: {docInfo?.fees}</h5>
               {/* Date time */}
               <div className="date-time mt-3">
                 <DatePicker

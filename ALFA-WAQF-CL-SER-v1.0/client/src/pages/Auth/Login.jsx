@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { error, success } = useSelector((state) => state.auth);
+  const { error, success, user } = useSelector((state) => state.auth);
 
   // regex patterns
   const validateForm = () => {
@@ -47,11 +47,16 @@ const Login = () => {
   };
 
   useEffect(() => {
+    if (user) {
+      navigate("/doctors");
+      return;
+    }
     if (success) {
-      toast.success("Logged in successfully");
+      //toast.success("Logged in successfully");
       setEmail("");
       setPassword("");
-      navigate("/doctors");
+      navigate("/login");
+      dispatch(reset());
     }
     if (error) {
       toast.error(error);
