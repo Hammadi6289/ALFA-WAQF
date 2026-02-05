@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router";
+import { getUserData } from "../../../redux/actions/authActions";
 
 const NavMenu = () => {
-  const [user, setUser] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserData());
+  }, [dispatch]);
+  const { user } = useSelector((state) => state.auth);
   return (
     <>
       <nav className="navbar navbar-expand-lg">

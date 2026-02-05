@@ -102,6 +102,10 @@ Prerequisites
 ### Future Improvements (TODO)
 
 1. Email‑based password reset
-2. Appointment approval system
-3. Payment gateway integration
-4. Cloud image storage (AWS / Cloudinary)
+2. Appointment approval system ❌❌📛
+3. Payment gateway integration ❌❌📛
+4. Cloud image storage (AWS / Cloudinary) ❓❓❓
+5. configure web message system in the admin-panel. ❌❌📛
+6. fix Menu bar in the tablet mode. (Add a close button to the overlay) ❌❌📛
+7. Add Appointments logic to the button in admin-panel.❌❌📛
+8. Automated tests. ✅

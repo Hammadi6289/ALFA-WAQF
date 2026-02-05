@@ -1,25 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Auth.css";
 import { NavLink, useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/actions/authActions";
+import { reset } from "../../redux/slice/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { error, success, user } = useSelector((state) => state.auth);
+
+  // regex patterns
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Email validation
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    // Password validation: min 6 chars
+    if (!password) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      toast.success("Logged in successfully");
-      setEmail("");
-      setPassword("");
-      navigate("/profile");
-    } catch (error) {
-      toast.error("Something went wrong");
-      console.log(error);
+    if (validateForm()) {
+      dispatch(login({ email, password }));
+    } else {
+      toast.error("Please fill both fields correctly.");
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/doctors");
+      return;
+    }
+    if (success) {
+      //toast.success("Logged in successfully");
+      setEmail("");
+      setPassword("");
+      navigate("/login");
+      dispatch(reset());
+    }
+    if (error) {
+      toast.error(error);
+      dispatch(reset());
+    }
+  }, [success, error, navigate, dispatch]);
 
   return (
     <>
@@ -34,6 +77,7 @@ const Login = () => {
               type="email"
               placeholder="Enter your email"
               value={email}
+              className={errors.email ? "error-border" : ""}
             />
           </div>
 
@@ -41,9 +85,13 @@ const Login = () => {
             <input
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="Make a password"
+              placeholder="Enter your password"
               value={password}
+              className={errors.password ? "error-border" : ""}
             />
+            {errors.password && (
+              <div className="error-message">{errors.password}</div>
+            )}
           </div>
           <button
             onClick={handleSubmit}
