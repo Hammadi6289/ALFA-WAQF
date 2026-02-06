@@ -43,7 +43,7 @@
 27. Create redux store. created slices & actions for get users , login, logout, loadToken.
 28. Admin Panel (All Users / User Details / Doctors / Appointments) along with some more solution cleanup and architecture updates.
 29. Admin Panel Homepage Analytics & reports.
-30. Adding actions and slices for the Analytics in admin-panel.
+30. Adding actions and slices for the Analytics in admin-panel. 1028
 
 ###### Features
 
@@ -109,3 +109,7 @@ Prerequisites
 6. fix Menu bar in the tablet mode. (Add a close button to the overlay) ❌❌📛
 7. Add Appointments logic to the button in admin-panel.❌❌📛
 8. Automated tests. ✅
+9. Security Risk: No Email Uniqueness Check on Registration In userRegisterController ❌❌📛
+10. Broken Login Navigation Logic Login component's useEffect, after successful login it navigate to /login instead of a dashboard/home page. This creates a redirect loop. Should navigate to /doctors or /home. ❌❌📛
+11. CI/CD pipeline setup
+12. Code review process/Git workflow
