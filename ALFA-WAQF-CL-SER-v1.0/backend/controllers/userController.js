@@ -4,9 +4,9 @@ import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 import doctorModel from "../models/doctorModel.js";
 
-///////////////////
-// REGISTER USER //
-///////////////////
+/////////////////////////////////////////
+//////////// REGISTER USER //////////////
+/////////////////////////////////////////
 
 export const userRegisterController = async (req, res) => {
   try {
@@ -19,6 +19,14 @@ export const userRegisterController = async (req, res) => {
         message: "Name, email and password is required",
       });
     }
+    // Check BEFORE attempting to save
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).send({
+        success: false,
+        message: "Email already registered",
+      });
+    }
     // Password hashing -- BCRYPT ALGORITHM || 10 rounds
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -27,6 +35,7 @@ export const userRegisterController = async (req, res) => {
       email,
       password: hashedPassword,
     };
+
     // save user data
     const newUser = new userModel(userData);
     const user = await newUser.save();
@@ -46,9 +55,9 @@ export const userRegisterController = async (req, res) => {
   }
 };
 
-////////////////
-// LOGIN USER //
-////////////////
+////////////////////////////////////////
+////////////// LOGIN USER //////////////
+////////////////////////////////////////
 export const userLoginController = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -99,9 +108,9 @@ export const userLoginController = async (req, res) => {
   }
 };
 
-/////////////////////////
-// Update User Details //
-/////////////////////////
+////////////////////////////////////////
+////////// Update User Details /////////
+////////////////////////////////////////
 
 export const updateUserController = async (req, res) => {
   try {
@@ -140,9 +149,9 @@ export const updateUserController = async (req, res) => {
     });
   }
 };
-////////////////////
-// PASSWORD RESET //
-////////////////////
+/////////////////////////////////////////
+//////////// PASSWORD RESET ////////////
+/////////////////////////////////////////
 
 export const passwordResetController = async (req, res) => {
   try {
@@ -221,9 +230,9 @@ export const passwordResetController = async (req, res) => {
   }
 };
 
-/////////////////////////////////
-///////// GET ALL USERS//////////
-/////////////////////////////////
+/////////////////////////////////////////
+////////////// GET ALL USERS/////////////
+/////////////////////////////////////////
 
 export const getAllUsersController = async (req, res) => {
   try {
@@ -252,8 +261,9 @@ export const getAllUsersController = async (req, res) => {
     });
   }
 };
-
-// GET USER AND APPOINTMENT DETAILS
+////////////////////////////////////////
+/// GET USER AND APPOINTMENT DETAILS ///
+////////////////////////////////////////
 
 export const getUserDetailsController = async (req, res) => {
   try {
@@ -289,6 +299,9 @@ export const getUserDetailsController = async (req, res) => {
   }
 };
 
+////////////////////////////////////////
+//////////// GET STATISTICS ////////////
+////////////////////////////////////////
 export const getStatsController = async (req, res) => {
   try {
     const users = await userModel.find({});
@@ -319,6 +332,44 @@ export const getStatsController = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Something went wrong while getting stats",
+      error,
+    });
+  }
+};
+
+////////////////////////////////////////////
+//////////// GET LOGGED IN USER ////////////
+////////////////////////////////////////////
+
+export const getLoginUserController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(404).send({
+        success: false,
+        message: "Please add a user id",
+      });
+    }
+    const user = await userModel.findById(id);
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "No user found",
+      });
+    }
+
+    res.status(200).send({
+      success: true,
+      message: "User fetched successfully",
+      totalCount: user.length,
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong while getting user",
       error,
     });
   }

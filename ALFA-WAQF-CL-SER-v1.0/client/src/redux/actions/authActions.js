@@ -65,3 +65,22 @@ export const loadToken = createAsyncThunk("auth/loadToken", () => {
   const appData = JSON.parse(localData);
   return appData?.token;
 });
+
+// GET LOGGED IN USER
+export const getLoginUserDetails = createAsyncThunk(
+  "user/getLoginUserDetails",
+  async (id, thunkApi) => {
+    try {
+      const res = await API.get(`/user/get-login-user/${id}`);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in getting user details";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);

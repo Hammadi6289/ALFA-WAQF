@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Appointments.css";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 // import DoctorData from "./DoctorsData.json"; // for static data testing.
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,7 +15,6 @@ const Appointments = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDoctorDetails(id));
