@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import EditUserProfile from "./EditUserProfile";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
+import { getLoginUserDetails } from "../../redux/actions/authActions";
 
 const UserProfile = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
+  useEffect(() => {
+    const localData = localStorage.getItem("appData");
+    const appData = JSON.parse(localData);
+    if (appData) {
+      const id = appData?.user?._id;
+      dispatch(getLoginUserDetails(id));
+    }
+  }, [dispatch]);
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem("appData");
@@ -22,16 +32,21 @@ const UserProfile = () => {
         <div className="row">
           <h4 className="text-center"> Manage your Account</h4>
           <div className="col-md-3">
-            <img className="card p-2" src="" alt="user pic" width={200} />
+            <img
+              className="card p-2"
+              src={`data:image/jpeg;base64,${user?.image}`}
+              alt="user pic"
+              width={200}
+            />
           </div>
           <div className="col-md-8 mb-3">
             <div className="user-container mb-3">
-              <h6>Name: </h6>
-              <h6>Gender: </h6>
-              <h6>Date of Birth: </h6>
-              <h6>Email: </h6>
-              <h6>Phone: </h6>
-              <h6>Address: </h6>
+              <h6>Name: {user?.name} </h6>
+              <h6>Gender: {user?.gender || "-"} </h6>
+              <h6>Date of Birth: {user?.dob || "-"}</h6>
+              <h6>Email: {user?.email} </h6>
+              <h6>Phone: {user?.phone || "-"} </h6>
+              <h6>Address: {user?.address || "-"} </h6>
             </div>
             <div className="button-container mt-5">
               <button

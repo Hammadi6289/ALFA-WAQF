@@ -5,6 +5,7 @@ import {
   login,
   register,
 } from "../actions/authActions";
+import { getLoginUserDetails } from "../actions/authActions";
 
 const authSlice = createSlice({
   name: "auth",
@@ -52,6 +53,20 @@ const authSlice = createSlice({
         state.success = true;
       })
       .addCase(register.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //GET LOGGED USER DETAILS || getLoginUserDetails
+      .addCase(getLoginUserDetails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getLoginUserDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.user = action.payload.user;
+        // state.appointments = action.payload.appointments;
+      })
+      .addCase(getLoginUserDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
