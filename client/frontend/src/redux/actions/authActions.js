@@ -84,3 +84,26 @@ export const getLoginUserDetails = createAsyncThunk(
     }
   }
 );
+
+// UPDATE USER
+export const updateUserDetails = createAsyncThunk(
+  "user/updateUserDetails",
+  async ({ id, formData }, thunkApi) => {
+    try {
+      const res = await API.patch(`/user/update/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured while updating details";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
