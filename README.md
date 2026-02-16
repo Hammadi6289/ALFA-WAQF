@@ -44,7 +44,7 @@
 28. Admin Panel (All Users / User Details / Doctors / Appointments) along with some more solution cleanup and architecture updates.
 29. Admin Panel Homepage Analytics & reports.
 30. Adding actions and slices for the Analytics in admin-panel.
-31. Made the user profile dynamic. 1040
+31. Made the user profile dynamic.
 
 ###### Features
 

@@ -4,6 +4,7 @@ import {
   loadToken,
   login,
   register,
+  updateUserDetails,
 } from "../actions/authActions";
 import { getLoginUserDetails } from "../actions/authActions";
 
@@ -67,6 +68,20 @@ const authSlice = createSlice({
         // state.appointments = action.payload.appointments;
       })
       .addCase(getLoginUserDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      //UPDATE USER DETAILS || updateUserDetails
+      .addCase(updateUserDetails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateUserDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.user = action.payload.user;
+      })
+      .addCase(updateUserDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
