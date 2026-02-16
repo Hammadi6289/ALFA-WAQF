@@ -1,0 +1,29 @@
+.user-profile-header {
+  background: linear-gradient(135deg, #e6ddff, #f3efff);
+  border-bottom: 1px solid #d6c8ff;
+}
+
+.user-profile-header .modal-title {
+  font-weight: 600;
+  color: #4b2aad;
+  letter-spacing: 0.5px;
+}
+
+.user-profile-card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 35px rgba(111, 66, 193, 0.15);
+  overflow: hidden;
+}
+
+.profile-input {
+  border-radius: 10px;
+  border: 1px solid #e2d9ff;
+  padding: 10px 12px;
+  transition: all 0.2s ease;
+}
+
+.profile-input:focus {
+  border-color: #7a5af8;
+  box-shadow: 0 0 0 3px rgba(122, 90, 248, 0.15);
+}

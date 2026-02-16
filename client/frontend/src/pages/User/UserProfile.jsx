@@ -5,6 +5,7 @@ import EditUserProfile from "./EditUserProfile";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
 import { getLoginUserDetails } from "../../redux/actions/authActions";
+import "./UserProfile.css";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const UserProfile = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    // dispatch(reset());
     const localData = localStorage.getItem("appData");
     const appData = JSON.parse(localData);
     if (appData) {
@@ -40,30 +42,43 @@ const UserProfile = () => {
             />
           </div>
           <div className="col-md-8 mb-3">
-            <div className="user-container mb-3">
-              <h6>Name: {user?.name} </h6>
-              <h6>Gender: {user?.gender || "-"} </h6>
-              <h6>Date of Birth: {user?.dob || "-"}</h6>
-              <h6>Email: {user?.email} </h6>
-              <h6>Phone: {user?.phone || "-"} </h6>
-              <h6>Address: {user?.address || "-"} </h6>
+            <div className="user-profile-data-container mb-3">
+              <h4>{user?.name}</h4>
+              <h6>
+                <strong>Gender:</strong> {user?.gender || "-"}
+              </h6>
+              <h6>
+                <strong>Date of Birth:</strong> {user?.dob || "-"}
+              </h6>
+              <h6>
+                <strong>Email:</strong> {user?.email}
+              </h6>
+              <h6>
+                <strong>Phone:</strong> {user?.phone || "-"}
+              </h6>
+              <h6>
+                <strong>Address:</strong> {user?.address || "-"}
+              </h6>
             </div>
             <div className="button-container mt-5">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="btn btn-warning"
+                className="btn button-tertiary"
               >
                 <i className="fa-solid fa-pen-to-square"></i>
                 Edit Profile
               </button>
               <button
                 onClick={() => navigate("/user/appointments")}
-                className="btn btn-primary ms-3"
+                className="btn button-tertiary ms-3"
               >
                 <i className="fa-solid fa-list"></i>
                 My Appointments
               </button>
-              <button onClick={handleLogout} className="btn btn-danger ms-3">
+              <button
+                onClick={handleLogout}
+                className="btn button-secondary ms-3"
+              >
                 <i className="fa-solid fa-power-off"></i>
                 Logout
               </button>
