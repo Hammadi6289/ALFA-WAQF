@@ -114,3 +114,4 @@ Prerequisites
 10. Broken Login Navigation Logic Login component's useEffect, after successful login it navigate to /login instead of a dashboard/home page. This creates a redirect loop. Should navigate to /doctors or /home. ❌❌📛
 11. CI/CD pipeline setup ❌❌📛
 12. Code review process/Git workflow ❌❌📛
+13. Appointment Details page (need to create an action and a slice, Controller and route is already there.)

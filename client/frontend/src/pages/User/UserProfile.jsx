@@ -33,12 +33,15 @@ const UserProfile = () => {
       <div className="container mt-5">
         <div className="row">
           <h4 className="text-center"> Manage your Account</h4>
-          <div className="col-md-3">
+          <h6 className="text-center text-danger">
+            {" "}
+            Refresh the page If you encounter any Cache related issues.
+          </h6>
+          <div className="col-md-3 d-flex justify-content-center align-items-center mb-3">
             <img
-              className="card p-2"
+              className="user-profile-img"
               src={`data:image/jpeg;base64,${user?.image}`}
               alt="user pic"
-              width={200}
             />
           </div>
           <div className="col-md-8 mb-3">
@@ -60,10 +63,10 @@ const UserProfile = () => {
                 <strong>Address:</strong> {user?.address || "-"}
               </h6>
             </div>
-            <div className="button-container mt-5">
+            <div className="button-container d-flex flex-column flex-lg-row mt-5 gap-3">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="btn button-tertiary"
+                className="btn button-tertiary ms-3"
               >
                 <i className="fa-solid fa-pen-to-square"></i>
                 Edit Profile

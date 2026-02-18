@@ -107,3 +107,40 @@ export const updateUserDetails = createAsyncThunk(
     }
   }
 );
+
+// GET ALL APPOINTMENTS
+export const getAllAppointments = createAsyncThunk(
+  "appointment/getAllAppointments",
+  async (id, thunkApi) => {
+    try {
+      const res = await API.get(`/appointment/get-user-appointments/${id}`);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in getting your appointments";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+
+// CANCEL APPOINTMENT
+export const cancelAppointment = createAsyncThunk(
+  "appointment/cancelAppointment",
+  async (id, thunkApi) => {
+    try {
+      const res = await API.post(`/appointment/cancel/${id}`);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured while canceling your appointment";
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);

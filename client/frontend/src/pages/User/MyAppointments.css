@@ -1,0 +1,174 @@
+/* MyAppointments.css */
+
+/* Container */
+.appointments-page {
+  padding: 20px;
+  background: #f5f7fa;
+  min-height: 80vh;
+}
+
+/* Header */
+.appointments-header h2 {
+  font-size: 1.8rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 4px;
+}
+
+.appointments-header p {
+  color: var(--color-primary-dark);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* Table Wrapper */
+.appointments-table-wrapper {
+  overflow-x: auto;
+}
+
+/* Table Styling */
+.appointments-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.appointments-table thead tr {
+  background: #6c63ff;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.appointments-table tbody tr {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.appointments-table tbody tr:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.appointments-table tbody td {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Receipt ID */
+.receipt-id-cell {
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+}
+
+.receipt-id {
+  background: #f0f2ff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #6c63ff;
+}
+
+/* Time Badge */
+.time-badge {
+  background: #f0f2ff;
+  color: #6c63ff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Amount Cell */
+.amount-cell {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 90px;
+  text-align: center;
+}
+
+.status-badge.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Action Buttons */
+.status-action-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 0.85rem;
+}
+
+.status-action-btn.cancel-btn {
+  background-color: #e10032;
+  color: white;
+}
+
+.status-action-btn.cancel-btn:hover {
+  background-color: #cf4463;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(225, 0, 50, 0.25);
+}
+
+.status-action-btn.edit-btn {
+  background-color: var(--color-primary-light);
+  color: white;
+}
+
+.status-action-btn.edit-btn:hover {
+  background-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(115, 50, 170, 0.25);
+}
+
+/* View Details Link */
+.view-details-link {
+  color: var(--color-primary-hope);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.view-details-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Empty State */
+.text-center.py-4 {
+  color: #6c757d;
+  font-size: 1rem;
+  padding: 40px 0;
+}
