@@ -71,8 +71,11 @@ const EditUserProfile = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   return (
     <>
-      <div className="modal d-block " tabIndex={-1}>
-        <div className="modal-dialog modal-dialog-centered user-profile-modal">
+      <div className="modal d-block " tabIndex={-1} onClick={onClose}>
+        <div
+          className="modal-dialog modal-dialog-centered user-profile-modal"
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="modal-content user-profile-card">
             <div className="modal-header user-profile-header">
               <h2 className="modal-title">Update Profile</h2>
