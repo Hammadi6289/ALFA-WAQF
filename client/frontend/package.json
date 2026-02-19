@@ -20,6 +20,7 @@
     "react-photo-album": "^3.1.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.12.0",
+    "react-router-dom": "^7.13.0",
     "swiper": "^12.0.3",
     "yet-another-react-lightbox": "1.1"
   },

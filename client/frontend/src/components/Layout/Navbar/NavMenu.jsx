@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router";
 import { getUserData } from "../../../redux/actions/authActions";
 
 const NavMenu = () => {
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getUserData());
@@ -17,38 +18,63 @@ const NavMenu = () => {
           <button
             className="navbar-toggler"
             type="button"
+            onClick={() => setIsOpen(!isOpen)}
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
+            aria-expanded={isOpen}
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div
+            className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
+            id="navbarTogglerDemo01"
+          >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">
+                <NavLink
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/"
+                  onClick={() => setIsOpen(false)}
+                >
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/about">
+                <NavLink
+                  className="nav-link"
+                  to="/about"
+                  onClick={() => setIsOpen(false)}
+                >
                   About Us
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/doctors">
+                <NavLink
+                  className="nav-link"
+                  to="/doctors"
+                  onClick={() => setIsOpen(false)}
+                >
                   Doctors
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/gallery">
+                <NavLink
+                  className="nav-link"
+                  to="/gallery"
+                  onClick={() => setIsOpen(false)}
+                >
                   Gallery
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/contact">
+                <NavLink
+                  className="nav-link"
+                  to="/contact"
+                  onClick={() => setIsOpen(false)}
+                >
                   Contact Us
                 </NavLink>
               </li>
@@ -67,13 +93,21 @@ const NavMenu = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {user ? (
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/user/profile">
+                  <NavLink
+                    className="nav-link"
+                    to="/user/profile"
+                    onClick={() => setIsOpen(false)}
+                  >
                     My Account
                   </NavLink>
                 </li>
               ) : (
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/login">
+                  <NavLink
+                    className="nav-link"
+                    to="/login"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Login
                   </NavLink>
                 </li>
