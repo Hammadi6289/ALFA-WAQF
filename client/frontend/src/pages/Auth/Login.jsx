@@ -70,37 +70,38 @@ const Login = () => {
         <div className="auth-register-card">
           <h2>Sign In</h2>
           <p>Please enter your email and password</p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group mb-3">
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                className={errors.email ? "error-border" : ""}
+              />
+            </div>
 
-          <div className="form-group mb-3">
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              className={errors.email ? "error-border" : ""}
-            />
-          </div>
-
-          <div className="form-group mb-3">
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              className={errors.password ? "error-border" : ""}
-            />
-            {errors.password && (
-              <div className="error-message">{errors.password}</div>
-            )}
-          </div>
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="btn button-secondary"
-            disabled={!email || !password}
-          >
-            Sign In
-          </button>
+            <div className="form-group mb-3">
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                className={errors.password ? "error-border" : ""}
+              />
+              {errors.password && (
+                <div className="error-message">{errors.password}</div>
+              )}
+            </div>
+            <button
+              //onClick={handleSubmit}
+              type="submit"
+              className="btn button-secondary"
+              disabled={!email || !password}
+            >
+              Sign In
+            </button>
+          </form>
           <p>
             Don't have an account?
             <NavLink to="/register"> Sign Up</NavLink>

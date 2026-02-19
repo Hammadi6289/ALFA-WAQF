@@ -76,46 +76,47 @@ const Register = () => {
         <div className="auth-register-card">
           <h2>Create an Account</h2>
           <p>Please enter your details to register</p>
-          <div className="form-group mb-3">
-            <input
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              placeholder="Enter your name"
-              value={name}
-              className={errors.name ? "error-border" : ""}
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group mb-3">
+              <input
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="Enter your name"
+                value={name}
+                className={errors.name ? "error-border" : ""}
+              />
+            </div>
 
-          <div className="form-group mb-3">
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              className={errors.email ? "error-border" : ""}
-            />
-          </div>
+            <div className="form-group mb-3">
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                className={errors.email ? "error-border" : ""}
+              />
+            </div>
 
-          <div className="form-group mb-3">
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Make a password (min 6 characters)"
-              value={password}
-              className={errors.password ? "error-border" : ""}
-            />
-            {errors.password && (
-              <div className="error-message">{errors.password}</div>
-            )}
-          </div>
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="btn button-secondary"
-            disabled={!name || !email || !password}
-          >
-            Register
-          </button>
+            <div className="form-group mb-3">
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Make a password (min 6 characters)"
+                value={password}
+                className={errors.password ? "error-border" : ""}
+              />
+              {errors.password && (
+                <div className="error-message">{errors.password}</div>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="btn button-secondary"
+              disabled={!name || !email || !password}
+            >
+              Register
+            </button>
+          </form>
           <p>
             Already have an account?
             <NavLink to="/login">Login here</NavLink>
