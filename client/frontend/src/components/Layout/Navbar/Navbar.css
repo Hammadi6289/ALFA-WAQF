@@ -4,31 +4,6 @@
   background-color: #ffff;
 }
 
-.topbar-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: #7332aa;
-   {
-    /* background-color: #37145A is primary darker */
-  }
-  color: #ffff;
-  font-weight: normal;
-  font-family: "DIN Next", sans-serif;
-  padding: 6px;
-
-  .fa-phone {
-    margin-right: 10px;
-  }
-  .fa-clock {
-    margin-right: 10px;
-  }
-  .fa-at {
-    margin-right: 10px;
-  }
-}
-
 .navbar {
   background-color: #ffff;
   margin-bottom: 10px;

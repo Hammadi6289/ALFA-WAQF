@@ -13,7 +13,12 @@ const NavMenu = () => {
   const { user } = useSelector((state) => state.auth);
   return (
     <>
-      <nav className="navbar navbar-expand-lg">
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{
+          height: "70px",
+        }}
+      >
         <div className="container-fluid">
           <button
             className="navbar-toggler"
