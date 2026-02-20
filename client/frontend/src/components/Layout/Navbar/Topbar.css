@@ -1,0 +1,72 @@
+.topbar-container {
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+.topbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.topbar-link {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.topbar-link:hover {
+  opacity: 0.8;
+}
+
+.topbar-link i {
+  font-size: 0.85rem;
+}
+
+.topbar-divider {
+  opacity: 0.3;
+}
+
+.topbar-email {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.topbar-email:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .topbar-content {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 20px;
+  }
+
+  .topbar-email {
+    font-size: 0.85rem;
+  }
+
+  .topbar-divider {
+    display: none;
+  }
+}

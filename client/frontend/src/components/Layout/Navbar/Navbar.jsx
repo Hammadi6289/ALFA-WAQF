@@ -9,12 +9,12 @@ const Navbar = () => {
     <>
       <div className="navbar-container sticky-top">
         <div className="row">
-          <div className="col-md-1">
+          {/* <div className="col-md-1">
             <NavLink to="/">
               <img className="alfa-brand-logo" src={logo} alt="alfalah-logo" />
             </NavLink>
-          </div>
-          <div className="col-md-11">
+          </div> */}
+          <div className="col-md-12">
             <div>
               <Topbar />
             </div>
