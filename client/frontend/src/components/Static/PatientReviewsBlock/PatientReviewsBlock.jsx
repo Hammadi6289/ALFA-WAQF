@@ -12,7 +12,7 @@ const PatientReviewsBlock = () => {
           <h2>Says About Us</h2>
         </div>
         {/* Patients reviews on Google*/}
-        <div className="row patient-reviews-container">
+        <div className="patient-reviews-container">
           {ReviewData.map((review, index) => {
             return (
               <div className="col-md-3" key={review.id}>
