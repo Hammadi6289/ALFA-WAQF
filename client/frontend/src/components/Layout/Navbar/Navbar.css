@@ -1,3 +1,14 @@
+.navbar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1040;
+  backdrop-filter: blur(3px);
+}
+
 .navbar-container {
   overflow: hidden;
   border-bottom: 1px solid rgba(128, 128, 128, 0.178);
@@ -5,13 +16,85 @@
 }
 
 .navbar {
-  background-color: #ffff;
+  position: relative;
+  z-index: 1050;
+  background-color: #2a0f45;
   margin-bottom: 10px;
+  min-height: 70px;
+  padding: 0 20px;
+  text-color: #ffff;
 }
 .nav-link {
   font-weight: 600;
-  margin-left: 20px;
-  color: #37145a;
+  color: #ffff;
+  padding: 25px 15px;
+}
+.nav-link.active {
+  font-weight: 700;
+  color: #ffd700 !important;
+  text-decoration: underline;
+}
+
+.nav-link.disabled {
+  font-weight: 700;
+  color: #7332aa !important;
+}
+.navbar-toggler {
+  background-color: #ffff;
+}
+
+/* Small desktops (1024px - 1366px) */
+@media (min-width: 1024px) {
+  .nav-link {
+    margin-left: 20px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .navbar {
+    background-color: #ffff;
+    margin-bottom: 10px;
+    min-height: 70px;
+    padding: 0 20px;
+  }
+
+  .nav-link {
+    color: #37145a;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    font-weight: 700;
+    color: #2a0f45 !important;
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+    background: var(--color-primary-dark);
+  }
+
+  .nav-link.disabled {
+    font-weight: 700;
+    color: #d3d3d3 !important;
+  }
 }
 .alfa-brand-logo {
   max-height: 110px;

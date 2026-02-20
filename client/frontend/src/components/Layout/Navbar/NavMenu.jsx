@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router";
 import { getUserData } from "../../../redux/actions/authActions";
+import "./Navbar.css";
 
 const NavMenu = () => {
   const dispatch = useDispatch();
@@ -13,12 +14,12 @@ const NavMenu = () => {
   const { user } = useSelector((state) => state.auth);
   return (
     <>
-      <nav
-        className="navbar navbar-expand-lg"
-        style={{
-          height: "70px",
-        }}
-      >
+      {/* Make the navbar take full screen on smaller screens */}
+      {isOpen && (
+        <div className="navbar-backdrop" onClick={() => setIsOpen(false)} />
+      )}
+
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -39,7 +40,7 @@ const NavMenu = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink
-                  className="nav-link active"
+                  className="nav-link"
                   aria-current="page"
                   to="/"
                   onClick={() => setIsOpen(false)}
