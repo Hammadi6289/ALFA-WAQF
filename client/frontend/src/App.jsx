@@ -15,6 +15,7 @@ import Appointments from "./pages/Doctors/Appointments";
 import UserProfile from "./pages/User/UserProfile";
 import MyAppointments from "./pages/User/MyAppointments";
 import AppointmentDetails from "./pages/User/AppointmentDetails";
+import ResetPassword from "./pages/User/ResetPassword";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/user/reset-password/:id" element={<ResetPassword />} />
         <Route path="/doctors" element={<AllDoctors />} />
         <Route path="/doctor/:id" element={<Appointments />} />
         <Route path="/user/profile" element={<UserProfile />} />

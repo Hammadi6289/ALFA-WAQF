@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import EditUserProfile from "./EditUserProfile";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
@@ -62,6 +62,13 @@ const UserProfile = () => {
               <h6>
                 <strong>Address:</strong> {user?.address || "-"}
               </h6>
+              <Link
+                to={`/user/reset-password/${user?._id}`}
+                className="reset-password-btn"
+              >
+                <i className="fa-solid fa-key"></i>
+                Reset Password
+              </Link>
             </div>
             <div className="button-container d-flex flex-column flex-lg-row mt-5 gap-3">
               <button

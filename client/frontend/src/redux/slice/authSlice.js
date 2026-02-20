@@ -6,6 +6,7 @@ import {
   loadToken,
   login,
   register,
+  resetPassword,
   updateUserDetails,
 } from "../actions/authActions";
 import { getLoginUserDetails } from "../actions/authActions";
@@ -85,6 +86,18 @@ const authSlice = createSlice({
         state.user = action.payload.user;
       })
       .addCase(updateUserDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //RESET PASSWORD || resetPassword
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

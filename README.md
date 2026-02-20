@@ -45,6 +45,8 @@
 29. Admin Panel Homepage Analytics & reports.
 30. Adding actions and slices for the Analytics in admin-panel.
 31. Made the user profile dynamic and integrated edit user profile feature
+32. Password reset functionality.
+33. Book appointment with doctor feature integration.
 
 ###### Features
 

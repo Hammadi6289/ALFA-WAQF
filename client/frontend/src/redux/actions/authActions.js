@@ -108,6 +108,28 @@ export const updateUserDetails = createAsyncThunk(
   }
 );
 
+// RESET PASSWORD
+export const resetPassword = createAsyncThunk(
+  "user/resetPassword",
+  async (id, oldPassword, newPassword, confirmPassword, thunkApi) => {
+    try {
+      const res = await API.patch(`/user/reset-password/${id}`, {
+        oldPassword,
+        newPassword,
+        confirmPassword,
+      });
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured while resetting password";
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
+
 // GET ALL APPOINTMENTS
 export const getAllAppointments = createAsyncThunk(
   "appointment/getAllAppointments",
