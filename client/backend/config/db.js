@@ -8,6 +8,6 @@ const connectDB = async () => {
     );
   });
   await mongoose.connect(`${process.env.MONGO_LOCAL_URI}/alfa-waqf`);
-  console.log(mongoose.connection.name.bgBlue);
+  console.log(mongoose.connection.name.bgMagenta);
 };
 export default connectDB;
