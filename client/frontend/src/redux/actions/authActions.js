@@ -112,6 +112,8 @@ export const updateUserDetails = createAsyncThunk(
 export const resetPassword = createAsyncThunk(
   "user/resetPassword",
   async ({ id, oldPassword, newPassword, confirmPassword }, thunkApi) => {
+    // console.log("Inside action - ID:", id);
+    // console.log("Full URL:", `/user/reset-password/${id}`);
     try {
       const res = await API.patch(`/user/reset-password/${id}`, {
         oldPassword,
