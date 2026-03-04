@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  bookAppointment,
   cancelAppointment,
   getAllAppointments,
   getUserData,
@@ -89,7 +90,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      //RESET PASSWORD || resetPassword
+      // RESET PASSWORD || resetPassword
       .addCase(resetPassword.pending, (state) => {
         state.loading = true;
       })
@@ -101,7 +102,19 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      //GET ALL USER APPOINTMENTS || getAllAppointments
+      // BOOK APPOINTMENTS || bookAppointment
+      .addCase(bookAppointment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(bookAppointment.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(bookAppointment.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // GET ALL USER APPOINTMENTS || getAllAppointments
       .addCase(getAllAppointments.pending, (state) => {
         state.loading = true;
       })

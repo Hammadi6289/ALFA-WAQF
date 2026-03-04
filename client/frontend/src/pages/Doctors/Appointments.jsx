@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./Appointments.css";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 // import DoctorData from "./DoctorsData.json"; // for static data testing.
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { setHours, setMinutes } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
 import { getDoctorDetails } from "../../redux/actions/doctorActions";
+import toast from "react-hot-toast";
+import { bookAppointment } from "../../redux/actions/authActions";
+import { reset } from "../../redux/slice/authSlice";
 
 const Appointments = () => {
   const { id } = useParams();
   const [docInfo, setDocInfo] = useState(null);
   const [SelectedDateTime, setSelectedDateTime] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
+  const [isBooking, setIsBooking] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDoctorDetails(id));
   }, [dispatch, id]);
 
   const { doctor } = useSelector((state) => state.doctor);
+  const { user, error, success } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (doctor) {
@@ -39,6 +45,39 @@ const Appointments = () => {
   // useEffect(() => {
   //   getDocInfo();
   // }, [id]);
+
+  const handleBooking = () => {
+    if (!user) {
+      toast.error("Please login to book an appointment");
+      navigate("/login");
+      return;
+    }
+
+    const bookingData = {
+      userId: user?._id,
+      doctorId: id,
+      amount: docInfo?.fees,
+      slotDate: SelectedDateTime.toLocaleDateString(),
+      slotTime: SelectedDateTime.toLocaleTimeString(),
+    };
+    setIsBooking(true);
+    dispatch(bookAppointment(bookingData));
+    //dispatch(reset());
+  };
+  useEffect(() => {
+    if (!isBooking) return;
+    if (success) {
+      toast.success("Appointment booked successfully");
+
+      navigate("/user/appointments");
+      dispatch(reset());
+    }
+    if (error) {
+      toast.error(error);
+      dispatch(reset());
+      setIsBooking(false);
+    }
+  }, [success, error, isBooking]);
 
   return (
     <>
@@ -109,6 +148,7 @@ const Appointments = () => {
                   : "Please select appointment time"}
               </div>
               <button
+                onClick={handleBooking}
                 className="btn button-tertiary w-5 docinfo-btn"
                 disabled={!docInfo?.available}
               >

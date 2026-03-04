@@ -13,7 +13,7 @@ import { isAdmin, userAuth } from "../middlewares/authMiddlewares.js";
 const router = express.Router();
 
 // CREATE APPOINTMENT || POST
-router.post("/create", userAuth, isAdmin, bookAppointmentController);
+router.post("/create", userAuth, bookAppointmentController); // Do I need userAuth here???
 
 // GET ALL APPOINTMENTS || GET
 router.get("/get-all", userAuth, isAdmin, getAllAppointmentsController);

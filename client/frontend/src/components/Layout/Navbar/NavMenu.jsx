@@ -91,9 +91,13 @@ const NavMenu = () => {
               </li>
             </ul>
             <form className="d-flex" role="search">
-              <button className="btn btn-outline-success" type="submit">
+              <a
+                href="/doctors"
+                className="btn btn-outline-success"
+                type="submit"
+              >
                 Book an Appointment
-              </button>
+              </a>
             </form>
             {/* Login user? profile */}
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
