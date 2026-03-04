@@ -8,6 +8,7 @@ import {
   login,
   register,
   resetPassword,
+  sendWebMessage,
   updateUserDetails,
 } from "../actions/authActions";
 import { getLoginUserDetails } from "../actions/authActions";
@@ -136,6 +137,18 @@ const authSlice = createSlice({
         state.success = true;
       })
       .addCase(cancelAppointment.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // SEND WEB MESSAGE || sendWebMessage
+      .addCase(sendWebMessage.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(sendWebMessage.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(sendWebMessage.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
