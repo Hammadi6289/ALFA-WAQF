@@ -63,3 +63,14 @@
   background-color: var(--color-primary);
   color: white;
 }
+
+.error-border {
+  border: 2px solid #dc3545 !important;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}

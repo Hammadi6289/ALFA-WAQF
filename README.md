@@ -47,6 +47,7 @@
 31. Made the user profile dynamic and integrated edit user profile feature
 32. Password reset functionality.
 33. Book appointment with doctor feature integration.
+34. Integrate Messaging feature in Contact Us Form.
 
 ###### Features
 

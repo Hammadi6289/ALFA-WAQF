@@ -187,3 +187,21 @@ export const cancelAppointment = createAsyncThunk(
     }
   }
 );
+
+// Send Web Message
+export const sendWebMessage = createAsyncThunk(
+  "user/sendWebMessage",
+  async (msgData, thunkApi) => {
+    try {
+      const res = await API.post(`/webmessage/create`, msgData);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in sending message";
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
