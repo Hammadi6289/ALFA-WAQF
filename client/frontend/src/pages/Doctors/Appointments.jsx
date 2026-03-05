@@ -10,6 +10,7 @@ import { getDoctorDetails } from "../../redux/actions/doctorActions";
 import toast from "react-hot-toast";
 import { bookAppointment } from "../../redux/actions/authActions";
 import { reset } from "../../redux/slice/authSlice";
+import { Helmet } from "react-helmet-async";
 
 const Appointments = () => {
   const { id } = useParams();
@@ -81,6 +82,9 @@ const Appointments = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Appointment Booking | Alfalah</title>
+      </Helmet>
       <div
         className={`container docinfo-container ${
           isLoading ? "is-loading" : ""

@@ -10,6 +10,7 @@ import {
 import toast from "react-hot-toast";
 import "./EditUserProfile.css";
 import { reset } from "../../redux/slice/authSlice";
+import { Helmet } from "react-helmet-async";
 
 const EditUserProfile = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
@@ -71,6 +72,9 @@ const EditUserProfile = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   return (
     <>
+      <Helmet>
+        <title>Edit Profile | Alfalah</title>
+      </Helmet>
       <div className="modal d-block " tabIndex={-1} onClick={onClose}>
         <div
           className="modal-dialog modal-dialog-centered user-profile-modal"

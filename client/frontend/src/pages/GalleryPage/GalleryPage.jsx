@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "yet-another-react-lightbox/styles.css";
 import "react-photo-album/rows.css";
 import "./GalleryPage.css";
+import { Helmet } from "react-helmet-async";
 
 const GalleryPage = () => {
   const [index, setIndex] = useState(-1);
@@ -32,6 +33,9 @@ const GalleryPage = () => {
       : photos.filter((photo) => photo.category === activeCategory);
   return (
     <>
+      <Helmet>
+        <title>Gallery | Alfalah</title>
+      </Helmet>
       {/* Hero Section */}
       <div className="gallery-hero">
         <div className="gallery-hero-overlay">

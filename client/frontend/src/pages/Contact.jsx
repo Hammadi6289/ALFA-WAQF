@@ -1,10 +1,14 @@
 import React from "react";
 import ContactMessage from "../components/Static/ContactMessage/ContactMessage";
 import "./Contact.css";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   return (
     <>
+      <Helmet>
+        <title>Contact Us | Alfalah</title>
+      </Helmet>
       <div className="contact-hero">
         <div className="contact-hero-overlay">
           <h2 className="contact-hero__title">Contact Us</h2>

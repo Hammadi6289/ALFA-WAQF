@@ -48,6 +48,7 @@
 32. Password reset functionality.
 33. Book appointment with doctor feature integration.
 34. Integrate Messaging feature in Contact Us Form.
+35. Add react-helmet on client side.
 
 ###### Features
 
@@ -118,3 +119,10 @@ Prerequisites
 11. CI/CD pipeline setup ❌❌📛
 12. Code review process/Git workflow ❌❌📛
 13. Appointment Details page (need to create an action and a slice, Controller and route is already there.)
+
+### Optimization / SEO Principles Followed.
+
+1. Used Asynchronous Approach Site wide.
+2. Tags nesting.
+3. Made use of Keys with the list items.
+4. Added react-helmet on the client side for the SEO.

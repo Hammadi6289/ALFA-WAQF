@@ -6,6 +6,7 @@ import { resetPassword } from "../../redux/actions/authActions";
 import { logout, reset } from "../../redux/slice/authSlice";
 import { FiLock, FiEye, FiEyeOff, FiArrowLeft } from "react-icons/fi";
 import "./Resetpassword.css";
+import { Helmet } from "react-helmet-async";
 
 const ResetPassword = () => {
   const [oldPassword, setOldPassword] = useState("");
@@ -53,6 +54,9 @@ const ResetPassword = () => {
 
   return (
     <div className="reset-password-container">
+      <Helmet>
+        <title>Reset Account Password | Alfalah</title>
+      </Helmet>
       {/* Background Decoration */}
       <div className="reset-bg-decoration"></div>
 

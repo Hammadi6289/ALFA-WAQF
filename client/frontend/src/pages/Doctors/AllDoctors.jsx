@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import "./AllDoctors.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/actions/doctorActions";
+import { Helmet } from "react-helmet-async";
 
 const AllDoctors = () => {
   const navigate = useNavigate(); // Not required here.
@@ -18,6 +19,9 @@ const AllDoctors = () => {
   const { doctors } = useSelector((state) => state.doctor);
   return (
     <>
+      <Helmet>
+        <title>Book an Appointment | Alfalah</title>
+      </Helmet>
       <h4 className="text-center doctor-heading mt-3">
         Select a Doctor and Book an Appointment
       </h4>
