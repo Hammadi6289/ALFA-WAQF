@@ -3,6 +3,7 @@ import AuthReducer from "./slice/authSlice";
 import UserReducer from "./slice/userSlice";
 import DoctorReducer from "./slice/doctorSlice";
 import AppointmentReducer from "./slice/appointmentSlice";
+import webMessageReducer from "./slice/webMessageSlice";
 // import todosReducer from '../features/todos/todosSlice'
 // import filtersReducer from '../features/filters/filtersSlice'
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     user: UserReducer,
     doctor: DoctorReducer,
     appointment: AppointmentReducer,
+    webMessage: webMessageReducer,
     // todos: todosReducer,
     // filters: filtersReducer,
   },

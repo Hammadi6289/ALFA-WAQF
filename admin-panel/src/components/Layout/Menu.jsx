@@ -7,6 +7,7 @@ import {
   FiUserCheck,
   FiCalendar,
   FiLogOut,
+  FiMessageSquare,
 } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
@@ -77,6 +78,18 @@ const Menu = () => {
           >
             <FiCalendar className="FiCalendar" />
             <span>Appointments</span>
+          </NavLink>
+        </li>
+
+        <li className="nav-item">
+          <NavLink
+            className={({ isActive }) =>
+              `nav-link sidebar__link ${isActive ? "active" : ""}`
+            }
+            to={"/all-web-messages"}
+          >
+            <FiMessageSquare className="FiMessageSquare" />
+            <span>Customer Messages</span>
           </NavLink>
         </li>
         <button className="sidebar__logout" onClick={handleLogout}>
