@@ -6,10 +6,14 @@ import WhyChoose from "../components/Static/WhyChoose/WhyChoose";
 import ContactMessage from "../components/Static/ContactMessage/ContactMessage";
 import KeyFactsBlock from "../components/Static/KeyFactsBlock/KeyFactsBlock";
 import PatientReviewsBlock from "../components/Static/PatientReviewsBlock/PatientReviewsBlock";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Home | Alfalah WAQF</title>
+      </Helmet>
       <Slider />
       <Facility />
       <OurWork />

@@ -8,6 +8,7 @@ import { reset } from "../../redux/slice/authSlice";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
 import "./MyAppointments.css";
+import { Helmet } from "react-helmet-async";
 
 const MyAppointments = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ const MyAppointments = () => {
 
   return (
     <>
+      <Helmet>
+        <title>My Appointments | Alfalah</title>
+      </Helmet>
       <div className="appointments-page">
         <div className="appointments-header d-flex justify-content-between align-items-start">
           <div>

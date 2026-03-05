@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
 import { getLoginUserDetails } from "../../redux/actions/authActions";
 import "./UserProfile.css";
+import { Helmet } from "react-helmet-async";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -30,6 +31,9 @@ const UserProfile = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>My Profile | Alfalah</title>
+      </Helmet>
       <div className="container mt-5">
         <div className="row">
           <h4 className="text-center"> Manage your Account</h4>
