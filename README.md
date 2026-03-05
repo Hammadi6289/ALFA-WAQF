@@ -49,6 +49,7 @@
 33. Book appointment with doctor feature integration.
 34. Integrate Messaging feature in Contact Us Form.
 35. Add react-helmet on client side.
+36. Admin Panel Web Messages integration for getting clients messages and ability to delete them.
 
 ###### Features
 
