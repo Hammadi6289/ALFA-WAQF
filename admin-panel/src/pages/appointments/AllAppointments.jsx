@@ -63,7 +63,7 @@ const AllAppointments = () => {
                 <td className="appointment-id-cell">
                   <div className="d-flex flex-column">
                     <strong className="text-muted">
-                      {appointment._id.substring(0, 8)}...
+                      {appointment._id.substring(0, 12)}..
                     </strong>
                     <small className="text-muted">
                       {new Date(appointment.createdAt).toLocaleDateString()}
@@ -107,10 +107,11 @@ const AllAppointments = () => {
                   </div>
                 </td>
 
-                {/* Patient Info - You might need to fetch patient data */}
+                {/* Patient Info*/}
                 <td>
                   <div className="d-flex flex-column">
-                    <strong>Patient Name</strong>
+                    {/* <strong>Patient Name</strong> */}
+
                     <small className="text-muted">
                       {appointment.userId?.name || "N/A"}
                     </small>
@@ -120,7 +121,7 @@ const AllAppointments = () => {
                 {/* Doctor Info - You might need to fetch doctor data */}
                 <td>
                   <div className="d-flex flex-column">
-                    <strong>Dr. {appointment?.doctorName || "N/A"}</strong>
+                    {appointment.doctorId?.name || "N/A"}
                     <small className="text-muted">
                       {appointment.doctorId?.speciality || "N/A"}
                     </small>
@@ -128,7 +129,7 @@ const AllAppointments = () => {
                 </td>
 
                 <td className="amount-cell">
-                  <strong>Rs. {appointment.amount}/-</strong>
+                  <small>Rs. {appointment.amount}/- </small>
                 </td>
 
                 {/* Status */}

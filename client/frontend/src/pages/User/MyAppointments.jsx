@@ -71,7 +71,7 @@ const MyAppointments = () => {
                     <td>{index + 1}</td>
                     <td className="receipt-id-cell">
                       <span className="receipt-id">
-                        {appointment?._id.substring(0, 8)}...
+                        {appointment?._id.substring(0, 12)}..
                       </span>
                     </td>
                     <td>{appointment?.slotDate}</td>

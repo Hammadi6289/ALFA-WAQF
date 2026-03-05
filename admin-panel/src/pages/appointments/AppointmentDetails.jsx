@@ -50,7 +50,7 @@ const AppointmentDetails = () => {
         <div className="appointments-header d-flex justify-content-between align-items-start">
           <div>
             <h2>Appointment Details</h2> {/* Change from h1 to h2 */}
-            <p>Alfalah General Hospital Admin Panel</p> {/* Add this */}
+            <p>Alfalah General Hospital Admin Panel</p>
           </div>
         </div>
         <div className="appointment-details-grid">

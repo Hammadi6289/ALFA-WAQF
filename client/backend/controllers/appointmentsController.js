@@ -46,7 +46,14 @@ export const bookAppointmentController = async (req, res) => {
 
 export const getAllAppointmentsController = async (req, res) => {
   try {
-    const appointments = await appointmentModel.find({});
+    // Using Mongoose Population: Find all appointments, Replace userId with user data and sort
+    // Without .populate(), Mongoose only returns the ObjectId, not the full user/doctor objects.
+    const appointments = await appointmentModel
+      .find({})
+      .populate("userId", "name")
+      .populate("doctorId", "name speciality")
+      .sort({ createdAt: -1 }); //descending (newest first)
+
     if (!appointments) {
       return res.status(404).send({
         success: false,
