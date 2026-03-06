@@ -60,3 +60,22 @@ export const updateAppointmentStatus = createAsyncThunk(
     }
   }
 );
+
+// Add appointment manually
+export const addAppointmentManually = createAsyncThunk(
+  "appointment/addAppointmentManually",
+  async (bookingData, thunkApi) => {
+    try {
+      const res = await API.post(`/appointment/create`, bookingData);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in adding appointment manually";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);

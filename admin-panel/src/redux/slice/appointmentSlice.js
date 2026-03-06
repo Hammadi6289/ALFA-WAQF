@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addAppointmentManually,
   getAllAppointments,
   getAppointmentDetails,
   updateAppointmentStatus,
@@ -60,6 +61,18 @@ const appointmentSlice = createSlice({
         // state.appointment = action.payload.appointmentDetails;
       })
       .addCase(updateAppointmentStatus.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // ADD APPOINTMENT MANUALLY || addAppointmentManually
+      .addCase(addAppointmentManually.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addAppointmentManually.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(addAppointmentManually.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
