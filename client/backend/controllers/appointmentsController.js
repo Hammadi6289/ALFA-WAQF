@@ -8,16 +8,59 @@ import userModel from "../models/userModel.js";
 
 export const bookAppointmentController = async (req, res) => {
   try {
-    const { userId, doctorId, slotDate, slotTime, amount } = req.body;
+    const { userId, doctorId, patientName, slotDate, slotTime, amount } =
+      req.body;
 
-    if (!userId || !doctorId || !slotDate || !slotTime || !amount) {
+    // Must have either userId OR patientName
+    if (
+      (!userId && !patientName) ||
+      !doctorId ||
+      !slotDate ||
+      !slotTime ||
+      !amount
+    ) {
       return res.status(400).send({
         success: false,
         message: "Please add all the required fields",
       });
     }
+
+    // Must have either userId OR patientName
+    if (
+      (!userId && !patientName) ||
+      !doctorId ||
+      !slotDate ||
+      !slotTime ||
+      !amount
+    ) {
+      return res.status(400).send({
+        success: false,
+        message: "Please add all the required fields",
+      });
+    }
+
+    // Only check user if userId is provided
+    if (userId) {
+      const user = await userModel.findById(userId);
+      if (!user) {
+        return res.status(404).send({
+          success: false,
+          message: "User not found",
+        });
+      }
+    }
+
+    // Check if doctor exists
+    const doctor = await doctorModel.findById(doctorId);
+    if (!doctor) {
+      return res.status(404).send({
+        success: false,
+        message: "Doctor not found",
+      });
+    }
     const appointment = new appointmentModel({
-      userId,
+      userId: userId || null,
+      patientName: patientName || null,
       doctorId,
       slotDate,
       slotTime,
@@ -25,6 +68,12 @@ export const bookAppointmentController = async (req, res) => {
     });
 
     await appointment.save();
+    // Populate after saving to get the full user/doctor objects
+    if (userId) {
+      await appointment.populate("userId", "name email phone");
+    }
+    await appointment.populate("doctorId", "name speciality");
+
     res.status(200).send({
       success: true,
       message: "Appointment booked successfully",

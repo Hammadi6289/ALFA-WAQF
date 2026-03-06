@@ -1,0 +1,363 @@
+/* AddAppointmentManually.css */
+
+/* Page Container */
+.add-new-appointment-page {
+  padding: 20px;
+  background: #f5f7fa;
+  min-height: 80vh;
+}
+
+/* Header */
+.appointment-header {
+  margin-bottom: 30px;
+}
+
+.appointment-header h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.appointment-header p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* Back Button */
+.back-btn {
+  background: white;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary-light);
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.back-btn:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(108, 99, 255, 0.25);
+}
+
+.back-btn:active {
+  transform: translateY(0);
+}
+
+/* Form Card */
+.add-appointment-form-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.add-appointment-form-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #2a0f45;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+/* Input Mode Toggle Buttons */
+.form-group .mb-2 {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px !important;
+}
+
+.form-group .mb-2 button {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid #e9ecef;
+  background: white;
+  color: #6c757d;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group .mb-2 button:first-child {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
+  background: #f0f2ff;
+}
+
+.form-group .mb-2 button:last-child {
+  border-color: var(--color-primary-hope);
+  color: var(--color-primary-hope);
+  background: #e0f7f2;
+}
+
+.form-group .mb-2 button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Controls */
+.form-control {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: white;
+  color: #333;
+}
+
+.form-control:focus {
+  border-color: var(--color-primary-light);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(115, 50, 170, 0.1);
+}
+
+.form-control:hover {
+  border-color: #ced4da;
+}
+
+select.form-control {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 48px;
+}
+
+/* DatePicker Customization */
+.calender {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.calender:focus {
+  border-color: var(--color-primary-light);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(115, 50, 170, 0.1);
+}
+
+/* React DatePicker Overrides */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker {
+  border: 2px solid #e9ecef !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  font-family: inherit !important;
+}
+
+.react-datepicker__header {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  ) !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  padding: 16px !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.react-datepicker__day--selected {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  ) !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #f0f2ff !important;
+  color: var(--color-primary) !important;
+}
+
+.react-datepicker__time-container {
+  border-left: 2px solid #e9ecef !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time {
+  background: white !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time-box {
+  width: 100px !important;
+}
+
+.react-datepicker__time-list-item--selected {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  ) !important;
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+/* Submit Button */
+.btn.btn-primary {
+  width: 100%;
+  padding: 16px 32px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-hope) 0%,
+    #00b894 100%
+  );
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 32px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 14px rgba(0, 155, 120, 0.25);
+}
+
+.btn.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 155, 120, 0.35);
+  background: linear-gradient(
+    135deg,
+    #00b894 0%,
+    var(--color-primary-hope) 100%
+  );
+}
+
+.btn.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #cccccc;
+  box-shadow: none;
+}
+
+/* Option styling */
+option {
+  padding: 10px;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-appointment-form-card {
+    padding: 30px 20px;
+  }
+
+  .appointment-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-group .mb-2 {
+    flex-direction: column;
+  }
+
+  .form-group .mb-2 button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .add-appointment-form-card {
+    padding: 20px 16px;
+  }
+
+  .appointment-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-control {
+    padding: 12px 16px;
+  }
+
+  .react-datepicker {
+    width: 280px !important;
+  }
+
+  .react-datepicker__time-container {
+    width: 80px !important;
+  }
+}
+
+/* Animation for form card */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.add-appointment-form-card {
+  animation: slideUp 0.4s ease;
+}
+
+/* Amount input specific */
+input[type="number"].form-control {
+  -moz-appearance: textfield;
+}
+
+input[type="number"].form-control::-webkit-outer-spin-button,
+input[type="number"].form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

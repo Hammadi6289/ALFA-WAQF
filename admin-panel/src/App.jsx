@@ -11,6 +11,7 @@ import AppointmentDetails from "./pages/appointments/AppointmentDetails";
 import UserDetails from "./pages/user/UserDetails";
 import AddDoctor from "./pages/doctors/AddDoctor";
 import WebMessages from "./pages/webMessages/WebMessages";
+import AddAppointmentManually from "./pages/appointments/AddAppointmentManually";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -38,6 +39,10 @@ function App() {
         <Route
           path="/appointment-details/:id"
           element={<AppointmentDetails />}
+        />
+        <Route
+          path="/add-appointment-manually"
+          element={<AddAppointmentManually />}
         />
         <Route path="/all-web-messages" element={<WebMessages />} />
       </Routes>

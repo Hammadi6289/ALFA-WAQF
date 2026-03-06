@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { getAllAppointments } from "../../redux/actions/appointmentActions";
 import { reset } from "../../redux/slice/appointmentSlice";
@@ -9,6 +10,7 @@ import "./AllAppointments.css";
 
 const AllAppointments = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllAppointments());
@@ -28,7 +30,7 @@ const AllAppointments = () => {
           </div>
 
           <button
-            onClick={() => navigate("/add-appointment")} // If you have this route
+            onClick={() => navigate("/add-appointment-manually")}
             className="add-appointment-btn"
           >
             Add Appointment{" "}

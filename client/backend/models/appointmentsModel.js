@@ -4,13 +4,16 @@ const appointmentSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId, // like a foreign key
-      require: true,
       ref: "user",
     },
     doctorId: {
       type: mongoose.Schema.Types.ObjectId,
       require: true,
       ref: "doctor",
+    },
+    patientName: {
+      type: String,
+      required: false,
     },
     slotDate: {
       type: String,
