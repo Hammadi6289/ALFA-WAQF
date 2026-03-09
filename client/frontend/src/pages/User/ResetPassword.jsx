@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { resetPassword } from "../../redux/actions/authActions";
 import { logout, reset } from "../../redux/slice/authSlice";
 import { FiLock, FiEye, FiEyeOff, FiArrowLeft } from "react-icons/fi";
-import "./Resetpassword.css";
+import "./ResetPassword.css";
 import { Helmet } from "react-helmet-async";
 
 const ResetPassword = () => {
