@@ -27,7 +27,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "https://alfalah-waqf.vercel.app",
+      process.env.CLIENT_URL,
       "https://alfalah-waqf-*.vercel.app", //Also allow preview deployments
     ],
     credentials: true,
