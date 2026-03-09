@@ -1,24 +1,63 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../redux/actions/userActions";
 import { Link } from "react-router";
 import { FaEnvelope, FaPhone, FaBirthdayCake } from "react-icons/fa";
 import "./AllUsers.css";
+import { FiSearch } from "react-icons/fi";
 
 const AllUsers = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
   const { users } = useSelector((state) => state.user);
+
+  // Filter logic
+  const filteredUsers = users?.filter((user) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return (
+      user.name?.toLowerCase().includes(searchLower) ||
+      user.email?.toLowerCase().includes(searchLower) ||
+      user.phone?.toLowerCase().includes(searchLower)
+    );
+  });
   return (
     <Layout>
-      <div className="allusers-page">
+      <div className="allusers-admin-page-page">
         <div className="allusers-header">
           <h2>Users Management</h2>
           <p>Manage your users and view detailed information</p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="search-filter-section">
+          <div className="search-bar">
+            <FiSearch className="search-icon" size={20} />
+
+            <input
+              type="text"
+              placeholder="Search users..."
+              className="search-input"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {searchTerm && (
+              <button
+                className="clear-search"
+                onClick={() => setSearchTerm("")}
+              >
+                ✕
+              </button>
+            )}
+          </div>
+          <div className="search-results-count">
+            {searchTerm && `${filteredUsers?.length || "No"} Users found`}
+          </div>
         </div>
 
         <div className="allusers-table-wrapper">
@@ -35,8 +74,8 @@ const AllUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users &&
-                users.map((user, index) => (
+              {filteredUsers &&
+                filteredUsers.map((user, index) => (
                   <tr key={user._id}>
                     <td>{index + 1}</td>
                     <td>{user.name}</td>

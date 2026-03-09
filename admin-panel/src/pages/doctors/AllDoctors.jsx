@@ -6,8 +6,11 @@ import { getAllDoctors } from "../../redux/actions/doctorActions";
 import { reset } from "../../redux/slice/doctorSlice";
 import "./AllDoctors.css";
 import { FaAngleRight } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
+import { useState } from "react";
 
 const AllDoctors = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,9 +20,20 @@ const AllDoctors = () => {
   }, [dispatch]);
 
   const { doctors } = useSelector((state) => state.doctor);
+
+  // Filter logic
+  const filteredDoctors = doctors?.filter((doctor) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return (
+      doctor.name?.toLowerCase().includes(searchLower) ||
+      doctor.email?.toLowerCase().includes(searchLower) ||
+      doctor.phone?.toLowerCase().includes(searchLower)
+    );
+  });
   return (
     <Layout>
-      <div className="doctors-page">
+      <div className="all-doctors-page-admin-panel">
         <div className="doctors-header d-flex justify-content-between align-items-start">
           <div>
             <h2>Doctors</h2>
@@ -36,8 +50,31 @@ const AllDoctors = () => {
         </div>
       </div>
 
-      <div className="doctors-table-wrapper">
-        <table className="doctors-table">
+      {/* Search Bar */}
+      <div className="search-filter-section">
+        <div className="search-bar">
+          <FiSearch className="search-icon" size={20} />
+
+          <input
+            type="text"
+            placeholder="Search a doctor"
+            className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {searchTerm && (
+            <button className="clear-search" onClick={() => setSearchTerm("")}>
+              ✕
+            </button>
+          )}
+        </div>
+        <div className="search-results-count">
+          {searchTerm && `${filteredDoctors?.length || 0} doctors found`}
+        </div>
+      </div>
+
+      <div className="doctors-table-admin-panel-wrapper">
+        <table className="doctors-table-admin-panel">
           <thead>
             <tr>
               <th>#</th>
@@ -54,7 +91,7 @@ const AllDoctors = () => {
           </thead>
 
           <tbody>
-            {doctors?.map((doctor, index) => (
+            {filteredDoctors?.map((doctor, index) => (
               <tr key={doctor._id}>
                 <td>{index + 1}</td>
 
@@ -97,7 +134,7 @@ const AllDoctors = () => {
                 {/* Availability */}
                 <td>
                   <span
-                    className={`status-badge ${
+                    className={`status-badge-doctor-availibility ${
                       doctor.available ? "completed" : "cancel"
                     }`}
                   >

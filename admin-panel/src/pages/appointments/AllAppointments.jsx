@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 import { getAllAppointments } from "../../redux/actions/appointmentActions";
 import { reset } from "../../redux/slice/appointmentSlice";
 import { FaAngleRight } from "react-icons/fa";
-import "./AllAppointments.css";
+import { FiSearch } from "react-icons/fi";
+import "./AllAppointments.css"; // Search Section will be using the css for AllDoctors.css
+import { useState } from "react";
 
 const AllAppointments = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     dispatch(getAllAppointments());
@@ -20,6 +24,15 @@ const AllAppointments = () => {
   const { appointments, appointment } = useSelector(
     (state) => state.appointment
   );
+  const filteredPatients = appointments?.filter((p) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return (
+      p.userId?.name?.toLowerCase().includes(searchLower) ||
+      p.patientName?.toLowerCase().includes(searchLower) ||
+      p._id?.toLowerCase().includes(searchLower)
+    );
+  });
   return (
     <Layout>
       <div className="appointments-page">
@@ -36,6 +49,29 @@ const AllAppointments = () => {
             Add Appointment{" "}
             <FaAngleRight className="FaAngleRight-btn-icon" size={16} />
           </button>
+        </div>
+      </div>
+
+      {/* Search Bar */}
+      <div className="search-filter-section">
+        <div className="search-bar">
+          <FiSearch className="search-icon" size={20} />
+
+          <input
+            type="text"
+            placeholder="Search Patients"
+            className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {searchTerm && (
+            <button className="clear-search" onClick={() => setSearchTerm("")}>
+              ✕
+            </button>
+          )}
+        </div>
+        <div className="search-results-count">
+          {searchTerm && `${filteredPatients?.length || 0} Patients found`}
         </div>
       </div>
 
@@ -57,7 +93,7 @@ const AllAppointments = () => {
           </thead>
 
           <tbody>
-            {appointments?.map((appointment, index) => (
+            {filteredPatients?.map((appointment, index) => (
               <tr key={appointment._id}>
                 <td>{index + 1}</td>
 
