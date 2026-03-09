@@ -24,8 +24,14 @@ app.use(morgan("dev"));
 // app.use(cors());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "", ""],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://alfalah-waqf.vercel.app",
+      "https://alfalah-waqf-*.vercel.app", //Also allow preview deployments
+    ],
     credentials: true,
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
   })
 );
 
