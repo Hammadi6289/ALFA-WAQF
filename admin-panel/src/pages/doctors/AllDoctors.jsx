@@ -33,7 +33,7 @@ const AllDoctors = () => {
   });
   return (
     <Layout>
-      <div className="doctors-page">
+      <div className="all-doctors-page-admin-panel">
         <div className="doctors-header d-flex justify-content-between align-items-start">
           <div>
             <h2>Doctors</h2>
@@ -73,8 +73,8 @@ const AllDoctors = () => {
         </div>
       </div>
 
-      <div className="doctors-table-wrapper">
-        <table className="doctors-table">
+      <div className="doctors-table-admin-panel-wrapper">
+        <table className="doctors-table-admin-panel">
           <thead>
             <tr>
               <th>#</th>
@@ -134,7 +134,7 @@ const AllDoctors = () => {
                 {/* Availability */}
                 <td>
                   <span
-                    className={`status-badge ${
+                    className={`status-badge-doctor-availibility ${
                       doctor.available ? "completed" : "cancel"
                     }`}
                   >
