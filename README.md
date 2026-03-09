@@ -105,6 +105,13 @@ Prerequisites
 2. npm install
 3. npm run dev
 
+### Production Notes.
+
+1. Base url for the backend (render)
+   https://alfa-waqf.onrender.com/
+   https://alfa-waqf.onrender.com/api/v1/doctor/get-all
+2.
+
 ### Future Improvements (TODO)
 
 1. Email‑based password reset
