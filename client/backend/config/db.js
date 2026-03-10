@@ -11,7 +11,7 @@ const connectDB = async () => {
   // Auto-select database based on environment
   const dbURI =
     process.env.NODE_ENV === "production"
-      ? process.env.MONGO_URI // Production (Atlas)
+      ? process.env.MONGO_LOCAL_URI // Production (Atlas)
       : process.env.MONGO_LOCAL_URI_LOCAL; // Development (Local)
 
   await mongoose.connect(dbURI);
