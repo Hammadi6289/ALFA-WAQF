@@ -54,7 +54,7 @@
 38. For manual google search console, added the google-site-verification to the public folder of Client => Frontend to help google crawl.
 39. Fixed Vercel SPA routing issue for both client and Admin Panel. Vercel doesn't know how to handle client-side routes on refresh.
     https://hammad6289.atlassian.net/browse/KAN-32
-40.
+40. Created uat environment.
 
 ###### Features
 
