@@ -4,6 +4,44 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./src/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Alfalah General Hospital | 24/7 Healthcare Services in Islamabad
+    </title>
+    <meta
+      name="description"
+      content="Alfalah General Hospital offers 24/7 healthcare services in B-17 Islamabad. Book appointments with experienced doctors, emergency care, and specialized treatments."
+    />
+    <meta
+      name="keywords"
+      content="hospital islamabad, alfalah hospital, emergency care, doctors islamabad, healthcare B-17, medical services pakistan"
+    />
+    <meta name="author" content="Alfalah General Hospital" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alfalah-waqf.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Alfalah General Hospital | 24/7 Healthcare Services"
+    />
+    <meta
+      property="og:description"
+      content="Quality healthcare services in Islamabad. Book appointments online with experienced doctors."
+    />
+    <meta
+      property="og:image"
+      content="https://alfalah-waqf.vercel.app/og-image.jpg"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://alfalah-waqf.vercel.app/" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
@@ -17,7 +55,26 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Alfalah G.H</title>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Hospital",
+        "name": "Alfalah General Hospital",
+        "image": "https://alfalah-waqf.vercel.app/og-image.jpg",
+        "description": "24/7 healthcare services in Islamabad",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Block B Main-Markaz, MPCHS B-17",
+          "addressLocality": "Islamabad",
+          "addressCountry": "PK"
+        },
+        "telephone": "+92-51-2765700",
+        "openingHours": "Mo-Su 00:00-23:59",
+        "url": "https://alfalah-waqf.vercel.app"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
