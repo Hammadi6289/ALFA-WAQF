@@ -50,6 +50,7 @@
 34. Integrate Messaging feature in Contact Us Form.
 35. Add react-helmet on client side.
 36. Admin Panel Web Messages integration for getting clients messages and ability to delete them.
+37. For manual google search console, added the google-site-verification to the public folder of Client => Frontend to help google crawl.
 
 ###### Features
 
@@ -134,3 +135,4 @@ Prerequisites
 2. Tags nesting.
 3. Made use of Keys with the list items.
 4. Added react-helmet on the client side for the SEO.
+5. Google search console. Added added the google-site-verification for client side.
