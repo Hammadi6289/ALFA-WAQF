@@ -50,12 +50,15 @@
 34. Integrate Messaging feature in Contact Us Form.
 35. Add react-helmet on client side.
 36. Admin Panel Web Messages integration for getting clients messages and ability to delete them.
+<<<<<<< HEAD
 37. Search functionality in the Admin Dashboard.
-38. First build and deployment to the Render (BE) and Vercel (FE Client and FE Admin Dashboard).
-39. For manual google search console, added the google-site-verification to the public folder of Client => Frontend to help google crawl.
-40. Fixed Vercel SPA routing issue for both client and Admin Panel. Vercel doesn't know how to handle client-side routes on refresh.
+=======
+37. First build and deployment to the Render (BE) and Vercel (FE Client and FE Admin Dashboard).
+38. For manual google search console, added the google-site-verification to the public folder of Client => Frontend to help google crawl.
+39. Fixed Vercel SPA routing issue for both client and Admin Panel. Vercel doesn't know how to handle client-side routes on refresh.
     https://hammad6289.atlassian.net/browse/KAN-32
-41. Created uat environment.
+40. Created uat environment.
+>>>>>>> uat
 
 ###### Features
 
