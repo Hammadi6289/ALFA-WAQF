@@ -123,12 +123,12 @@ Prerequisites
 2. Appointment approval system ❌❌📛
 3. Payment gateway integration ❌❌📛
 4. Cloud image storage (AWS / Cloudinary) ❓❓❓
-5. configure web message system in the admin-panel. ❌❌📛
-6. fix Menu bar in the tablet mode. (Add a close button to the overlay) ❌❌📛
+5. configure web message system in the admin-panel. ✅
+6. fix Menu bar in the tablet mode. (Add a close button to the overlay) ✅
 7. Add Appointments logic to the button in admin-panel.❌❌📛
 8. Automated tests. ✅
 9. Security Risk: No Email Uniqueness Check on Registration In userRegisterController ❌❌📛
-10. Broken Login Navigation Logic Login component's useEffect, after successful login it navigate to /login instead of a dashboard/home page. This creates a redirect loop. Should navigate to /doctors or /home. ❌❌📛
+10. Broken Login Navigation Logic Login component's useEffect, after successful login it navigate to /login instead of a dashboard/home page. This creates a redirect loop. Should navigate to /doctors or /home. ✅
 11. CI/CD pipeline setup ❌❌📛
 12. Code review process/Git workflow ❌❌📛
 13. Appointment Details page (need to create an action and a slice, Controller and route is already there.)
