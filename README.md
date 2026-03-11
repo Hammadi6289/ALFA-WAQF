@@ -55,6 +55,7 @@
 39. Fixed Vercel SPA routing issue for both client and Admin Panel. Vercel doesn't know how to handle client-side routes on refresh.
     https://hammad6289.atlassian.net/browse/KAN-32
 40. Created uat environment.
+41. Added cross-env NODE_ENV=production and cross-env NODE_ENV=development for start and dev environments.
 
 ###### Features
 
