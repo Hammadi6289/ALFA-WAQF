@@ -21,7 +21,21 @@ const PORT = process.env.PORT || 5000;
 //middlewares.
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      process.env.CLIENT_URL,
+      process.env.ADMIN_PANEL_URL,
+      "https://alfalah-waqf-*.vercel.app", //Also allow preview deployments
+      "https://alfalah-waqf-*.vercel.app",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+  })
+);
 
 //routes
 // app.get("/", (req, res) => {
