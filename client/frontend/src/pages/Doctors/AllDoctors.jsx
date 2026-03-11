@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 //import AllDoctorsData from "./DoctorsData.json"; // for static data testing.
 import { NavLink, useNavigate } from "react-router";
 import "./AllDoctors.css";
@@ -7,21 +7,35 @@ import { getAllDoctors } from "../../redux/actions/doctorActions";
 import { Helmet } from "react-helmet-async";
 
 const AllDoctors = () => {
-  const navigate = useNavigate(); // Not required here.
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const { doctors } = useSelector((state) => state.doctor);
 
   useEffect(() => {
-    dispatch(getAllDoctors());
+    setLoading(true);
+    // dispatch(getAllDoctors());
+    dispatch(getAllDoctors()).finally(() => setLoading(false));
 
     // navigate(`/doctor${doctor.id}`);
   }, [dispatch]);
 
-  const { doctors } = useSelector((state) => state.doctor);
+  // Lets keep this as simple as possible but its crucial though
+  if (loading) {
+    return (
+      <div className="text-center py-5">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading doctors...</span>
+        </div>
+        <p className="mt-3">Loading doctors, please wait...</p>
+      </div>
+    );
+  }
   return (
     <>
       <Helmet>
         <title>Book an Appointment | Alfalah</title>
       </Helmet>
+
       <h4 className="text-center doctor-heading mt-3">
         Select a Doctor and Book an Appointment
       </h4>
