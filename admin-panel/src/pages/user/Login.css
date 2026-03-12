@@ -46,3 +46,19 @@
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(115, 50, 170, 0.15);
 }
+
+.admin-panel-login-link {
+  display: "inline-flex";
+  flexdirection: "column";
+  alignitems: "center";
+  gap: "6px";
+  padding: "14px 24px";
+  borderradius: "12px";
+  border: "1px solid #e0e7ff";
+  textdecoration: "none";
+  color: "#4f46e5";
+  fontsize: "13px";
+  fontweight: "500";
+  boxshadow: "0 2px 8px rgba(79,70,229,0.08)";
+  transition: "all 0.2s ease";
+}

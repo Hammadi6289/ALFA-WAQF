@@ -9,12 +9,14 @@ import { FiSearch } from "react-icons/fi";
 
 const AllUsers = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
-
   const { users } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getAllUsers()).finally(() => setLoading(false));
+  }, [dispatch]);
 
   // Filter logic
   const filteredUsers = users?.filter((user) => {
@@ -60,56 +62,65 @@ const AllUsers = () => {
           </div>
         </div>
 
-        <div className="allusers-table-wrapper">
-          <table className="allusers-table">
-            <thead>
-              <tr>
-                <th>SN.</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>DOB</th>
-                <th>Status</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredUsers &&
-                filteredUsers.map((user, index) => (
-                  <tr key={user._id}>
-                    <td>{index + 1}</td>
-                    <td>{user.name}</td>
-                    <td>
-                      <FaEnvelope className="icon" /> {user.email}
-                    </td>
-                    <td>
-                      <FaPhone className="icon" /> {user.phone || "N/A"}
-                    </td>
-                    <td>
-                      <FaBirthdayCake className="icon" /> {user.dob || "N/A"}
-                    </td>
-                    <td>
-                      <span
-                        className={`status-badge ${
-                          user.status ? "active" : "inactive"
-                        }`}
-                      >
-                        {user.isActive ? "Active" : "Inactive"}
-                      </span>
-                    </td>
-                    <td>
-                      <Link
-                        className="details-link"
-                        to={`/user-details/${user._id}`}
-                      >
-                        View
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
+        {loading ? (
+          <div className="text-center py-5">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading doctors...</span>
+            </div>
+            <p className="mt-3">Loading doctors, please wait...</p>
+          </div>
+        ) : (
+          <div className="allusers-table-wrapper">
+            <table className="allusers-table">
+              <thead>
+                <tr>
+                  <th>SN.</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>DOB</th>
+                  <th>Status</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredUsers &&
+                  filteredUsers.map((user, index) => (
+                    <tr key={user._id}>
+                      <td>{index + 1}</td>
+                      <td>{user.name}</td>
+                      <td>
+                        <FaEnvelope className="icon" /> {user.email}
+                      </td>
+                      <td>
+                        <FaPhone className="icon" /> {user.phone || "N/A"}
+                      </td>
+                      <td>
+                        <FaBirthdayCake className="icon" /> {user.dob || "N/A"}
+                      </td>
+                      <td>
+                        <span
+                          className={`status-badge ${
+                            user.status ? "active" : "inactive"
+                          }`}
+                        >
+                          {user.isActive ? "Active" : "Inactive"}
+                        </span>
+                      </td>
+                      <td>
+                        <Link
+                          className="details-link"
+                          to={`/user-details/${user._id}`}
+                        >
+                          View
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </Layout>
   );

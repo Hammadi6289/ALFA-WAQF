@@ -11,15 +11,17 @@ import { useState } from "react";
 
 const AllDoctors = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { doctors } = useSelector((state) => state.doctor);
+
   useEffect(() => {
-    dispatch(getAllDoctors());
+    setLoading(true);
+    dispatch(getAllDoctors()).finally(() => setLoading(false));
     dispatch(reset());
   }, [dispatch]);
-
-  const { doctors } = useSelector((state) => state.doctor);
 
   // Filter logic
   const filteredDoctors = doctors?.filter((doctor) => {
@@ -31,6 +33,17 @@ const AllDoctors = () => {
       doctor.phone?.toLowerCase().includes(searchLower)
     );
   });
+
+  // if (loading) {
+  //   return (
+  //     <div className="text-center py-5">
+  //       <div className="spinner-border" role="status">
+  //         <span className="visually-hidden">Loading doctors...</span>
+  //       </div>
+  //       <p className="mt-3">Loading doctors, please wait...</p>
+  //     </div>
+  //   );
+  // }
   return (
     <Layout>
       <div className="all-doctors-page-admin-panel">
@@ -73,87 +86,98 @@ const AllDoctors = () => {
         </div>
       </div>
 
-      <div className="doctors-table-admin-panel-wrapper">
-        <table className="doctors-table-admin-panel">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Doctor</th>
-              <th>Degree</th>
-              <th>Speciality</th>
-              <th>Experience</th>
-              <th>Fees</th>
-              <th>Contact</th>
-              <th>Gender</th>
-              <th>Status</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {filteredDoctors?.map((doctor, index) => (
-              <tr key={doctor._id}>
-                <td>{index + 1}</td>
-
-                {/* Doctor info */}
-                <td className="doctor-cell">
-                  {/* Image */}
-                  <td>
-                    {doctor.image ? (
-                      <img
-                        src={`data:image/jpeg;base64,${doctor.image}`}
-                        alt={doctor.name}
-                        className="doctor-avatar"
-                      />
-                    ) : (
-                      "N/A"
-                    )}
-                  </td>
-                  <div className="d-flex flex-column">
-                    <strong>{doctor.name}</strong>
-                    <small>{doctor.email}</small>
-                  </div>
-                </td>
-
-                <td>{doctor.degree}</td>
-                <td>{doctor.speciality}</td>
-                <td>{doctor.experience} yrs</td>
-                <td>Rs. {doctor.fees}/-</td>
-
-                {/* Contact */}
-                <td>
-                  <div className="muted">{doctor.phone || "Not available"}</div>
-                  <div className="muted">{doctor.address || "—"}</div>
-                </td>
-
-                <td>
-                  {doctor.gender.charAt(0).toUpperCase() +
-                    doctor.gender.slice(1) || "—"}
-                </td>
-
-                {/* Availability */}
-                <td>
-                  <span
-                    className={`status-badge-doctor-availibility ${
-                      doctor.available ? "completed" : "cancel"
-                    }`}
-                  >
-                    {doctor.available ? "Available" : "Unavailable"}
-                  </span>
-                </td>
-                <td>
-                  <Link
-                    to={`/doctor-details/${doctor?._id}`}
-                    className="view-details-link"
-                  >
-                    View Details
-                  </Link>
-                </td>
+      {loading ? (
+        <div className="text-center py-5">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading doctors...</span>
+          </div>
+          <p className="mt-3">Loading doctors, please wait...</p>
+        </div>
+      ) : (
+        <div className="doctors-table-admin-panel-wrapper">
+          <table className="doctors-table-admin-panel">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Doctor</th>
+                <th>Degree</th>
+                <th>Speciality</th>
+                <th>Experience</th>
+                <th>Fees</th>
+                <th>Contact</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Details</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+
+            <tbody>
+              {filteredDoctors?.map((doctor, index) => (
+                <tr key={doctor._id}>
+                  <td>{index + 1}</td>
+
+                  {/* Doctor info */}
+                  <td className="doctor-cell">
+                    {/* Image */}
+                    <td>
+                      {doctor.image ? (
+                        <img
+                          src={`data:image/jpeg;base64,${doctor.image}`}
+                          alt={doctor.name}
+                          className="doctor-avatar"
+                        />
+                      ) : (
+                        "N/A"
+                      )}
+                    </td>
+                    <div className="d-flex flex-column">
+                      <strong>{doctor.name}</strong>
+                      <small>{doctor.email}</small>
+                    </div>
+                  </td>
+
+                  <td>{doctor.degree}</td>
+                  <td>{doctor.speciality}</td>
+                  <td>{doctor.experience} yrs</td>
+                  <td>Rs. {doctor.fees}/-</td>
+
+                  {/* Contact */}
+                  <td>
+                    <div className="muted">
+                      {doctor.phone || "Not available"}
+                    </div>
+                    <div className="muted">{doctor.address || "—"}</div>
+                  </td>
+
+                  <td>
+                    {doctor.gender.charAt(0).toUpperCase() +
+                      doctor.gender.slice(1) || "—"}
+                  </td>
+
+                  {/* Availability */}
+                  <td>
+                    <span
+                      className={`status-badge-doctor-availibility ${
+                        doctor.available ? "completed" : "cancel"
+                      }`}
+                    >
+                      {doctor.available ? "Available" : "Unavailable"}
+                    </span>
+                  </td>
+                  <td>
+                    <Link
+                      to={`/doctor-details/${doctor?._id}`}
+                      className="view-details-link"
+                    >
+                      View Details
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </Layout>
   );
 };
