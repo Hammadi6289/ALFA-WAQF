@@ -40,13 +40,14 @@ const AllDoctors = () => {
         Select a Doctor and Book an Appointment
       </h4>
       <div className="container doc-container">
-        {doctors?.map((doctor, index) => {
+        {doctors?.map((doctor) => {
           return (
             <div className="card" key={doctor._id} style={{ width: "15rem" }}>
               <NavLink to={`/doctor/${doctor._id}`}>
                 <img
-                  src={`data:image/jpeg;base64,${doctor?.image}`}
-                  alt="image"
+                  // src={`data:image/jpeg;base64,${doctor?.image}`}
+                  src={`https://ui-avatars.com/api/?name=${doctor.name}&size=150&rounded=true&background=random`}
+                  alt={doctor.name}
                   width={150}
                   height={150}
                   className="card-image-top"

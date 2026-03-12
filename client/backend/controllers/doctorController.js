@@ -70,7 +70,7 @@ export const addDoctorController = async (req, res) => {
 /////////////////////////////////
 export const getAllDoctorsController = async (req, res) => {
   try {
-    const doctors = await doctorModel.find({});
+    const doctors = await doctorModel.find({}).select("-image");
 
     if (!doctors) {
       return res
