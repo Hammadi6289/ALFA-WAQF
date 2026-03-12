@@ -7,7 +7,7 @@ import { login } from "../../redux/actions/authActions";
 import { reset } from "../../redux/slice/authSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState("hammad6289@gmail.com");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
