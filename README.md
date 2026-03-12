@@ -56,7 +56,8 @@
 40. Fixed Vercel SPA routing issue for both client and Admin Panel. Vercel doesn't know how to handle client-side routes on refresh.
     https://hammad6289.atlassian.net/browse/KAN-32
 41. Created uat environment.
-42. Added a spinner on Book appointments page / All Doctors (Admin) / all-users (admin)
+42. Added a spinner on Book appointments page / All Doctors (Admin) / all-users (admin).
+43.
 
 ###### Features
 
