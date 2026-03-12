@@ -57,6 +57,9 @@
     https://hammad6289.atlassian.net/browse/KAN-32
 41. Created uat environment.
 42. Added a spinner on Book appointments page / All Doctors (Admin) / all-users (admin)
+43. Noticed while setting up Cronjobs Failed (output too large) (310 ms): https://alfa-waqf.onrender.com/api/v1/doctor/get-all
+    base64 images were super heavy to load on the website so changed them to placeholder avatars images.
+44.
 
 ###### Features
 

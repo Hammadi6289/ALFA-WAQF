@@ -1,3 +1,10 @@
+import image1 from "../../assets/images/image1.jpg";
+import image2 from "../../assets/images/image2.jpg";
+import image3 from "../../assets/images/image3.jpg";
+import image4 from "../../assets/images/image4.jpg";
+import image6 from "../../assets/images/image6.jpg";
+import image7 from "../../assets/images/image7.jpg";
+
 export const photos = [
   {
     src: "https://nationalhospital.org/img/about/perfessional_staff.png",
@@ -30,27 +37,39 @@ export const photos = [
     category: "staff",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
-    width: 800,
-    height: 600,
-    category: "staff",
-  },
-  {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
-    width: 800,
-    height: 600,
-    category: "equipment",
-  },
-  {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    src: image1,
     width: 800,
     height: 600,
     category: "facilities",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioe9AaCLXv61EMeSyiAqwkkxYDHnPjSjZnQ&s/",
+    src: image2,
     width: 800,
     height: 600,
-    category: "equipment",
+    category: "facilities",
+  },
+  {
+    src: image3,
+    width: 800,
+    height: 600,
+    category: "facilities",
+  },
+  {
+    src: image4,
+    width: 800,
+    height: 600,
+    category: "facilities",
+  },
+  {
+    src: image6,
+    width: 800,
+    height: 600,
+    category: "facilities",
+  },
+  {
+    src: image7,
+    width: 800,
+    height: 600,
+    category: "staff",
   },
 ];
