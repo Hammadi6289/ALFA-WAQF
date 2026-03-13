@@ -59,7 +59,9 @@
 42. Added a spinner on Book appointments page / All Doctors (Admin) / all-users (admin)
 43. Noticed while setting up Cronjobs Failed (output too large) (310 ms): https://alfa-waqf.onrender.com/api/v1/doctor/get-all
     base64 images were super heavy to load on the website so changed them to placeholder avatars images.
-44.
+44. Added fixes for the security vulnerablilities. NoSQL Injection / Rate Limiting / Security Headers.
+    npm i express-mongo-sanitize helmet express-rate-limit
+45. Changed the express verion to express@4.21.2 in order to make the express-mongo-sanitize work.
 
 ###### Features
 
