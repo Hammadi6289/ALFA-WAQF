@@ -61,7 +61,7 @@
     base64 images were super heavy to load on the website so changed them to placeholder avatars images.
 44. Added fixes for the security vulnerablilities. NoSQL Injection / Rate Limiting / Security Headers.
     npm i express-mongo-sanitize helmet express-rate-limit
-45.
+45. Changed the express verion to express@4.21.2 in order to make the express-mongo-sanitize work.
 
 ###### Features
 
