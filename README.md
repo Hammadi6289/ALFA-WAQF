@@ -62,6 +62,14 @@
 44. Added fixes for the security vulnerablilities. NoSQL Injection / Rate Limiting / Security Headers.
     npm i express-mongo-sanitize helmet express-rate-limit
 45. Changed the express verion to express@4.21.2 in order to make the express-mongo-sanitize work.
+46. Setting up CI/CD Pipeline with GitHub Actions
+    - Verified Cypress tests working on b_automated_testing branch (6 tests passing)
+    - Created .github/workflows/ci-cd.yml for automated testing and deployment
+    - Renamed cypress.config.js to cypress.config.cjs for ES module compatibility
+    - Downgraded Cypress to 13.15.2 for Node 18 compatibility
+    - Added GitHub secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID, VERCEL_ADMIN_PROJECT_ID, RENDER_DEPLOY_HOOK
+    - Workflow: dev branch runs tests only, main branch runs tests + auto-deploys to Render/Vercel
+    - Added CI/CD status badge to README.md
 
 ###### Features
 
@@ -136,7 +144,7 @@ Prerequisites
 8. Automated tests. ✅
 9. Security Risk: No Email Uniqueness Check on Registration In userRegisterController ❌❌📛
 10. Broken Login Navigation Logic Login component's useEffect, after successful login it navigate to /login instead of a dashboard/home page. This creates a redirect loop. Should navigate to /doctors or /home. ✅
-11. CI/CD pipeline setup ❌❌📛
+11. CI/CD pipeline setup. ✅
 12. Code review process/Git workflow ❌❌📛
 13. Appointment Details page (need to create an action and a slice, Controller and route is already there.)
 
