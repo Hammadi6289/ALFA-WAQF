@@ -43,11 +43,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-        - name: Setup Node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-        node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         working-directory: ./client/frontend
@@ -60,7 +60,6 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./client/frontend
-          # vercel-args: "--prod"
 
   deploy-admin:
     name: Deploy Admin Panel
@@ -71,16 +70,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-        - name: Setup Node.js
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         working-directory: ./admin-panel
         run: npm ci
-
 
       - name: Deploy Admin to Vercel
         uses: amondnet/vercel-action@v25
@@ -89,4 +87,3 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_ADMIN_PROJECT_ID }}
           working-directory: ./admin-panel
-          vercel-args: "--prod"
