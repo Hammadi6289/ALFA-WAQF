@@ -43,6 +43,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        
+        - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+        node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./client/frontend
+        run: npm ci
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
@@ -62,6 +71,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        
+        - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./admin-panel
+        run: npm ci
+
 
       - name: Deploy Admin to Vercel
         uses: amondnet/vercel-action@v25
