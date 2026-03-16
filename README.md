@@ -68,8 +68,6 @@
     - Renamed cypress.config.js to cypress.config.cjs for ES module compatibility
     - Downgraded Cypress to 13.15.2 for Node 18 compatibility
     - Added GitHub secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID, VERCEL_ADMIN_PROJECT_ID, RENDER_DEPLOY_HOOK
-    - Workflow: dev branch runs tests only, main branch runs tests + auto-deploys to Render/Vercel
-    - Added CI/CD status badge to README.md
 
 ###### Features
 
@@ -130,7 +128,9 @@ Prerequisites
 1. Base url for the backend (render)
    https://alfa-waqf.onrender.com/
    https://alfa-waqf.onrender.com/api/v1/doctor/get-all
-2.
+2. url for the websites. (Vercel)
+   https://alfalah-waqf.vercel.app/
+   https://alfalah-dashboard.vercel.app/
 
 ### Future Improvements (TODO)
 
@@ -144,7 +144,7 @@ Prerequisites
 8. Automated tests. ✅
 9. Security Risk: No Email Uniqueness Check on Registration In userRegisterController ❌❌📛
 10. Broken Login Navigation Logic Login component's useEffect, after successful login it navigate to /login instead of a dashboard/home page. This creates a redirect loop. Should navigate to /doctors or /home. ✅
-11. CI/CD pipeline setup. ✅
+11. CI/CD pipeline setup, Lets just use CI/CD for testing only, Vercel handles deployment ✅
 12. Code review process/Git workflow ❌❌📛
 13. Appointment Details page (need to create an action and a slice, Controller and route is already there.)
 
