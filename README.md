@@ -62,6 +62,9 @@
 44. Added fixes for the security vulnerablilities. NoSQL Injection / Rate Limiting / Security Headers.
     npm i express-mongo-sanitize helmet express-rate-limit
 45. Changed the express verion to express@4.21.2 in order to make the express-mongo-sanitize work.
+46. Setting up CI / CD.
+    - Verify that b_automated_testing is up and running. npx cypress run
+    - Create a new folder in
 
 ###### Features
 
