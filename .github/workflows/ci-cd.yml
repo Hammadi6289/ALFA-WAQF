@@ -15,27 +15,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
         with:
-          node-version: "18"
-          cache: "npm"
-          cache-dependency-path: client/frontend/package-lock.json
-
-      - name: Install dependencies
-        working-directory: ./client/frontend
-        run: npm ci
-
-      - name: Run Cypress tests
-        working-directory: ./client/frontend
-        run: npx cypress run --headless
-
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-results
-          path: client/frontend/cypress/screenshots
+          working-directory: ./client/frontend
+          browser: chrome
+          start: npm run dev
+          wait-on: "http://localhost:5173"
 
   deploy-backend:
     name: Deploy Backend
