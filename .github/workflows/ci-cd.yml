@@ -7,23 +7,22 @@ on:
     branches: [main]
 
 jobs:
-  # Job 1: Run Cypress Tests
   test:
     name: Run E2E Tests
     runs-on: ubuntu-latest
 
-steps:
-  - name: Checkout code
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  - name: Setup Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: "18"
-      cache: "npm"
-      cache-dependency-path: client/frontend/package-lock.json
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: client/frontend/package-lock.json
 
-- name: Install dependencies
+      - name: Install dependencies
         working-directory: ./client/frontend
         run: npm ci
 
@@ -37,25 +36,24 @@ steps:
         with:
           name: cypress-results
           path: client/frontend/cypress/screenshots
-          # Job 2: Deploy Backend to Render (only on main branch)
+
   deploy-backend:
     name: Deploy Backend
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
     steps:
       - name: Trigger Render Deploy
         run: |
           curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
 
-# Job 3: Deploy Frontend to Vercel (only on main branch)
   deploy-frontend:
     name: Deploy Frontend
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -67,15 +65,14 @@ steps:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./client/frontend
-          vercel-args: '--prod'
+          vercel-args: "--prod"
 
-# Job 4: Deploy Admin Panel to Vercel
   deploy-admin:
     name: Deploy Admin Panel
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -87,4 +84,4 @@ steps:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_ADMIN_PROJECT_ID }}
           working-directory: ./admin-panel
-          vercel-args: '--prod'
+          vercel-args: "--prod"
