@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  deleteUserController,
   getAllUsersController,
   getLoginUserController,
   getStatsController,
@@ -33,6 +34,9 @@ router.patch(
   upload.single("image"),
   updateUserController
 );
+
+// DELETE USER || DELETE
+router.delete("/delete-user/:id", userAuth, isAdmin, deleteUserController);
 
 // RESET USER PASSWORD || patch
 router.patch("/reset-password/:id", userAuth, passwordResetController);

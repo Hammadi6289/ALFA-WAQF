@@ -149,6 +149,35 @@ export const updateUserController = async (req, res) => {
     });
   }
 };
+
+////////////////////////////////////////
+///////////// Delete a User ////////////
+////////////////////////////////////////
+
+export const deleteUserController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(404).send({
+        success: false,
+        message: "User id not found",
+      });
+    }
+    const user = await userModel.findByIdAndDelete(id);
+    res.status(200).send({
+      success: true,
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong while deleting user",
+      error,
+    });
+  }
+};
+
 /////////////////////////////////////////
 //////////// PASSWORD RESET ////////////
 /////////////////////////////////////////
