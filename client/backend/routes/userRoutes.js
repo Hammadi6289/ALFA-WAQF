@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  deactivateAccountController,
   deleteUserController,
   getAllUsersController,
   getLoginUserController,
@@ -40,6 +41,9 @@ router.delete("/delete-user/:id", userAuth, isAdmin, deleteUserController);
 
 // RESET USER PASSWORD || patch
 router.patch("/reset-password/:id", userAuth, passwordResetController);
+
+// DELETE SELF ACCOUNT || DELETE
+router.delete("/delete-account/:id", userAuth, deactivateAccountController);
 
 // STATISTICS || GET
 router.get("/get-stats", userAuth, isAdmin, getStatsController);

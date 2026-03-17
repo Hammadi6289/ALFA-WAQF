@@ -186,6 +186,38 @@ export const deleteUserController = async (req, res) => {
   }
 };
 
+////////////////////////////////////////
+///////// Deactivate Account ///////////
+////////////////////////////////////////
+
+export const deactivateAccountController = async (req, res) => {
+  try {
+    // const userId = req.user._id; // From userAuth middleware
+    const { id } = req.params;
+
+    const user = await userModel.findByIdAndDelete(id);
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).send({
+      success: true,
+      message: "Your account has been permanently deleted",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Something went wrong while deleting account",
+      error: error.message,
+    });
+  }
+};
+
 /////////////////////////////////////////
 //////////// PASSWORD RESET ////////////
 /////////////////////////////////////////

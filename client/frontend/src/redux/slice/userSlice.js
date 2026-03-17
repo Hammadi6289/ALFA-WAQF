@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getStats, getUserDetails } from "../actions/userActions";
+import {
+  deleteSelfAccount,
+  getAllUsers,
+  getStats,
+  getUserDetails,
+} from "../actions/userActions";
 
 const userSlice = createSlice({
   name: "user",
@@ -59,6 +64,19 @@ const userSlice = createSlice({
         state.appointments = action.payload.appointments;
       })
       .addCase(getUserDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // DELETE SELF ACCOUNT || deleteSelfAccount
+      .addCase(deleteSelfAccount.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteSelfAccount.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+        state.user = null;
+      })
+      .addCase(deleteSelfAccount.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

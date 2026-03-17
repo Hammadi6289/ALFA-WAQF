@@ -3,10 +3,11 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router";
 import EditUserProfile from "./EditUserProfile";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/slice/authSlice";
+import { logout, reset } from "../../redux/slice/authSlice";
 import { getLoginUserDetails } from "../../redux/actions/authActions";
 import "./UserProfile.css";
 import { Helmet } from "react-helmet-async";
+import { deleteSelfAccount } from "../../redux/actions/userActions";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -29,6 +30,35 @@ const UserProfile = () => {
     navigate("/login");
     toast.success("Logged out successfully");
   };
+
+  const handleDeleteAccount = async (userId) => {
+    const confirm = window.confirm(
+      "⚠️ WARNING: This will permanently delete your account and all associated data. This action CANNOT be undone. Are you absolutely sure?"
+    );
+
+    if (!confirm) return;
+
+    // Double confirmation
+    const doubleConfirm = window.confirm(
+      "Final confirmation: Delete your account permanently?"
+    );
+
+    if (!doubleConfirm) return;
+
+    try {
+      await dispatch(deleteSelfAccount({ id: userId })).unwrap();
+      dispatch(reset());
+
+      toast.success("Account deleted successfully");
+
+      // Clear local storage and redirect
+      localStorage.removeItem("appData");
+      navigate("/");
+    } catch (error) {
+      toast.error(error || "Failed to delete account");
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -97,6 +127,20 @@ const UserProfile = () => {
                 Logout
               </button>
             </div>
+          </div>
+          <div className="danger-zone">
+            <h3>⚠️ Danger Zone</h3>
+            <p className="warning-text">
+              Once you delete your account, there is no going back. This will
+              permanently delete your profile, appointments, and all associated
+              data.
+            </p>
+            <button
+              className="btn btn-danger"
+              onClick={() => handleDeleteAccount(user?._id)}
+            >
+              🗑️ Delete Account Permanently
+            </button>
           </div>
         </div>
       </div>

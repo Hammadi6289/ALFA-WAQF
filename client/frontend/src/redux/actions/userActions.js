@@ -58,3 +58,21 @@ export const getUserDetails = createAsyncThunk(
     }
   }
 );
+
+// DELETE OWN ACCOUNT
+export const deleteSelfAccount = createAsyncThunk(
+  "user/deleteSelfAccount",
+  async ({ id }, thunkApi) => {
+    try {
+      const res = await API.delete(`/user/delete-account/${id}`);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occurred while deleting account";
+
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
