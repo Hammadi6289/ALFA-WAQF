@@ -20,6 +20,25 @@ export const getAllUsers = createAsyncThunk(
     }
   }
 );
+
+// DELETE A USER
+export const deleteUser = createAsyncThunk(
+  "user/deleteUser",
+  async ({ id }, thunkApi) => {
+    try {
+      const res = await API.delete(`/user/delete-user/${id}`);
+      return res?.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Error occured in deleting user";
+
+      // Reject with error message
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+);
 // GET STATS
 export const getStats = createAsyncThunk(
   "user/getStats",

@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getStats, getUserDetails } from "../actions/userActions";
+import {
+  deleteUser,
+  getAllUsers,
+  getStats,
+  getUserDetails,
+} from "../actions/userActions";
 
 const userSlice = createSlice({
   name: "user",
@@ -32,6 +37,18 @@ const userSlice = createSlice({
         state.users = action.payload.users;
       })
       .addCase(getAllUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //DELETE A USER || getAllUsers
+      .addCase(deleteUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
