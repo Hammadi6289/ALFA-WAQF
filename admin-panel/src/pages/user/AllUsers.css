@@ -127,6 +127,31 @@
   background: #574fcf;
 }
 
+/* Buttons */
+.user-delete-action-btn {
+  padding: 6px 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Remove Button */
+.user-remove-btn-admin-panel {
+  background-color: #e10032;
+  color: white;
+  box-shadow: 0 4px 8px rgba(225, 0, 50, 0.25);
+}
+
+.user-remove-btn-admin-panel:hover {
+  background-color: #cf4463;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(225, 0, 50, 0.35);
+}
+
 /* Table hover effect */
 .allusers-table tbody tr:hover {
   transform: translateY(-3px);

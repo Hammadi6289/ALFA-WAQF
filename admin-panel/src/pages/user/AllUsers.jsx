@@ -119,7 +119,7 @@ const AllUsers = () => {
                       </td>
                       <td>
                         <button
-                          className="doctor-action-btn doctor-remove-btn"
+                          className="user-delete-action-btn user-remove-btn-admin-panel"
                           onClick={() => handleDeleteUser(user?._id)}
                         >
                           Delete
