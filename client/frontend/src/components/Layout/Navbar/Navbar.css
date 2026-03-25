@@ -107,3 +107,114 @@
 .alfa-brand-logo:hover {
   opacity: 0.9;
 }
+
+/* ===== DROPDOWN FIXES ===== */
+
+/* Make dropdown menu visible with proper styling */
+.dropdown-menu {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-top: 0;
+  padding: 8px 0;
+  min-width: 200px;
+}
+
+/* Dropdown menu items */
+.dropdown-item {
+  color: #37145a;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--color-primary);
+  color: white;
+  padding-left: 28px;
+}
+
+/* Dropdown divider */
+.dropdown-divider {
+  margin: 8px 0;
+  background-color: #e9ecef;
+}
+
+/* Ensure dropdown appears on hover (for desktop) */
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    /* top: 100%; */
+    left: 0;
+    z-index: 1060;
+    display: none;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-top: 0;
+    padding: 8px 0;
+    min-width: 200px;
+  }
+}
+
+/* For mobile, ensure dropdown works */
+@media (max-width: 991.98px) {
+  .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: rgba(42, 15, 69, 0.95);
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+
+  .dropdown-item {
+    color: white;
+    padding: 8px 15px;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+    padding-left: 25px;
+  }
+
+  .dropdown-divider {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Fix z-index issues */
+.navbar {
+  z-index: 1050;
+}
+
+.dropdown-menu {
+  z-index: 1060;
+}
+
+.navbar-backdrop {
+  z-index: 1040;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background: var(--color-primary);
+}

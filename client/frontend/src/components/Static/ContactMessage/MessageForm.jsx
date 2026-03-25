@@ -72,7 +72,7 @@ const MessageForm = () => {
   return (
     <div>
       <div className="message-mform">
-        <h2>Send Us a Message</h2>
+        <h2>FEEDBACK / INQUIRY FORM</h2>
 
         <input
           value={name}

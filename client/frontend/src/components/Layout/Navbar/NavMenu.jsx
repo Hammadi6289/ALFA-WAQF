@@ -48,42 +48,63 @@ const NavMenu = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/about"
-                  onClick={() => setIsOpen(false)}
-                >
-                  About Us
-                </NavLink>
-              </li>
+
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
                   to="/doctors"
                   onClick={() => setIsOpen(false)}
                 >
-                  Doctors
+                  Find a Doctor
                 </NavLink>
               </li>
-              <li className="nav-item">
+
+              {/* About Us Dropdown containing Gallery and Contact */}
+              <li className="nav-item dropdown">
                 <NavLink
-                  className="nav-link"
-                  to="/gallery"
-                  onClick={() => setIsOpen(false)}
+                  className="nav-link dropdown-toggle"
+                  to="/about"
+                  id="navbarDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  // onClick={() => setIsOpen(false)}
                 >
-                  Gallery
+                  About Alfalah
                 </NavLink>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/gallery"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Gallery
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/about"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Our Story
+                    </NavLink>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/contact"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Contact Us
+                    </NavLink>
+                  </li>
+                </ul>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/contact"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Contact Us
-                </NavLink>
-              </li>
+
               <li className="nav-item">
                 <NavLink className="nav-link disabled" aria-disabled="true">
                   E-Reports
