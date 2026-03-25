@@ -36,9 +36,19 @@ const AllDoctors = () => {
         <title>Book an Appointment | Alfalah</title>
       </Helmet>
 
-      <h4 className="text-center doctor-heading mt-3">
-        Select a Doctor and Book an Appointment
-      </h4>
+      <div className="meet-doctors-container">
+        <div className="container-content">
+          <h3 className="text-center doctor-heading mt-3">
+            Meet Our Specialists
+          </h3>
+          <h4>
+            Discover the experts behind your care at Alfalah. Our team of highly
+            qualified consultants is here to guide you with specialized
+            knowledge and a commitment to your well-being
+          </h4>
+        </div>
+      </div>
+
       <div className="container doc-container">
         {doctors?.map((doctor) => {
           return (

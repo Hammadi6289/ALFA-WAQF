@@ -39,7 +39,7 @@ const GalleryPage = () => {
       {/* Hero Section */}
       <div className="gallery-hero">
         <div className="gallery-hero-overlay">
-          <h1 className="gallery-hero__title">Our Gallery</h1>
+          <h1 className="gallery-hero__title">Alfalah Gallery</h1>
           <p className="gallery-hero__subtitle">
             Explore our state-of-the-art facilities and compassionate care
           </p>
