@@ -1,97 +1,366 @@
- {
-  /* Patient Reviews styling*/
-}
+/* PatientReviewsBlock.css */
 
-.review-container {
+/* ===== Main Section ===== */
+.reviews-section {
   padding: 80px 0;
-  background-color: #f8f9fc;
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.review-heading-container {
+.reviews-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 80%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(108, 99, 255, 0.03) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.reviews-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Section Header ===== */
+.reviews-header {
   text-align: center;
   margin-bottom: 50px;
 }
 
-.review-heading-container span {
-  color: var(--color-primary);
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.reviews-tagline {
+  display: inline-block;
   font-size: 0.85rem;
-}
-
-.review-heading-container h2 {
-  margin: 6px 0;
-  font-weight: 700;
-  color: var(--color-primary-dark);
-}
-
-.patient-reviews-container {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.patient-reviews-container > div {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 35px 25px;
-  text-align: start;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.patient-reviews-container > div:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-}
-
-.patient-reviews-container img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 0 auto 15px;
-}
-.patient-reviews-container p:first-of-type {
   font-weight: 600;
-  margin-bottom: 2px;
-  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary-hope);
+  margin-bottom: 12px;
+  position: relative;
+  padding: 0 15px;
 }
 
-.patient-reviews-container p:nth-of-type(2) {
+.reviews-tagline::before,
+.reviews-tagline::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary-hope), transparent);
+}
+
+.reviews-tagline::before {
+  right: 100%;
+}
+
+.reviews-tagline::after {
+  left: 100%;
+  transform: rotate(180deg);
+}
+
+.reviews-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2a0f45;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.reviews-title.highlight {
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.title-underline {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-hope),
+    var(--color-primary)
+  );
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* ===== Swiper Container ===== */
+.reviews-slider-wrapper {
+  margin: 40px 0 50px;
+  padding: 10px 5px;
+}
+
+.reviews-swiper {
+  padding: 20px 10px 50px 10px;
+}
+
+/* ===== Review Card ===== */
+.review-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(108, 99, 255, 0.05);
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border-color: rgba(108, 99, 255, 0.1);
+}
+
+/* Quote Icon */
+.review-quote-icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--color-primary-light);
+  font-size: 2rem;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.review-card:hover .review-quote-icon {
+  opacity: 0.4;
+}
+
+/* Star Rating */
+.review-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.star {
+  font-size: 1rem;
+  color: #e4e5e9;
+}
+
+.star.filled {
+  color: #f4c150;
+}
+
+.star.half {
+  color: #f4c150;
+}
+
+/* Review Description */
+.review-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 24px;
+  flex: 1;
+  font-style: italic;
+}
+
+/* Reviewer Info */
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f2f5;
+}
+
+.reviewer-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary-hope);
+  box-shadow: 0 5px 15px rgba(0, 155, 120, 0.2);
+}
+
+.reviewer-details {
+  flex: 1;
+}
+
+.reviewer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2a0f45;
+  margin-bottom: 4px;
+}
+
+.reviewer-location {
   font-size: 0.85rem;
   color: #6c757d;
-  margin-bottom: 12px;
-}
-.icon {
-  margin-bottom: 10px;
 }
 
-.active-star {
-  color: #f4c150;
-  margin-right: 3px;
-  font-size: 0.9rem;
-}
-.patient-reviews-container h6 {
+/* Verified Badge */
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f5e9;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.75rem;
   font-weight: 600;
-  margin-top: 10px;
-  margin-bottom: 8px;
-  color: var(--color-primary-dark);
+  color: #2e7d32;
+  width: fit-content;
 }
 
-.patient-reviews-container p:last-of-type {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #555;
+.verified-icon {
+  background: #2e7d32;
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
 }
 
-@media (max-width: 992px) {
-  .patient-reviews-container {
-    flex-wrap: wrap;
+/* ===== Google Reviews Link ===== */
+.google-reviews-link {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  color: #2a0f45;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+
+.google-btn:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.25);
+}
+
+.google-icon {
+  font-size: 1.2rem;
+}
+
+.google-btn .arrow {
+  transition: transform 0.2s ease;
+}
+
+.google-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+.reviews-swiper .swiper-button-next::after,
+.reviews-swiper .swiper-button-prev::after {
+  font-size: 18px;
+}
+
+.reviews-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #d1d5db;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.reviews-swiper .swiper-pagination-bullet-active {
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-hope),
+    var(--color-primary)
+  );
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+  .reviews-section {
+    padding: 60px 0;
   }
 
-  .patient-reviews-container > div {
-    max-width: 320px;
+  .reviews-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 50px 0;
+  }
+
+  .reviews-title {
+    font-size: 1.6rem;
+  }
+
+  .reviews-tagline::before,
+  .reviews-tagline::after {
+    display: none;
+  }
+
+  .review-card {
+    padding: 24px;
+  }
+
+  .reviewer-avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  .reviewer-name {
+    font-size: 1rem;
+  }
+
+  .reviews-swiper .swiper-button-next,
+  .reviews-swiper .swiper-button-prev {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-section {
+    padding: 40px 0;
+  }
+
+  .reviews-title {
+    font-size: 1.4rem;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+
+  .review-description {
+    font-size: 0.9rem;
+  }
+
+  .google-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

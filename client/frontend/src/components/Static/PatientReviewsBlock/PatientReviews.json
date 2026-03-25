@@ -25,5 +25,32 @@
     "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     "rating": 4,
     "commentDescription": "The hospital environment was very clean and well managed. From registration to consultation, everything was smooth. A reliable healthcare facility in Islamabad."
+  },
+  {
+    "id": 1003,
+    "name": "Irum Akrum",
+    "address": "",
+    "commentTitle": "Had a very good experience with their staff",
+    "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
+    "rating": 5,
+    "commentDescription": "Had a very good experience with their staff specially Miss Sebal is a dedicated and professional staff member. She administers injections every three days with great care and precision."
+  },
+  {
+    "id": 1004,
+    "name": "amna usmani",
+    "address": "",
+    "commentTitle": "Kuddos to the whole team",
+    "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
+    "rating": 5,
+    "commentDescription": "had a wonderful antenatal as well as postnatal experience with Dr ayeza(gynaecologist) at the hospital.  They are doing great👍"
+  },
+  {
+    "id": 1005,
+    "name": "Ansa Mughal",
+    "address": "B-17 Islamabad",
+    "commentTitle": "very cooperative staff",
+    "pic": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
+    "rating": 5,
+    "commentDescription": "My delivery took place at alfallah gernal hospital, It is very good and clean hospital the staff and doctors are very cooperative staff Sadia is very nice and cooperative doctor I had a very good experience there"
   }
 ]
