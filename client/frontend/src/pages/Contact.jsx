@@ -27,11 +27,27 @@ const Contact = () => {
                 <div className="contact-icon">
                   <i className="fa-solid fa-location-dot"></i>
                 </div>
-                <h5>Visit Us</h5>
+                <h5>Alfalah Hospital B-17</h5>
                 <p>
                   Block B Main-Markaz
                   <br />
                   MPCHS B-17 Islamabad
+                  <br />
+                  (051) 2765700
+                </p>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="contact-card">
+                <div className="contact-icon">
+                  <i className="fa-solid fa-location-dot"></i>
+                </div>
+                <h5>Alfalah Hospital Sangjani</h5>
+                <p>
+                  GT Rd, Sangjani, Islamabad
+                  <br />
+                  +92 306 5038823
                 </p>
               </div>
             </div>
