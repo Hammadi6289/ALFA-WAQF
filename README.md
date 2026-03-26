@@ -70,6 +70,7 @@
     - Added GitHub secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID, VERCEL_ADMIN_PROJECT_ID, RENDER_DEPLOY_HOOK
 47. Add an option to delete a user from the admin-panel.
 48. Enable the users to de-activate / self delete their account. (Client side)
+49. Added a search bar and search by speciality feature to the "All Doctors" page.
 
 ###### Features
 

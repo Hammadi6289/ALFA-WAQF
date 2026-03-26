@@ -100,7 +100,7 @@ const Appointments = () => {
           </>
         )}
 
-        <div class="real-content">
+        <div className="real-content">
           <div className="row m-3">
             <div className="col-md-3 d-flex flex-column justify-content-center align-items-center">
               <img
