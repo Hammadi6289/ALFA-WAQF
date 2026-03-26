@@ -7,6 +7,7 @@ import "./Navbar.css";
 const NavMenu = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getUserData());
@@ -61,22 +62,22 @@ const NavMenu = () => {
 
               {/* About Us Dropdown containing Gallery and Contact */}
               <li className="nav-item dropdown">
-                <NavLink
+                <button
                   className="nav-link dropdown-toggle"
-                  to="/about"
-                  id="navbarDropdown"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  // onClick={() => setIsOpen(false)}
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  aria-expanded={dropdownOpen}
                 >
                   About Alfalah
-                </NavLink>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                </button>
+                <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
                   <li>
                     <NavLink
                       className="dropdown-item"
                       to="/gallery"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setDropdownOpen(false);
+                      }}
                     >
                       Gallery
                     </NavLink>
