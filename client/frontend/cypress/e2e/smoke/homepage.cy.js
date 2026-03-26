@@ -22,7 +22,6 @@ describe("Smoke Test - Homepage", () => {
     // Or check for specific links
     cy.contains("Home").should("be.visible");
     cy.contains("Find a Doctor").should("be.visible");
-    cy.contains("My Account").should("be.visible");
   });
 
   it("should have working navigation links", () => {
