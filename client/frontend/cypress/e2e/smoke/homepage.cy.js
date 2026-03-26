@@ -21,8 +21,8 @@ describe("Smoke Test - Homepage", () => {
     cy.get(".navbar").should("exist");
     // Or check for specific links
     cy.contains("Home").should("be.visible");
-    cy.contains("About").should("be.visible");
-    cy.contains("Doctors").should("be.visible");
+    cy.contains("Find a Doctor").should("be.visible");
+    cy.contains("My Account").should("be.visible");
   });
 
   it("should have working navigation links", () => {
