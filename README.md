@@ -20,6 +20,7 @@
    7.3. Why Us.
    7.4. Contact Us.
    7.5. KeyFacts Block
+   7.6. Video Block
 8. Footer component
 9. About Us Page
 10. Gallery Page
@@ -96,7 +97,7 @@
 1. Topbar + Navigation Menu
 2. Footer component
 3. Swiper slider integration (swiper)
-4. Static UI blocks: Facilities || Our Work || Why Choose Us || Contact Us || Key Facts (responsive slider)
+4. Static UI blocks: Facilities || Our Work || Why Choose Us || Contact Us || Key Facts (responsive slider) || Video Block.
 
 ### Backend (Node.js + Express)
 

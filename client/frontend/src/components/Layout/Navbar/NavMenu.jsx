@@ -79,7 +79,7 @@ const NavMenu = () => {
                         setDropdownOpen(false);
                       }}
                     >
-                      Gallery
+                      Virtual Tour
                     </NavLink>
                   </li>
                   <li>
