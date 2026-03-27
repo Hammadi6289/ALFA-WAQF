@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router";
 import { getUserData } from "../../../redux/actions/authActions";
 import "./Navbar.css";
+import specialtiesData from "../../../pages/Specialties/specialtiesData";
 
 const NavMenu = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [specialtiesDropdownOpen, setSpecialtiesDropdownOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getUserData());
@@ -35,7 +37,9 @@ const NavMenu = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div
-            className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
+            className={`collapse navbar-collapse align-items-baseline ${
+              isOpen ? "show" : ""
+            }`}
             id="navbarTogglerDemo01"
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -58,6 +62,38 @@ const NavMenu = () => {
                 >
                   Find a Doctor
                 </NavLink>
+              </li>
+
+              <li className="nav-item dropdown">
+                <button
+                  className="nav-link dropdown-toggle"
+                  onClick={() =>
+                    setSpecialtiesDropdownOpen(!specialtiesDropdownOpen)
+                  }
+                  aria-expanded={specialtiesDropdownOpen}
+                >
+                  Specialities
+                </button>
+                <ul
+                  className={`dropdown-menu ${
+                    specialtiesDropdownOpen ? "show" : ""
+                  }`}
+                >
+                  {specialtiesData.map((specialty) => (
+                    <li key={specialty.id}>
+                      <NavLink
+                        className="dropdown-item"
+                        to={`/specialties/${specialty.slug}`}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setSpecialtiesDropdownOpen(false);
+                        }}
+                      >
+                        {specialty.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
               </li>
 
               {/* About Us Dropdown containing Gallery and Contact */}

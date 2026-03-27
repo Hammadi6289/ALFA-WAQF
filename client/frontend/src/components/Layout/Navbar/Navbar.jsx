@@ -8,7 +8,8 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar-container sticky-top">
-        <div className="row">
+        {/* g-0 removes gutter */}
+        <div className="row g-0">
           {/* <div className="col-md-1">
             <NavLink to="/">
               <img className="alfa-brand-logo" src={logo} alt="alfalah-logo" />

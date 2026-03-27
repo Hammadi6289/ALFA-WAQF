@@ -13,7 +13,7 @@ const WhyChoose = () => {
     <>
       <h1 className="text-center mt-5">Why Choose Us?</h1>
       <div className="row why-container">
-        <div className="col-md-3">
+        {/* <div className="col-md-3">
           <img src={empower} alt="empower" width={"100%"} height={"220px"} />
           <h2>Personalize Care</h2>
           <p>
@@ -47,7 +47,7 @@ const WhyChoose = () => {
             Quality treatment at prices you can afford.
           </p>
           <button className="button-secondary"> Visit Now</button>
-        </div>
+        </div> */}
         <div className="col-md-3">
           <img src={care} alt="care" width={"100%"} height={"220px"} />
           <h2>Caring for Islamabad, One Patient at a Time</h2>

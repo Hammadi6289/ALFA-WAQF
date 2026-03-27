@@ -16,6 +16,7 @@ import UserProfile from "./pages/User/UserProfile";
 import MyAppointments from "./pages/User/MyAppointments";
 import AppointmentDetails from "./pages/User/AppointmentDetails";
 import ResetPassword from "./pages/User/ResetPassword";
+import SpecialtyDetails from "./pages/Specialties/SpecialtyDetails";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/user/appointments" element={<MyAppointments />} />
         <Route path="/user/appointments/:id" element={<AppointmentDetails />} />
+        <Route path="/specialties/:slug" element={<SpecialtyDetails />} />
       </Routes>
 
       <Footer />

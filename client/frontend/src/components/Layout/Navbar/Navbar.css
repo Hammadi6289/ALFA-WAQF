@@ -10,7 +10,7 @@
 }
 
 .navbar-container {
-  overflow: hidden;
+  overflow: visible; /* ✅ CHANGED FROM hidden - this was hiding dropdowns */
   border-bottom: 1px solid rgba(128, 128, 128, 0.178);
   background-color: #ffff;
 }
@@ -22,23 +22,25 @@
   margin-bottom: 10px;
   min-height: 70px;
   padding: 0 20px;
-  text-color: #ffff;
+  color: #ffff; /* ✅ FIXED: was text-color */
 }
+
 .nav-link {
   font-weight: 600;
   color: #ffff;
   padding: 25px 15px;
 }
+
 .nav-link.active {
   font-weight: 700;
   color: #ffd700 !important;
-  text-decoration: underline;
 }
 
 .nav-link.disabled {
   font-weight: 700;
   color: #7332aa !important;
 }
+
 .navbar-toggler {
   background-color: #ffff;
 }
@@ -86,16 +88,12 @@
     color: #2a0f45 !important;
   }
 
-  .nav-link.active::after {
-    width: 100%;
-    background: var(--color-primary-dark);
-  }
-
   .nav-link.disabled {
     font-weight: 700;
     color: #d3d3d3 !important;
   }
 }
+
 .alfa-brand-logo {
   max-height: 110px;
   max-width: 100%;
@@ -104,13 +102,14 @@
   object-fit: contain;
   margin-left: 20px;
 }
+
 .alfa-brand-logo:hover {
   opacity: 0.9;
 }
 
 /* ===== DROPDOWN FIXES ===== */
 
-/* Make dropdown menu visible with proper styling */
+/* Base dropdown styles */
 .dropdown-menu {
   background: white;
   border: none;
@@ -119,6 +118,7 @@
   margin-top: 0;
   padding: 8px 0;
   min-width: 200px;
+  z-index: 1060; /* ✅ ADDED here too */
 }
 
 /* Dropdown menu items */
@@ -141,19 +141,17 @@
   background-color: #e9ecef;
 }
 
-/* Ensure dropdown appears on hover (for desktop) */
+/* ✅ DESKTOP DROPDOWN - PROPERLY FIXED */
 @media (min-width: 992px) {
-  .nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: all 0.2s ease;
+  /* Ensure parent has relative positioning */
+  .nav-item.dropdown {
     position: relative;
   }
+
+  /* Dropdown menu positioning */
   .dropdown-menu {
     position: absolute;
-    /* top: 100%; */
+    top: 100%; /* ✅ UNCOMMENTED */
     left: 0;
     z-index: 1060;
     display: none;
@@ -164,6 +162,15 @@
     margin-top: 0;
     padding: 8px 0;
     min-width: 200px;
+  }
+
+  /* Show on hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+    /* ✅ REMOVED position: relative - it was overriding absolute */
   }
 }
 
@@ -199,6 +206,7 @@
   .dropdown-divider {
     background-color: rgba(255, 255, 255, 0.2);
   }
+
   .navbar .navbar-nav .nav-item .nav-link:hover {
     color: #fff;
   }
