@@ -95,7 +95,7 @@ const AllDoctors = () => {
           <FiSearch className="search-icon-doctor-client" size={20} />
           <input
             type="text"
-            placeholder="Search by Name or Speciality"
+            placeholder="Search by Name.."
             className="search-input"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

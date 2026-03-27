@@ -73,6 +73,7 @@
 48. Enable the users to de-activate / self delete their account. (Client side)
 49. Added a search bar and search by speciality feature to the "All Doctors" page.
 50. Added dropdown items to the About us and added a new NavLink in the Navbar (Speciality).
+51. Add a news section under "about us" dropdown.
 
 ###### Features
 
