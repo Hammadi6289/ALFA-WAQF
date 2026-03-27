@@ -75,7 +75,7 @@ const NavMenu = () => {
                   Specialities
                 </button>
                 <ul
-                  className={`dropdown-menu ${
+                  className={`dropdown-menu specialties-dropdown ${
                     specialtiesDropdownOpen ? "show" : ""
                   }`}
                 >
