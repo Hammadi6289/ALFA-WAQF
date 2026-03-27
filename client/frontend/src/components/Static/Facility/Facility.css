@@ -153,11 +153,7 @@
 }
 
 .facility-card:hover .facility-icon-wrapper {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-light) 100%
-  );
+  background: var(--color-primary-light);
   transform: scale(1.1) rotate(5deg);
 }
 
