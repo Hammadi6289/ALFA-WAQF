@@ -10,7 +10,7 @@
 }
 
 .navbar-container {
-  overflow: visible; /* ✅ CHANGED FROM hidden - this was hiding dropdowns */
+  overflow: visible;
   border-bottom: 1px solid rgba(128, 128, 128, 0.178);
   background-color: #ffff;
 }
@@ -22,7 +22,7 @@
   margin-bottom: 10px;
   min-height: 70px;
   padding: 0 20px;
-  color: #ffff; /* ✅ FIXED: was text-color */
+  color: #ffff;
 }
 
 .nav-link {
@@ -118,7 +118,7 @@
   margin-top: 0;
   padding: 8px 0;
   min-width: 200px;
-  z-index: 1060; /* ✅ ADDED here too */
+  z-index: 1060;
 }
 
 /* Dropdown menu items */
@@ -141,9 +141,8 @@
   background-color: #e9ecef;
 }
 
-/* ✅ DESKTOP DROPDOWN - PROPERLY FIXED */
+/* DESKTOP DROPDOWN - PROPERLY FIXED */
 @media (min-width: 992px) {
-  /* Ensure parent has relative positioning */
   .nav-item.dropdown {
     position: relative;
   }
@@ -151,7 +150,7 @@
   /* Dropdown menu positioning */
   .dropdown-menu {
     position: absolute;
-    top: 100%; /* ✅ UNCOMMENTED */
+    top: 100%;
     left: 0;
     z-index: 1060;
     display: none;
@@ -170,7 +169,25 @@
     opacity: 1;
     transform: translateY(0);
     transition: all 0.2s ease;
-    /* ✅ REMOVED position: relative - it was overriding absolute */
+  }
+  .dropdown-menu.specialties-dropdown {
+    display: none;
+    column-count: 4;
+    column-gap: 20px;
+    min-width: 800px; /* Adjust based on your needs */
+    max-width: 1000px;
+    padding: 15px 20px;
+  }
+
+  /* Prevent items from breaking across columns */
+  .dropdown-menu.specialties-dropdown li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .dropdown-menu.specialties-dropdown .dropdown-item {
+    display: block;
+    width: 100%;
   }
 }
 
