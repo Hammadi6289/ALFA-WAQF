@@ -3,6 +3,7 @@ import AuthReducer from "./slice/authSlice";
 import UserReducer from "./slice/userSlice";
 import DoctorReducer from "./slice/doctorSlice";
 import AppointmentReducer from "./slice/appointmentSlice";
+import CareerReducer from "./slice/careerSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     user: UserReducer,
     doctor: DoctorReducer,
     appointment: AppointmentReducer,
+    career: CareerReducer,
   },
 });

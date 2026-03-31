@@ -17,6 +17,8 @@ import MyAppointments from "./pages/User/MyAppointments";
 import AppointmentDetails from "./pages/User/AppointmentDetails";
 import ResetPassword from "./pages/User/ResetPassword";
 import SpecialtyDetails from "./pages/Specialties/SpecialtyDetails";
+import AllCareers from "./pages/Careers/AllCareers";
+import CareerDetails from "./pages/Careers/CareerDetails";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path="/user/appointments" element={<MyAppointments />} />
         <Route path="/user/appointments/:id" element={<AppointmentDetails />} />
         <Route path="/specialties/:slug" element={<SpecialtyDetails />} />
+        <Route path="/careers" element={<AllCareers />} />
+        <Route path="/careers/:id" element={<CareerDetails />} />
       </Routes>
 
       <Footer />

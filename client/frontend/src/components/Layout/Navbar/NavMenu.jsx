@@ -128,6 +128,15 @@ const NavMenu = () => {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/careers"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Careers
+                    </NavLink>
+                  </li>
+                  <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
