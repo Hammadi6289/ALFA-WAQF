@@ -131,6 +131,41 @@ const Menu = () => {
               </li>
             </ul>
           </li>
+
+          {/* Static Blocks */}
+          <li className="nav-item dropdown">
+            <button
+              className="nav-link dropdown-toggle sidebar__link"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              aria-expanded={dropdownOpen}
+            >
+              <RiPagesLine className="RiPagesLine" />
+              Blocks
+            </button>
+            <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+              <li>
+                <NavLink
+                  className="dropdown-item"
+                  to="/admin/careers"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setDropdownOpen(false);
+                  }}
+                >
+                  Hero Banner Block
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="dropdown-item"
+                  to="/events"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Key Facts Block
+                </NavLink>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       {/* Logout button - separate from nav items */}
