@@ -102,10 +102,7 @@ const AddDoctor = () => {
             <p>Alfalah General Hospital Admin Panel</p>
           </div>
 
-          <button
-            onClick={() => navigate("/all-doctors")}
-            className="add-doctor-btn"
-          >
+          <button onClick={() => navigate("/all-doctors")} className="back-btn">
             <FaAngleLeft className="FaAngleRight-btn-icon" size={16} />
             Previous Page
           </button>

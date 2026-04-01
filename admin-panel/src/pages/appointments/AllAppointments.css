@@ -54,7 +54,7 @@
 }
 
 .appointments-table thead tr {
-  background: #6c63ff;
+  background: #7332aa;
   color: white;
   font-weight: 600;
   text-transform: uppercase;
@@ -101,7 +101,7 @@
 
 .time-badge {
   background: #f0f2ff;
-  color: #6c63ff;
+  color: #7332aa;
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.85rem;

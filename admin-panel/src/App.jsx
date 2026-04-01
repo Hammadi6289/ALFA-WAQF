@@ -12,6 +12,9 @@ import UserDetails from "./pages/user/UserDetails";
 import AddDoctor from "./pages/doctors/AddDoctor";
 import WebMessages from "./pages/webMessages/WebMessages";
 import AddAppointmentManually from "./pages/appointments/AddAppointmentManually";
+import AdminCareers from "./pages/careers/AdminCareers";
+import AddEditCareer from "./pages/careers/AddEditCareer";
+import Applications from "./pages/careers/Applications";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -45,6 +48,14 @@ function App() {
           element={<AddAppointmentManually />}
         />
         <Route path="/all-web-messages" element={<WebMessages />} />
+
+        <Route path="/admin/careers" element={<AdminCareers />} />
+        <Route path="/admin/add-career" element={<AddEditCareer />} />
+        <Route path="/admin/edit-career/:id" element={<AddEditCareer />} />
+        <Route
+          path="/admin/careers/:jobId/applications"
+          element={<Applications />}
+        />
       </Routes>
     </>
   );
