@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import { bookAppointment } from "../../redux/actions/authActions";
 import { reset } from "../../redux/slice/authSlice";
 import { Helmet } from "react-helmet-async";
+import docImageFallback from "../../assets/images/docImage.avif";
 
 const Appointments = () => {
   const { id } = useParams();
@@ -23,16 +24,18 @@ const Appointments = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setIsLoading(true);
+    setDocInfo(null);
     dispatch(getDoctorDetails(id));
   }, [dispatch, id]);
 
-  const { doctor } = useSelector((state) => state.doctor);
+  const { doctor, loading } = useSelector((state) => state.doctor);
   const { user, error, success } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (doctor) {
       setDocInfo(doctor);
-      // setIsLoading(true);
+      setIsLoading(false);
     }
   }, [doctor]);
 
@@ -65,6 +68,7 @@ const Appointments = () => {
     dispatch(bookAppointment(bookingData));
     //dispatch(reset());
   };
+
   useEffect(() => {
     if (!isBooking) return;
     if (success) {
@@ -85,30 +89,35 @@ const Appointments = () => {
       <Helmet>
         <title>Appointment Booking | Alfalah</title>
       </Helmet>
-      <div
-        className={`container docinfo-container ${
-          isLoading ? "is-loading" : ""
-        }`}
-      >
-        {/* <!-- Skeleton --> */}
-        {isLoading && (
-          <>
-            <div className="skeleton skeleton-avatar"></div>
-            <div className="skeleton skeleton-text"></div>
-            <div className="skeleton skeleton-text small"></div>
-            <div className="skeleton skeleton-box"></div>
-          </>
-        )}
 
-        <div className="real-content">
+      {isLoading || loading ? (
+        // Show skeleton only
+        <div className="container docinfo-container">
+          <div className="skeleton skeleton-avatar"></div>
+          <div className="skeleton skeleton-text"></div>
+          <div className="skeleton skeleton-text small"></div>
+          <div className="skeleton skeleton-box"></div>
+        </div>
+      ) : (
+        // Show content only
+        <div className="container docinfo-container">
           <div className="row m-3">
             <div className="col-md-3 d-flex flex-column justify-content-center align-items-center">
               <img
+                key={docInfo?._id || id}
                 className="docinfo-image"
-                src={`data:image/jpeg;base64,${docInfo?.image}`}
-                alt="docImage"
+                src={
+                  docInfo?.image
+                    ? `data:image/jpeg;base64,${docInfo.image}`
+                    : docImageFallback
+                }
+                alt="Doctor Image"
                 height={200}
                 width={200}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = docImageFallback;
+                }}
               />
               <h2 className="docinfo-name">{docInfo?.name}</h2>
               <h6
@@ -124,7 +133,6 @@ const Appointments = () => {
               <h6>About Doctor</h6>
               <p>{docInfo?.about}</p>
               <h5>Consultation Fee: {docInfo?.fees}</h5>
-              {/* Date time */}
               <div className="date-time mt-3">
                 <DatePicker
                   className="calender"
@@ -161,7 +169,7 @@ const Appointments = () => {
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
