@@ -22,7 +22,7 @@ export const updateCareer = createAsyncThunk(
   "career/updateCareer",
   async ({ id, formData }, thunkApi) => {
     try {
-      const res = await API.put(`/career/update/${id}`, formData);
+      const res = await API.patch(`/career/update/${id}`, formData);
       return res?.data;
     } catch (error) {
       const message = error?.response?.data?.message || error.message;
@@ -45,13 +45,12 @@ export const deleteCareer = createAsyncThunk(
   }
 );
 
-// GET ALL CAREERS (Admin - includes inactive)
 export const getAllCareersAdmin = createAsyncThunk(
   "career/getAllCareersAdmin",
   async (_, thunkApi) => {
     try {
       // TODO: need to create a separate admin endpoint that includes inactive jobs
-      const res = await API.get("/career/admin/get-all");
+      const res = await API.get("/career/get-all");
       return res?.data;
     } catch (error) {
       const message = error?.response?.data?.message || error.message;
