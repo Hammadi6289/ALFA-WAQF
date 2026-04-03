@@ -19,6 +19,7 @@ const Menu = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [blocksDropdownOpen, setBlocksDropdownOpen] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem("appData");
     dispatch(logout());
@@ -136,20 +137,20 @@ const Menu = () => {
           <li className="nav-item dropdown">
             <button
               className="nav-link dropdown-toggle sidebar__link"
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              aria-expanded={dropdownOpen}
+              onClick={() => setBlocksDropdownOpen(!blocksDropdownOpen)}
+              aria-expanded={blocksDropdownOpen}
             >
               <RiPagesLine className="RiPagesLine" />
               Blocks
             </button>
-            <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+            <ul className={`dropdown-menu ${blocksDropdownOpen ? "show" : ""}`}>
               <li>
                 <NavLink
                   className="dropdown-item"
                   to="/admin/careers"
                   onClick={() => {
                     setIsOpen(false);
-                    setDropdownOpen(false);
+                    setBlocksDropdownOpen(false);
                   }}
                 >
                   Hero Banner Block
