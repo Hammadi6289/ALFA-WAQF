@@ -15,6 +15,8 @@ import AddAppointmentManually from "./pages/appointments/AddAppointmentManually"
 import AdminCareers from "./pages/careers/AdminCareers";
 import AddEditCareer from "./pages/careers/AddEditCareer";
 import Applications from "./pages/careers/Applications";
+import AdminNews from "./pages/news/AdminNews";
+import AddEditNews from "./pages/news/AddEditNews";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -56,6 +58,9 @@ function App() {
           path="/admin/careers/:jobId/applications"
           element={<Applications />}
         />
+        <Route path="/admin/news" element={<AdminNews />} />
+        <Route path="/admin/news/add" element={<AddEditNews />} />
+        <Route path="/admin/news/edit/:id" element={<AddEditNews />} />
       </Routes>
     </>
   );

@@ -9,6 +9,7 @@ import doctorRoutes from "./routes/doctorRoutes.js";
 import webMessageRoutes from "./routes/webMessageRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import careerRoutes from "./routes/careerRoutes.js";
+import newsRoutes from "./routes/newsRoutes.js";
 import connectDB from "./config/db.js";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
@@ -66,6 +67,7 @@ app.use("/api/v1/webmessage", webMessageRoutes);
 app.use("/api/v1/doctor", doctorRoutes);
 app.use("/api/v1/appointment", appointmentRoutes);
 app.use("/api/v1/career", careerRoutes);
+app.use("/api/v1/news", newsRoutes);
 
 app.listen(PORT, () => {
   console.log(

@@ -8,6 +8,7 @@ import {
   FiCalendar,
   FiLogOut,
   FiMessageSquare,
+  FiFileText,
 } from "react-icons/fi";
 import { RiPagesLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -128,6 +129,17 @@ const Menu = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   Events
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  className="dropdown-item"
+                  to="/admin/news"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <FiFileText className="sidebar__icon" />
+                  <span>News</span>
                 </NavLink>
               </li>
             </ul>

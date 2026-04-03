@@ -136,6 +136,16 @@ const NavMenu = () => {
                       Careers
                     </NavLink>
                   </li>
+
+                  <li>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/news"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      News
+                    </NavLink>
+                  </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>

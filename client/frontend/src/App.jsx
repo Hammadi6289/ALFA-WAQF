@@ -19,6 +19,8 @@ import ResetPassword from "./pages/User/ResetPassword";
 import SpecialtyDetails from "./pages/Specialties/SpecialtyDetails";
 import AllCareers from "./pages/Careers/AllCareers";
 import CareerDetails from "./pages/Careers/CareerDetails";
+import AllNews from "./pages/News/AllNews";
+import NewsDetail from "./pages/News/NewsDetail";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
         <Route path="/specialties/:slug" element={<SpecialtyDetails />} />
         <Route path="/careers" element={<AllCareers />} />
         <Route path="/careers/:id" element={<CareerDetails />} />
+        <Route path="/news" element={<AllNews />} />
+        <Route path="/news/:slug" element={<NewsDetail />} />
       </Routes>
 
       <Footer />
