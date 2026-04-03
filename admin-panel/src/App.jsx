@@ -15,6 +15,8 @@ import AddAppointmentManually from "./pages/appointments/AddAppointmentManually"
 import AdminCareers from "./pages/careers/AdminCareers";
 import AddEditCareer from "./pages/careers/AddEditCareer";
 import Applications from "./pages/careers/Applications";
+import ContentBlocks from "./pages/ContentBlocks/ContentBlocks";
+import AddEditBlock from "./pages/ContentBlocks/AddEditBlock";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -55,6 +57,12 @@ function App() {
         <Route
           path="/admin/careers/:jobId/applications"
           element={<Applications />}
+        />
+        <Route path="/admin/content-blocks" element={<ContentBlocks />} />
+        <Route path="/admin/content-blocks/add" element={<AddEditBlock />} />
+        <Route
+          path="/admin/content-blocks/edit/:id"
+          element={<AddEditBlock />}
         />
       </Routes>
     </>

@@ -4,6 +4,7 @@ import UserReducer from "./slice/userSlice";
 import DoctorReducer from "./slice/doctorSlice";
 import AppointmentReducer from "./slice/appointmentSlice";
 import CareerReducer from "./slice/careerSlice";
+import ContentBlockReducer from "./slice/contentBlockSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     doctor: DoctorReducer,
     appointment: AppointmentReducer,
     career: CareerReducer,
+    contentBlock: ContentBlockReducer,
   },
 });

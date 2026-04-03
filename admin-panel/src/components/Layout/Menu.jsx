@@ -8,6 +8,7 @@ import {
   FiCalendar,
   FiLogOut,
   FiMessageSquare,
+  FiLayout,
 } from "react-icons/fi";
 import { RiPagesLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -166,6 +167,18 @@ const Menu = () => {
                 </NavLink>
               </li>
             </ul>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link sidebar__link ${isActive ? "active" : ""}`
+              }
+              to={"/admin/content-blocks"}
+            >
+              <FiLayout className="sidebar__icon" />
+              <span>Content Blocks</span>
+            </NavLink>
           </li>
         </ul>
       </div>

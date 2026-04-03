@@ -80,7 +80,9 @@ export const updateApplicationStatus = createAsyncThunk(
   "career/updateApplicationStatus",
   async ({ id, status }, thunkApi) => {
     try {
-      const res = await API.put(`/career/application-status/${id}`, { status });
+      const res = await API.patch(`/career/application-status/${id}`, {
+        status,
+      });
       return res?.data;
     } catch (error) {
       const message = error?.response?.data?.message || error.message;
