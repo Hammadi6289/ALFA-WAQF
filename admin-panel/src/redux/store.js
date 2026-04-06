@@ -6,6 +6,8 @@ import AppointmentReducer from "./slice/appointmentSlice";
 import webMessageReducer from "./slice/webMessageSlice";
 import careerReducer from "./slice/careerSlice";
 import NewsReducer from "./slice/newsSlice";
+import DonationReducer from "./slice/donationSlice";
+
 // import todosReducer from '../features/todos/todosSlice'
 // import filtersReducer from '../features/filters/filtersSlice'
 
@@ -18,6 +20,7 @@ export const store = configureStore({
     webMessage: webMessageReducer,
     career: careerReducer,
     news: NewsReducer,
+    donation: DonationReducer,
     // todos: todosReducer,
     // filters: filtersReducer,
   },

@@ -17,6 +17,10 @@ import AddEditCareer from "./pages/careers/AddEditCareer";
 import Applications from "./pages/careers/Applications";
 import AdminNews from "./pages/news/AdminNews";
 import AddEditNews from "./pages/news/AddEditNews";
+import AdminCampaigns from "./pages/donation/AdminCampaigns";
+import AddEditCampaign from "./pages/donation/AddEditCampaign";
+import AdminHeroSlides from "./pages/donation/AdminHeroSlides";
+import AddEditHeroSlide from "./pages/donation/AddEditHeroSlide";
 //import PrivateRoute from "./PrivateRoute";
 
 function App() {
@@ -61,6 +65,28 @@ function App() {
         <Route path="/admin/news" element={<AdminNews />} />
         <Route path="/admin/news/add" element={<AddEditNews />} />
         <Route path="/admin/news/edit/:id" element={<AddEditNews />} />
+
+        <Route path="/admin/donation/campaigns" element={<AdminCampaigns />} />
+        <Route
+          path="/admin/donation/campaigns/add"
+          element={<AddEditCampaign />}
+        />
+        <Route
+          path="/admin/donation/campaigns/edit/:id"
+          element={<AddEditCampaign />}
+        />
+        <Route
+          path="/admin/donation/hero-slides"
+          element={<AdminHeroSlides />}
+        />
+        <Route
+          path="/admin/donation/hero-slides/add"
+          element={<AddEditHeroSlide />}
+        />
+        <Route
+          path="/admin/donation/hero-slides/edit/:id"
+          element={<AddEditHeroSlide />}
+        />
       </Routes>
     </>
   );

@@ -65,7 +65,7 @@ const DonationPage = () => {
                     <h1>{slide.title}</h1>
                     <p>{slide.subtitle}</p>
                     <button
-                      className="button-primary"
+                      className="button-tertiary"
                       onClick={() => {
                         const campaign = campaigns.find(
                           (c) => c._id === slide.campaignId?._id

@@ -9,6 +9,7 @@ import {
   FiLogOut,
   FiMessageSquare,
   FiFileText,
+  FiHeart,
 } from "react-icons/fi";
 import { RiPagesLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
@@ -21,6 +22,7 @@ const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [blocksDropdownOpen, setBlocksDropdownOpen] = useState(false);
+  const [donationDropdownOpen, setDonationDropdownOpen] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem("appData");
     dispatch(logout());
@@ -140,6 +142,45 @@ const Menu = () => {
                 >
                   <FiFileText className="sidebar__icon" />
                   <span>News</span>
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+
+          <li className="nav-item dropdown">
+            <button
+              className="nav-link dropdown-toggle sidebar__link"
+              onClick={() => setDonationDropdownOpen(!donationDropdownOpen)}
+              aria-expanded={donationDropdownOpen}
+            >
+              <FiHeart className="sidebar__icon" />
+              Donation
+            </button>
+            <ul
+              className={`dropdown-menu ${donationDropdownOpen ? "show" : ""}`}
+            >
+              <li>
+                <NavLink
+                  className="dropdown-item"
+                  to="/admin/donation/campaigns"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setDonationDropdownOpen(false);
+                  }}
+                >
+                  Campaigns
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="dropdown-item"
+                  to="/admin/donation/hero-slides"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setDonationDropdownOpen(false);
+                  }}
+                >
+                  Hero Slides
                 </NavLink>
               </li>
             </ul>
