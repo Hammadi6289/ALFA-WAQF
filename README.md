@@ -75,6 +75,7 @@
 50. Added dropdown items to the About us and added a new NavLink in the Navbar (Speciality).
 51. Adding new routes controllers and redux actions for the careers opportunities.
 52. Add a news section under "about us" dropdown.
+53. Integrate Donation Feature
 
 ###### Features
 

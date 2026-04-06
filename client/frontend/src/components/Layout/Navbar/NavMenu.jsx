@@ -162,6 +162,16 @@ const NavMenu = () => {
               </li>
 
               <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to="/donate"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Help Deserving Patients
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
                 <NavLink className="nav-link disabled" aria-disabled="true">
                   E-Reports
                 </NavLink>

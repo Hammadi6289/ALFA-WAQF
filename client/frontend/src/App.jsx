@@ -21,6 +21,7 @@ import AllCareers from "./pages/Careers/AllCareers";
 import CareerDetails from "./pages/Careers/CareerDetails";
 import AllNews from "./pages/News/AllNews";
 import NewsDetail from "./pages/News/NewsDetail";
+import DonationPage from "./pages/Donation/DonationPage";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/careers/:id" element={<CareerDetails />} />
         <Route path="/news" element={<AllNews />} />
         <Route path="/news/:slug" element={<NewsDetail />} />
+        <Route path="/donate" element={<DonationPage />} />
       </Routes>
 
       <Footer />
