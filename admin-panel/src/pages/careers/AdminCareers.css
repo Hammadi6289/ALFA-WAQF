@@ -95,7 +95,7 @@
 
 /* Action Buttons */
 .action-buttons {
-  display: flex;
+  /* display: flex; */
   gap: 8px;
 }
 

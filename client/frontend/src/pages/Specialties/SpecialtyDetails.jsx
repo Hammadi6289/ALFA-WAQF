@@ -60,20 +60,20 @@ const SpecialtyDetails = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="action-buttons-container">
-        <div className="action-buttons">
+      <div className="specialty-action-buttons-container">
+        <div className="specialty-action-buttons">
           <a
             href={specialty.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="action-btn location-btn"
+            className="specialty-action-btn location-btn"
           >
             <FaMapMarkerAlt className="btn-icon" />
             <span>Get Directions</span>
           </a>
           <Link
             to={specialty.appointmentUrl}
-            className="action-btn appointment-btn"
+            className="specialty-action-btn appointment-btn"
           >
             <FaCalendarAlt className="btn-icon" />
             <span>Book Appointment</span>
