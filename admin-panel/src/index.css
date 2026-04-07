@@ -154,6 +154,9 @@
   font-size: 18px;
   opacity: 0.85;
 }
+.sidebar-dropdown-item__text {
+  margin-left: 10px;
+}
 .sidebar__link.active::before {
   content: "";
   position: absolute;

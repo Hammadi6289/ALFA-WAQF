@@ -11,7 +11,9 @@ import {
   FiFileText,
   FiHeart,
 } from "react-icons/fi";
-import { RiPagesLine } from "react-icons/ri";
+import { TfiBriefcase } from "react-icons/tfi";
+import { RiPagesLine, RiCalendarEventFill } from "react-icons/ri";
+import { MdOutlineCampaign } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slice/authSlice";
 import { useState } from "react";
@@ -121,7 +123,8 @@ const Menu = () => {
                     setDropdownOpen(false);
                   }}
                 >
-                  Careers
+                  <TfiBriefcase className="sidebar__icon" />
+                  <span className="sidebar-dropdown-item__text">Careers</span>
                 </NavLink>
               </li>
               <li>
@@ -130,7 +133,8 @@ const Menu = () => {
                   to="/events"
                   onClick={() => setIsOpen(false)}
                 >
-                  Events
+                  <RiCalendarEventFill className="sidebar__icon" />
+                  <span className="sidebar-dropdown-item__text">Events</span>
                 </NavLink>
               </li>
 
@@ -141,7 +145,7 @@ const Menu = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   <FiFileText className="sidebar__icon" />
-                  <span>News</span>
+                  <span className="sidebar-dropdown-item__text">News</span>
                 </NavLink>
               </li>
             </ul>
@@ -168,7 +172,8 @@ const Menu = () => {
                     setDonationDropdownOpen(false);
                   }}
                 >
-                  Campaigns
+                  <MdOutlineCampaign className="sidebar__icon" />
+                  <span className="sidebar-dropdown-item__text">Campaigns</span>
                 </NavLink>
               </li>
               <li>
@@ -180,7 +185,10 @@ const Menu = () => {
                     setDonationDropdownOpen(false);
                   }}
                 >
-                  Hero Slides
+                  <RiPagesLine className="RiPagesLine" />
+                  <span className="sidebar-dropdown-item__text">
+                    Hero Slides
+                  </span>
                 </NavLink>
               </li>
             </ul>
