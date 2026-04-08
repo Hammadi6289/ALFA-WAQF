@@ -65,7 +65,7 @@ const DonationPage = () => {
                     <h1>{slide.title}</h1>
                     <p>{slide.subtitle}</p>
                     <button
-                      className="button-tertiary"
+                      className="button-secondary"
                       onClick={() => {
                         const campaign = campaigns.find(
                           (c) => c._id === slide.campaignId?._id
@@ -83,8 +83,11 @@ const DonationPage = () => {
         ) : (
           <div className="donation-hero-placeholder">
             <div className="donation-hero-content">
-              <h1>Support Needy Patients</h1>
-              <p>Your donation can save lives</p>
+              <h1>Support Vital Patient Care</h1>
+              <p>
+                Your contribution provides life-saving care to those who need it
+                most.
+              </p>
             </div>
           </div>
         )}

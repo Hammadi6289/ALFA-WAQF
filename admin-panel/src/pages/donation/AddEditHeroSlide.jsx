@@ -162,9 +162,8 @@ const AddEditHeroSlide = () => {
                 {campaigns?.map((campaign) => (
                   <option key={campaign._id} value={campaign._id}>
                     {campaign.title} (
-                    {campaign.type === "medicines"
-                      ? "Medicines"
-                      : "Thalassemia"}
+                    {campaign.type.charAt(0).toUpperCase() +
+                      campaign.type.slice(1)}
                     )
                   </option>
                 ))}

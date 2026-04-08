@@ -18,7 +18,7 @@ const donationCampaignSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["medicines", "thalassemia"],
+      enum: ["medicines", "thalassemia", "Hemophilia", "Blood Disorders"],
       required: true,
     },
     buttonText: {

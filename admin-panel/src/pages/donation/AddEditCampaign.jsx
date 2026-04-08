@@ -159,6 +159,8 @@ const AddEditCampaign = () => {
                 >
                   <option value="medicines">Medicines Help</option>
                   <option value="thalassemia">Thalassemia Support</option>
+                  <option value="Hemophilia">Hemophilia Support</option>
+                  <option value="Blood Disorders">Blood Disorders</option>
                 </select>
               </div>
               <div className="donation-form-group">

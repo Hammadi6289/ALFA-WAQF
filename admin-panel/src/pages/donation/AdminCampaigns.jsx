@@ -96,9 +96,12 @@ const AdminCampaigns = () => {
                     <td className="donation-title-cell">{campaign.title}</td>
                     <td>
                       <span className="donation-type-badge">
-                        {campaign.type === "medicines"
-                          ? "Medicines Help"
-                          : "Thalassemia Support"}
+                        {{
+                          medicines: "Medicines Help",
+                          thalassemia: "Thalassemia Support",
+                          Hemophilia: "Hemophilia Care",
+                          "Blood Disorders": "Blood Disorder",
+                        }[campaign.type] || "General Support"}
                       </span>
                     </td>
                     <td>
