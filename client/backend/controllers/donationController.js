@@ -137,7 +137,15 @@ export const addCampaignController = async (req, res) => {
 export const updateCampaignController = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, type, buttonText, order, isActive } = req.body;
+    const {
+      title,
+      description,
+      type,
+      buttonText,
+      priceOptions,
+      order,
+      isActive,
+    } = req.body;
 
     const updateData = {
       title,
@@ -147,6 +155,14 @@ export const updateCampaignController = async (req, res) => {
       order,
       isActive,
     };
+
+    // Parse priceOptions if it's a string
+    if (priceOptions) {
+      updateData.priceOptions =
+        typeof priceOptions === "string"
+          ? JSON.parse(priceOptions)
+          : priceOptions;
+    }
 
     if (req.file) {
       updateData.image = req.file.buffer.toString("base64");

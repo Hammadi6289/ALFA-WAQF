@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./DonationPage.css";
+import DonorForm from "./DonorForm";
 
 const DonationPage = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ const DonationPage = () => {
     (state) => state.donation
   );
   const [selectedCampaign, setSelectedCampaign] = useState(null);
+  const [selectedAmount, setSelectedAmount] = useState(null);
+  const [customAmount, setCustomAmount] = useState("");
+  const [showDonorForm, setShowDonorForm] = useState(false);
 
   useEffect(() => {
     dispatch(getActiveHeroSlides());
@@ -33,6 +37,20 @@ const DonationPage = () => {
     alert(
       `You're about to donate to: ${campaign.title}\n\nPayment integration coming soon!`
     );
+  };
+
+  const handleSelectAmount = (campaign, amount) => {
+    setSelectedCampaign(campaign);
+    setSelectedAmount(amount);
+    setShowDonorForm(true);
+  };
+  const handleCustomAmount = (campaign, amount) => {
+    const numericAmount = Number(amount);
+    if (numericAmount && numericAmount > 0) {
+      setSelectedCampaign(campaign);
+      setSelectedAmount(numericAmount);
+      setShowDonorForm(true);
+    }
   };
 
   return (
@@ -120,12 +138,40 @@ const DonationPage = () => {
                   <div className="donation-card-content">
                     <h3>{campaign.title}</h3>
                     <p>{campaign.description}</p>
-                    <button
-                      className="button-secondary"
-                      onClick={() => handleDonateClick(campaign)}
-                    >
-                      {campaign.buttonText || "Donate Now"}
-                    </button>
+
+                    {/* Price Options */}
+                    <div className="donation-price-options">
+                      <div className="price-buttons-row">
+                        {campaign.priceOptions?.map((price, idx) => (
+                          <button
+                            key={idx}
+                            className="price-btn"
+                            onClick={() => handleSelectAmount(campaign, price)}
+                          >
+                            PKR {price.toLocaleString()}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="custom-amount-wrapper">
+                        <input
+                          type="number"
+                          className="custom-amount-input"
+                          placeholder="Other amount (PKR)"
+                          min="50"
+                          step="50"
+                          onChange={(e) => setCustomAmount(e.target.value)}
+                        />
+                        <button
+                          className="custom-donate-btn button-secondary"
+                          onClick={() =>
+                            handleCustomAmount(campaign, customAmount)
+                          }
+                          disabled={!customAmount || Number(customAmount) < 50}
+                        >
+                          Donate
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -133,6 +179,14 @@ const DonationPage = () => {
           )}
         </div>
       </div>
+
+      {showDonorForm && selectedCampaign && selectedAmount && (
+        <DonorForm
+          campaign={selectedCampaign}
+          amount={selectedAmount}
+          onBack={() => setShowDonorForm(false)}
+        />
+      )}
     </>
   );
 };

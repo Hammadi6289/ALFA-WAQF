@@ -21,6 +21,8 @@ const AddEditCampaign = () => {
   );
   const isEdit = !!id;
 
+  const [priceOptionsInput, setPriceOptionsInput] = useState("");
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -36,23 +38,6 @@ const AddEditCampaign = () => {
       dispatch(getAllCampaigns());
     }
   }, [dispatch, isEdit]);
-
-  useEffect(() => {
-    if (isEdit && campaigns?.length > 0) {
-      const campaign = campaigns.find((c) => c._id === id);
-      if (campaign) {
-        setFormData({
-          title: campaign.title,
-          description: campaign.description,
-          type: campaign.type,
-          image: null,
-          buttonText: campaign.buttonText || "Donate Now",
-          order: campaign.order || 0,
-          isActive: campaign.isActive,
-        });
-      }
-    }
-  }, [isEdit, campaigns, id]);
 
   useEffect(() => {
     if (success) {
@@ -95,6 +80,7 @@ const AddEditCampaign = () => {
     submitData.append("description", formData.description);
     submitData.append("type", formData.type);
     submitData.append("buttonText", formData.buttonText);
+    submitData.append("priceOptions", JSON.stringify(formData.priceOptions));
     submitData.append("order", formData.order);
     submitData.append("isActive", formData.isActive);
 
@@ -108,6 +94,58 @@ const AddEditCampaign = () => {
       dispatch(addCampaign(submitData));
     }
   };
+
+  // handle price options
+  const handlePriceOptionsChange = (e) => {
+    const value = e.target.value;
+    setPriceOptionsInput(value);
+    const prices = value
+      .split(",")
+      .map((p) => Number(p.trim()))
+      .filter((p) => !isNaN(p) && p > 0);
+    setFormData({ ...formData, priceOptions: prices });
+  };
+
+  // Add a new price option
+  const addPriceOption = () => {
+    const newPrice = prompt("Enter price amount in PKR (e.g. 500)");
+    if (newPrice && !isNaN(Number(newPrice)) && Number(newPrice) > 0) {
+      const updatedPrices = [...formData.priceOptions, Number(newPrice)];
+      setFormData({ ...formData, priceOptions: updatedPrices });
+      setPriceOptionsInput(updatedPrices.join(", "));
+    }
+  };
+
+  // Remove a price option
+  const removePriceOption = (indexToRemove) => {
+    const updatedPrices = formData.priceOptions.filter(
+      (_, index) => index !== indexToRemove
+    );
+    setFormData({ ...formData, priceOptions: updatedPrices });
+    setPriceOptionsInput(updatedPrices.join(", "));
+  };
+
+  // useEffect to initialize priceOptionsInput when editing
+  useEffect(() => {
+    if (isEdit && campaigns?.length > 0) {
+      const campaign = campaigns.find((c) => c._id === id);
+      if (campaign) {
+        setFormData({
+          title: campaign.title,
+          description: campaign.description,
+          type: campaign.type,
+          image: null,
+          buttonText: campaign.buttonText || "Donate Now",
+          priceOptions: campaign.priceOptions || [500, 1000, 5000],
+          order: campaign.order || 0,
+          isActive: campaign.isActive,
+        });
+        setPriceOptionsInput(
+          (campaign.priceOptions || [500, 1000, 5000]).join(", ")
+        );
+      }
+    }
+  }, [isEdit, campaigns, id]);
 
   return (
     <Layout>
@@ -228,6 +266,37 @@ const AddEditCampaign = () => {
                   ? "Update Campaign"
                   : "Add Campaign"}
               </button>
+            </div>
+
+            <div className="donation-form-group">
+              <label>Price Options (PKR)</label>
+              <div className="price-options-wrapper">
+                <div className="price-options-buttons">
+                  {formData.priceOptions?.map((price, idx) => (
+                    <div key={idx} className="price-option-item">
+                      <span className="price-tag">PKR {price}</span>
+                      <button
+                        type="button"
+                        className="remove-price-btn"
+                        onClick={() => removePriceOption(idx)}
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    className="add-price-btn"
+                    onClick={addPriceOption}
+                  >
+                    + Add Price
+                  </button>
+                </div>
+                <small className="form-hint">
+                  These amount buttons will appear on the donation page for
+                  users to select
+                </small>
+              </div>
             </div>
           </form>
         </div>

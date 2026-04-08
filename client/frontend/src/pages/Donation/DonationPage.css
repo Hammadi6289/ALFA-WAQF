@@ -96,7 +96,7 @@
 
 .donation-campaigns-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
@@ -168,6 +168,56 @@
   background: var(--color-primary-hope);
 }
 
+.donation-price-options {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.price-buttons-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.price-btn {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 16px;
+  background: white;
+  border: 2px solid var(--color-primary-light);
+  border-radius: 4px;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.price-btn:hover {
+  background: var(--color-primary-light);
+  color: white;
+  border-color: var(--color-primary-light);
+}
+
+.custom-amount-wrapper {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.custom-amount-input {
+  flex: 2;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.custom-donate-btn {
+  /* flex: 1; */
+  min-width: 150px;
+}
 /* Responsive */
 @media (max-width: 992px) {
   .donation-campaigns-grid {
@@ -192,5 +242,22 @@
 
   .donation-card-content h3 {
     font-size: 1.1rem;
+  }
+  .price-buttons-row {
+    gap: 8px;
+  }
+
+  .price-btn {
+    min-width: calc(33% - 6px);
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .custom-amount-wrapper {
+    flex-direction: column;
+  }
+
+  .custom-donate-btn {
+    width: 100%;
   }
 }

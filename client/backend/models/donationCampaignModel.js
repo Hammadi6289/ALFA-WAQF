@@ -29,6 +29,11 @@ const donationCampaignSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    priceOptions: {
+      type: [Number],
+      default: [500, 1000, 5000],
+    },
+
     order: {
       type: Number,
       default: 0,

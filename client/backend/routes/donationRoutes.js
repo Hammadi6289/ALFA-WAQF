@@ -14,6 +14,11 @@ import {
   deleteHeroSlideController,
 } from "../controllers/donationController.js";
 import { isAdmin, userAuth } from "../middlewares/authMiddlewares.js";
+import {
+  createDonationSession,
+  getDonationSession,
+  updateDonationSession,
+} from "../controllers/donationSessionController.js";
 
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
@@ -69,5 +74,10 @@ router.delete(
   isAdmin,
   deleteHeroSlideController
 );
+
+// Donation Session routes (public)
+router.post("/session/create", createDonationSession);
+router.get("/session/:sessionId", getDonationSession);
+router.patch("/session/:sessionId", updateDonationSession);
 
 export default router;
