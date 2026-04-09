@@ -47,7 +47,7 @@ const KeyFactsBlock = () => {
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
           slidesPerView={1}
-          autoplay={{ delay: 1000 }}
+          autoplay={{ delay: 2000 }}
           pagination={{ clickable: true }}
           navigation
           breakpoints={{
