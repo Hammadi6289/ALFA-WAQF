@@ -266,6 +266,15 @@
 }
 
 @media (max-width: 768px) {
+  .donation-hero-content {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px 0;
+    background: rgba(106, 13, 173, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
   .donation-hero-content h1 {
     font-size: 2rem;
   }
