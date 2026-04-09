@@ -19,6 +19,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center; /* ensures it crops equally from all sides */
 }
 
 .donation-hero-overlay {
@@ -194,11 +195,17 @@
   transition: all 0.2s ease;
 }
 
-.price-btn:hover {
+.price-btn.active {
+  background: var(--color-primary-hope);
+  color: white;
+  border-color: var(--color-primary-hope);
+}
+
+/* .price-btn:hover {
   background: var(--color-primary-light);
   color: white;
   border-color: var(--color-primary-light);
-}
+} */
 
 .custom-amount-wrapper {
   display: flex;
@@ -217,6 +224,30 @@
 .custom-donate-btn {
   /* flex: 1; */
   min-width: 150px;
+}
+
+/* Proceed section */
+.donation-proceed-section {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.donation-proceed-btn {
+  font-size: 1.1rem;
+  min-width: 280px;
+  cursor: pointer;
+}
+
+.donation-proceed-hint {
+  color: #e10032;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+.donation-proceed-campaign {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 12px;
 }
 /* Responsive */
 @media (max-width: 992px) {
@@ -259,5 +290,19 @@
 
   .custom-donate-btn {
     width: 100%;
+  }
+
+  .donation-proceed-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1360px) {
+  .donation-hero-section,
+  .donation-hero-swiper,
+  .donation-hero-slide,
+  .donation-hero-placeholder {
+    height: 900px; /* Increased height for desktop to show more of the image */
   }
 }

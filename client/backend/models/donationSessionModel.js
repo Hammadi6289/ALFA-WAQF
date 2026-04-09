@@ -11,6 +11,10 @@ const donationSessionSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    donorTitle: {
+      type: String,
+      default: "",
+    },
     donorName: {
       type: String,
       required: true,
@@ -22,6 +26,10 @@ const donationSessionSchema = new mongoose.Schema(
     donorPhone: {
       type: String,
       required: true,
+    },
+    donorAddress: {
+      type: String,
+      default: "",
     },
     sessionId: {
       type: String,

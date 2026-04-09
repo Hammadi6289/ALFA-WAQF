@@ -22,6 +22,8 @@ import CareerDetails from "./pages/Careers/CareerDetails";
 import AllNews from "./pages/News/AllNews";
 import NewsDetail from "./pages/News/NewsDetail";
 import DonationPage from "./pages/Donation/DonationPage";
+import CheckoutPage from "./pages/Donation/CheckoutPage";
+import PaymentPage from "./pages/Donation/PaymentPage";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
         <Route path="/news" element={<AllNews />} />
         <Route path="/news/:slug" element={<NewsDetail />} />
         <Route path="/donate" element={<DonationPage />} />
+        <Route path="/donation/checkout" element={<CheckoutPage />} />
+        <Route path="/donation/payment/:sessionId" element={<PaymentPage />} />
       </Routes>
 
       <Footer />

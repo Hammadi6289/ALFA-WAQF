@@ -12,7 +12,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./DonationPage.css";
-import DonorForm from "./DonorForm";
 
 const DonationPage = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,6 @@ const DonationPage = () => {
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState("");
-  const [showDonorForm, setShowDonorForm] = useState(false);
 
   useEffect(() => {
     dispatch(getActiveHeroSlides());
@@ -42,15 +40,36 @@ const DonationPage = () => {
   const handleSelectAmount = (campaign, amount) => {
     setSelectedCampaign(campaign);
     setSelectedAmount(amount);
-    setShowDonorForm(true);
+    setCustomAmount("");
   };
-  const handleCustomAmount = (campaign, amount) => {
-    const numericAmount = Number(amount);
+
+  // Handle custom amount change
+  const handleCustomAmountChange = (campaign, value) => {
+    const numericAmount = Number(value);
+    setCustomAmount(value);
     if (numericAmount && numericAmount > 0) {
       setSelectedCampaign(campaign);
       setSelectedAmount(numericAmount);
-      setShowDonorForm(true);
+    } else if (!value) {
+      setSelectedCampaign(null);
+      setSelectedAmount(null);
     }
+  };
+
+  // Proceed to checkout
+  const handleProceedToCheckout = () => {
+    if (!selectedCampaign || !selectedAmount) {
+      alert("Please select a donation amount first");
+      return;
+    }
+
+    const donationData = {
+      campaignId: selectedCampaign._id,
+      campaignTitle: selectedCampaign.title,
+      amount: selectedAmount,
+    };
+    localStorage.setItem("pendingDonation", JSON.stringify(donationData));
+    navigate("/donation/checkout");
   };
 
   return (
@@ -145,7 +164,12 @@ const DonationPage = () => {
                         {campaign.priceOptions?.map((price, idx) => (
                           <button
                             key={idx}
-                            className="price-btn"
+                            className={`price-btn ${
+                              selectedCampaign?._id === campaign._id &&
+                              selectedAmount === price
+                                ? "active"
+                                : ""
+                            }`}
                             onClick={() => handleSelectAmount(campaign, price)}
                           >
                             PKR {price.toLocaleString()}
@@ -159,18 +183,37 @@ const DonationPage = () => {
                           placeholder="Other amount (PKR)"
                           min="50"
                           step="50"
-                          onChange={(e) => setCustomAmount(e.target.value)}
-                        />
-                        <button
-                          className="custom-donate-btn button-secondary"
-                          onClick={() =>
-                            handleCustomAmount(campaign, customAmount)
+                          value={
+                            selectedCampaign?._id === campaign._id
+                              ? customAmount
+                              : ""
                           }
-                          disabled={!customAmount || Number(customAmount) < 50}
-                        >
-                          Donate
-                        </button>
+                          onChange={(e) =>
+                            handleCustomAmountChange(campaign, e.target.value)
+                          }
+                        />
                       </div>
+                    </div>
+
+                    {/* Donate Now Button - Fixed at bottom or below cards */}
+                    <div className="donation-proceed-section">
+                      <button
+                        className="donation-proceed-btn button-secondary"
+                        onClick={handleProceedToCheckout}
+                        disabled={!selectedCampaign || !selectedAmount}
+                      >
+                        Donate Now - PKR{" "}
+                        {selectedAmount?.toLocaleString() || "0"}
+                      </button>
+                      {!selectedCampaign || !selectedAmount ? (
+                        <p className="donation-proceed-hint">
+                          Please select a donation amount above
+                        </p>
+                      ) : (
+                        <p className="donation-proceed-campaign">
+                          Supporting: <strong>{selectedCampaign?.title}</strong>
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -179,14 +222,6 @@ const DonationPage = () => {
           )}
         </div>
       </div>
-
-      {showDonorForm && selectedCampaign && selectedAmount && (
-        <DonorForm
-          campaign={selectedCampaign}
-          amount={selectedAmount}
-          onBack={() => setShowDonorForm(false)}
-        />
-      )}
     </>
   );
 };

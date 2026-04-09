@@ -4,16 +4,26 @@ import { v4 as uuidv4 } from "uuid";
 // CREATE donation session
 export const createDonationSession = async (req, res) => {
   try {
-    const { campaignId, amount, donorName, donorEmail, donorPhone } = req.body;
+    const {
+      campaignId,
+      amount,
+      donorTitle,
+      donorName,
+      donorEmail,
+      donorPhone,
+      donorAddress,
+    } = req.body;
 
     const sessionId = uuidv4();
 
     const session = new donationSessionModel({
       campaignId,
       amount,
+      donorTitle: donorTitle || "",
       donorName,
       donorEmail,
       donorPhone,
+      donorAddress: donorAddress || "",
       sessionId,
     });
 
