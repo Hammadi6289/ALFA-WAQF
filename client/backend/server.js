@@ -46,7 +46,9 @@ app.use(
   })
 );
 
-// Rate limiting
+app.set("trust proxy", 1); // trust first proxy
+// Rate limiting 429 status code ("Too Many Requests") when limits are exceeded
+// protect against DDoS attacks and brute-force
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
@@ -55,7 +57,7 @@ const limiter = rateLimit({
     message: "Too many requests, please try again later.",
   },
 });
-app.use("/api/", limiter);
+app.use("/api", limiter);
 
 //routes
 // app.get("/", (req, res) => {
