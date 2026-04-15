@@ -1,7 +1,6 @@
 import React from "react";
 import "./WhyChoose.css";
 import { useNavigate } from "react-router-dom";
-import care from "../../../assets/images/oldman.png";
 import care1 from "../../../assets/images/oldwomen.webp";
 import care2 from "../../../assets/images/oldwomen1.webp";
 import dna from "../../../assets/images/dna.jpg";
