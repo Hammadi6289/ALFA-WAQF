@@ -1,14 +1,14 @@
 import React from "react";
 import "./WhyChoose.css";
-import empower from "../../../assets/images/empower.jpg";
-import empower1 from "../../../assets/images/empower1.jpg";
-import trust from "../../../assets/images/trust.jpg";
-import trust1 from "../../../assets/images/trust1.jpg";
+import { useNavigate } from "react-router-dom";
 import care from "../../../assets/images/oldman.png";
 import care1 from "../../../assets/images/oldwomen.webp";
 import care2 from "../../../assets/images/oldwomen1.webp";
+import dna from "../../../assets/images/dna.jpg";
+import community from "../../../assets/images/childcommunity.jpg";
 
 const WhyChoose = () => {
+  const navigate = useNavigate();
   return (
     <>
       <h1 className="text-center mt-5">Why Choose Us?</h1>
@@ -49,7 +49,7 @@ const WhyChoose = () => {
           <button className="button-secondary"> Visit Now</button>
         </div> */}
         <div className="col-md-3">
-          <img src={care} alt="care" width={"100%"} height={"220px"} />
+          <img src={dna} alt="dna" className="why-container-top-img" />
           <h2>Caring for Islamabad, One Patient at a Time</h2>
           <p>
             Since our establishment in B-17, AGH has been committed to serving
@@ -57,11 +57,21 @@ const WhyChoose = () => {
             staff make every visit comfortable and stress-free for families
             across Islamabad.
           </p>
-          <button className="button-secondary"> Visit Now</button>
+          <button
+            onClick={() => navigate("/contact")}
+            className="button-secondary"
+          >
+            {" "}
+            Visit Now
+          </button>
         </div>
 
         <div className="col-md-3">
-          <img src={care1} alt="care1" width={"100%"} height={"220px"} />
+          <img
+            src={community}
+            alt="community"
+            className="why-container-top-img"
+          />
           <h2>Building Healthier Communities</h2>
           <p>
             AGH isn't just a hospital – it's a partner in community wellness. We
@@ -69,20 +79,30 @@ const WhyChoose = () => {
             areas, health awareness seminars, and school screening programs to
             ensure healthcare reaches everyone who needs it.
           </p>
-          <button className="button-secondary"> Visit Now</button>
+          <button
+            onClick={() => navigate("/news")}
+            className="button-secondary"
+          >
+            Visit Now
+          </button>
         </div>
 
         <div className="col-md-3">
-          <img src={care2} alt="care" width={"100%"} height={"220px"} />
+          <img src={care2} alt="care" className="why-container-top-img" />
           <h2>Your Health, Our Priority at AGH</h2>
           <p>
             From emergency care to specialized consultations, AGH provides
             comprehensive healthcare under one roof. Our 24/7 emergency
-            services, experienced gynecologists, cardiologists, and ENT
-            specialists ensure that residents of Islamabad have access to
-            quality medical care whenever they need it.
+            services, experienced general physicians ensure that residents have
+            access to quality medical care whenever they need.
           </p>
-          <button className="button-secondary"> Visit Now</button>
+          <button
+            onClick={() => navigate("/specialties/general-physician")}
+            className="button-secondary"
+          >
+            {" "}
+            Visit Now
+          </button>
         </div>
       </div>
     </>
