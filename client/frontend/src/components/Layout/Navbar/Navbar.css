@@ -174,7 +174,7 @@
     display: none;
     column-count: 4;
     column-gap: 20px;
-    min-width: 800px; /* Adjust based on your needs */
+    min-width: 800px;
     max-width: 1000px;
     padding: 15px 20px;
   }
@@ -186,6 +186,25 @@
   }
 
   .dropdown-menu.specialties-dropdown .dropdown-item {
+    display: block;
+    width: 100%;
+  }
+
+  .dropdown-menu.about-us-containing-dropdown {
+    display: none;
+    column-count: 3;
+    min-width: 800px;
+    max-width: 1000px;
+    padding: 15px 20px;
+  }
+
+  /* Prevent items from breaking across columns */
+  .dropdown-menu.about-us-containing-dropdown li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .dropdown-menu.about-us-containing-dropdown .dropdown-item {
     display: block;
     width: 100%;
   }

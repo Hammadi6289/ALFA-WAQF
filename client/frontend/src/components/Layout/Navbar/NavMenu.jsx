@@ -105,7 +105,11 @@ const NavMenu = () => {
                 >
                   About Alfalah
                 </button>
-                <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+                <ul
+                  className={`dropdown-menu about-us-containing-dropdown ${
+                    dropdownOpen ? "show" : ""
+                  }`}
+                >
                   <li>
                     <NavLink
                       className="dropdown-item"
@@ -145,9 +149,6 @@ const NavMenu = () => {
                     >
                       News
                     </NavLink>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
                   </li>
                   <li>
                     <NavLink
