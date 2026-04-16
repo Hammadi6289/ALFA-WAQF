@@ -19,9 +19,8 @@ const DonationPage = () => {
   const { heroSlides, campaigns, loading } = useSelector(
     (state) => state.donation
   );
-  const [selectedCampaign, setSelectedCampaign] = useState(null);
-  const [selectedAmount, setSelectedAmount] = useState(null);
-  const [customAmount, setCustomAmount] = useState("");
+  const [selectedAmounts, setSelectedAmounts] = useState({});
+  const [customAmounts, setCustomAmounts] = useState({});
 
   useEffect(() => {
     dispatch(getActiveHeroSlides());
@@ -30,43 +29,65 @@ const DonationPage = () => {
   }, [dispatch]);
 
   const handleDonateClick = (campaign) => {
-    setSelectedCampaign(campaign);
     // For now, we'll show alert. Later we'll integrate payment
     alert(
       `You're about to donate to: ${campaign.title}\n\nPayment integration coming soon!`
     );
   };
 
-  const handleSelectAmount = (campaign, amount) => {
-    setSelectedCampaign(campaign);
-    setSelectedAmount(amount);
-    setCustomAmount("");
+  const handleSelectAmount = (campaignId, amount) => {
+    setSelectedAmounts((prev) => ({
+      ...prev,
+      [campaignId]: amount,
+    }));
+    setCustomAmounts((prev) => ({
+      ...prev,
+      [campaignId]: "", // Clear custom amount for this campaign
+    }));
   };
 
   // Handle custom amount change
-  const handleCustomAmountChange = (campaign, value) => {
+  const handleCustomAmountChange = (campaignId, value) => {
     const numericAmount = Number(value);
-    setCustomAmount(value);
+    setCustomAmounts((prev) => ({
+      ...prev,
+      [campaignId]: value,
+    }));
     if (numericAmount && numericAmount > 0) {
-      setSelectedCampaign(campaign);
-      setSelectedAmount(numericAmount);
+      setSelectedAmounts((prev) => ({
+        ...prev,
+        [campaignId]: numericAmount,
+      }));
     } else if (!value) {
-      setSelectedCampaign(null);
-      setSelectedAmount(null);
+      setSelectedAmounts((prev) => {
+        const newState = { ...prev };
+        delete newState[campaignId];
+        return newState;
+      });
     }
   };
 
+  // Get selected amount for a campaign
+  const getSelectedAmount = (campaignId) => {
+    return selectedAmounts[campaignId] || null;
+  };
+
+  // Get custom amount value for a campaign
+  const getCustomAmount = (campaignId) => {
+    return customAmounts[campaignId] || "";
+  };
+
   // Proceed to checkout
-  const handleProceedToCheckout = () => {
-    if (!selectedCampaign || !selectedAmount) {
+  const handleProceedToCheckout = (campaign, amount) => {
+    if (!campaign || !amount) {
       alert("Please select a donation amount first");
       return;
     }
 
     const donationData = {
-      campaignId: selectedCampaign._id,
-      campaignTitle: selectedCampaign.title,
-      amount: selectedAmount,
+      campaignId: campaign._id,
+      campaignTitle: campaign.title,
+      amount: amount,
     };
     localStorage.setItem("pendingDonation", JSON.stringify(donationData));
     navigate("/donation/checkout");
@@ -145,80 +166,80 @@ const DonationPage = () => {
               <p>No donation campaigns available at the moment.</p>
             </div>
           ) : (
-            <div className="donation-campaigns-grid">
-              {campaigns.map((campaign) => (
-                <div className="donation-campaign-card" key={campaign._id}>
-                  <div className="donation-card-image">
-                    <img
-                      src={`data:image/jpeg;base64,${campaign.image}`}
-                      alt={campaign.title}
-                    />
-                  </div>
-                  <div className="donation-card-content">
-                    <h3>{campaign.title}</h3>
-                    <p>{campaign.description}</p>
+            <>
+              <div className="donation-campaigns-grid">
+                {campaigns.map((campaign) => {
+                  const selectedAmount = getSelectedAmount(campaign._id);
+                  const customAmount = getCustomAmount(campaign._id);
 
-                    {/* Price Options */}
-                    <div className="donation-price-options">
-                      <div className="price-buttons-row">
-                        {campaign.priceOptions?.map((price, idx) => (
-                          <button
-                            key={idx}
-                            className={`price-btn ${
-                              selectedCampaign?._id === campaign._id &&
-                              selectedAmount === price
-                                ? "active"
-                                : ""
-                            }`}
-                            onClick={() => handleSelectAmount(campaign, price)}
-                          >
-                            PKR {price.toLocaleString()}
-                          </button>
-                        ))}
-                      </div>
-                      <div className="custom-amount-wrapper">
-                        <input
-                          type="number"
-                          className="custom-amount-input"
-                          placeholder="Other amount (PKR)"
-                          min="50"
-                          step="50"
-                          value={
-                            selectedCampaign?._id === campaign._id
-                              ? customAmount
-                              : ""
-                          }
-                          onChange={(e) =>
-                            handleCustomAmountChange(campaign, e.target.value)
-                          }
+                  return (
+                    <div className="donation-campaign-card" key={campaign._id}>
+                      <div className="donation-card-image">
+                        <img
+                          src={`data:image/jpeg;base64,${campaign.image}`}
+                          alt={campaign.title}
                         />
                       </div>
-                    </div>
+                      <div className="donation-card-content">
+                        <h3>{campaign.title}</h3>
+                        <p>{campaign.description}</p>
 
-                    {/* Donate Now Button - Fixed at bottom or below cards */}
-                    <div className="donation-proceed-section">
-                      <button
-                        className="donation-proceed-btn button-secondary"
-                        onClick={handleProceedToCheckout}
-                        disabled={!selectedCampaign || !selectedAmount}
-                      >
-                        Donate Now - PKR{" "}
-                        {selectedAmount?.toLocaleString() || "0"}
-                      </button>
-                      {!selectedCampaign || !selectedAmount ? (
-                        <p className="donation-proceed-hint">
-                          Please select a donation amount above
-                        </p>
-                      ) : (
-                        <p className="donation-proceed-campaign">
-                          Supporting: <strong>{selectedCampaign?.title}</strong>
-                        </p>
-                      )}
+                        {/* Price Options */}
+                        <div className="donation-price-options">
+                          <div className="price-buttons-row">
+                            {campaign.priceOptions?.map((price, idx) => (
+                              <button
+                                key={idx}
+                                className={`price-btn ${
+                                  selectedAmount === price ? "active" : ""
+                                }`}
+                                onClick={() =>
+                                  handleSelectAmount(campaign._id, price)
+                                }
+                              >
+                                PKR {price.toLocaleString()}
+                              </button>
+                            ))}
+                          </div>
+                          <div className="custom-amount-wrapper">
+                            <input
+                              type="number"
+                              className="custom-amount-input"
+                              placeholder="Other amount (PKR)"
+                              min="50"
+                              step="50"
+                              value={customAmount}
+                              onChange={(e) =>
+                                handleCustomAmountChange(
+                                  campaign._id,
+                                  e.target.value
+                                )
+                              }
+                            />
+                          </div>
+                        </div>
+
+                        {/* Donate Button for THIS campaign */}
+                        <div className="donation-proceed-section">
+                          <button
+                            className="donation-proceed-btn button-secondary"
+                            onClick={() =>
+                              handleProceedToCheckout(campaign, selectedAmount)
+                            }
+                            disabled={!selectedAmount}
+                          >
+                            Donate Now{" "}
+                            {selectedAmount
+                              ? `- PKR ${selectedAmount.toLocaleString()}`
+                              : ""}
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  );
+                })}
+              </div>
+            </>
           )}
         </div>
       </div>
