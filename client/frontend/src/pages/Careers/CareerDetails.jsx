@@ -16,6 +16,7 @@ import {
   FiArrowLeft,
 } from "react-icons/fi";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 import "./Careers.css";
 
 const CareerDetails = () => {
@@ -35,6 +36,34 @@ const CareerDetails = () => {
   });
   const [resumeFile, setResumeFile] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+
+  // Create the data object for Google
+  const jobSchema = {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    title: career?.title, // e.g., "Software Engineer"
+    // jobTitle: career?.title,
+    description: career?.theRole, // Must be the full job description
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Alfalah Waqf",
+      value: "69cbaaabf6f8bba87a9793d4",
+    },
+    datePosted: "2024-03-03",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Alfalah Waqf",
+      sameAs: "https://alfalah-waqf.vercel.app",
+    },
+    jobLocation: {
+      "@type": "Islamabad",
+      address: {
+        "@type": "44000",
+        addressLocality: career?.location,
+        addressCountry: "PK",
+      },
+    },
+  };
 
   useEffect(() => {
     dispatch(getCareerDetails(id));
@@ -131,6 +160,15 @@ const CareerDetails = () => {
 
   return (
     <>
+      {/* 3. Inject the data into the <head> of your site */}
+      {career && (
+        <Helmet>
+          <title>{career.title} | Alfalah Careers</title>
+          <script type="application/ld+json">
+            {JSON.stringify(jobSchema)}
+          </script>
+        </Helmet>
+      )}
       <div className="career-details-page">
         <div className="container">
           {/* Back Button */}
