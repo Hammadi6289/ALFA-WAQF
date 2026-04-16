@@ -173,10 +173,11 @@
   .dropdown-menu.specialties-dropdown {
     display: none;
     column-count: 4;
-    column-gap: 20px;
+    column-gap: 0px;
+    /* column-gap: 10px; //browsers apply a default column gap when we use column-count. so using column-gap to avoid the gap. */
     min-width: 800px;
     max-width: 1000px;
-    padding: 15px 20px;
+    padding: 15px;
   }
 
   /* Prevent items from breaking across columns */
@@ -193,6 +194,7 @@
   .dropdown-menu.about-us-containing-dropdown {
     display: none;
     column-count: 3;
+    column-gap: 0px;
     min-width: 800px;
     max-width: 1000px;
     padding: 15px 20px;
