@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAllNews } from "../../redux/actions/newsActions";
 import { reset } from "../../redux/slice/newsSlice";
 import { FiCalendar, FiEye } from "react-icons/fi";
+import Skeleton from "../../components/common/Skeleton/Skeleton";
 import "./News.css";
 
 const AllNews = () => {
@@ -47,9 +48,26 @@ const AllNews = () => {
       <div className="news-section">
         <div className="news-section-container">
           {loading ? (
-            <div className="loading-container">
-              <div className="spinner"></div>
-              <p>Loading news...</p>
+            <div className="news-grid">
+              {[...Array(6)].map((_, index) => (
+                <div className="news-card" key={index} style={{ cursor: "default" }}>
+                  <div className="news-image">
+                    <Skeleton type="rectangular" width="100%" height="220px" style={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }} />
+                  </div>
+                  <div className="news-content">
+                    <Skeleton type="text" width="85%" height="24px" style={{ marginBottom: "12px" }} />
+                    <Skeleton type="text" width="60%" height="24px" style={{ marginBottom: "16px" }} />
+                    <div className="news-meta" style={{ display: 'flex', gap: '15px', marginBottom: '15px', borderBottom: 'none', paddingBottom: 0 }}>
+                      <Skeleton type="text" width="100px" height="16px" />
+                      <Skeleton type="text" width="80px" height="16px" />
+                    </div>
+                    <Skeleton type="text" width="100%" height="14px" style={{ marginBottom: "8px" }} />
+                    <Skeleton type="text" width="100%" height="14px" style={{ marginBottom: "8px" }} />
+                    <Skeleton type="text" width="80%" height="14px" style={{ marginBottom: "20px" }} />
+                    <Skeleton type="text" width="120px" height="20px" />
+                  </div>
+                </div>
+              ))}
             </div>
           ) : news?.length === 0 ? (
             <div className="empty-state">

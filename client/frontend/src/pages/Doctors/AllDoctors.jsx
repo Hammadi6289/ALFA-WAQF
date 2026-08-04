@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/actions/doctorActions";
 import { Helmet } from "react-helmet-async";
 import { FiSearch, FiFilter } from "react-icons/fi";
+import Skeleton from "../../components/common/Skeleton/Skeleton";
 
 const AllDoctors = () => {
   const [loading, setLoading] = useState(true);
@@ -58,17 +59,7 @@ const AllDoctors = () => {
     setSelectedSpecialty("");
   };
 
-  // Lets keep this as simple as possible but its crucial though
-  if (loading) {
-    return (
-      <div className="text-center py-5">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading doctors...</span>
-        </div>
-        <p className="mt-3">Loading doctors, please wait...</p>
-      </div>
-    );
-  }
+  // Handle loading inline below
   return (
     <>
       <Helmet>
@@ -152,32 +143,49 @@ const AllDoctors = () => {
       </div>
 
       <div className="container doc-container">
-        {filteredDoctors?.map((doctor) => {
-          return (
-            <div className="card" key={doctor._id} style={{ width: "15rem" }}>
-              <NavLink to={`/doctor/${doctor._id}`}>
-                <img
-                  // src={`data:image/jpeg;base64,${doctor?.image}`}
-                  src={`https://ui-avatars.com/api/?name=${doctor.name}&size=150&rounded=true&background=random`}
-                  alt={doctor.name}
-                  width={150}
-                  height={150}
-                  className="card-image-top"
-                />
-                <div className="card-body">
-                  <h6>{doctor.name}</h6>
-                  <p>{doctor.degree}</p>
-                </div>
-                <div className="card-footer">
-                  <p>
-                    <i className={doctor.icon}></i>
-                    {doctor.speciality}
-                  </p>
-                </div>
-              </NavLink>
+        {loading ? (
+          [...Array(8)].map((_, index) => (
+            <div className="card" key={index} style={{ width: "15rem" }}>
+              <div style={{ padding: "10px", display: "flex", justifyContent: "center" }}>
+                <Skeleton type="circular" width="130px" height="130px" />
+              </div>
+              <div className="card-body" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Skeleton type="text" width="60%" height="20px" style={{ marginBottom: "10px" }} />
+                <Skeleton type="text" width="40%" height="16px" />
+              </div>
+              <div className="card-footer" style={{ display: "flex", justifyContent: "center" }}>
+                <Skeleton type="text" width="50%" height="16px" />
+              </div>
             </div>
-          );
-        })}
+          ))
+        ) : (
+          filteredDoctors?.map((doctor) => {
+            return (
+              <div className="card" key={doctor._id} style={{ width: "15rem" }}>
+                <NavLink to={`/doctor/${doctor._id}`}>
+                  <img
+                    // src={`data:image/jpeg;base64,${doctor?.image}`}
+                    src={`https://ui-avatars.com/api/?name=${doctor.name}&size=150&rounded=true&background=random`}
+                    alt={doctor.name}
+                    width={150}
+                    height={150}
+                    className="card-image-top"
+                  />
+                  <div className="card-body">
+                    <h6>{doctor.name}</h6>
+                    <p>{doctor.degree}</p>
+                  </div>
+                  <div className="card-footer">
+                    <p>
+                      <i className={doctor.icon}></i>
+                      {doctor.speciality}
+                    </p>
+                  </div>
+                </NavLink>
+              </div>
+            );
+          })
+        )}
       </div>
     </>
   );

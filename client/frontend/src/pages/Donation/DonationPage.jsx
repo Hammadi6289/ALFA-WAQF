@@ -11,6 +11,7 @@ import { resetDonation } from "../../redux/slice/donationSlice";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Skeleton from "../../components/common/Skeleton/Skeleton";
 import "./DonationPage.css";
 
 const DonationPage = () => {
@@ -98,7 +99,14 @@ const DonationPage = () => {
       {/* Hero Slider Section */}
       <div className="donation-hero-section">
         {loading ? (
-          <div className="donation-loading">Loading...</div>
+          <div className="donation-hero-slide" style={{ backgroundColor: "#f5f5f5" }}>
+            <Skeleton type="rectangular" width="100%" height="100%" style={{ position: "absolute", top: 0, left: 0, zIndex: 0 }} />
+            <div className="donation-hero-content" style={{ zIndex: 1, position: "relative" }}>
+               <Skeleton type="text" width="60%" height="48px" style={{ marginBottom: "20px" }} />
+               <Skeleton type="text" width="40%" height="24px" style={{ marginBottom: "30px" }} />
+               <Skeleton type="button" width="172px" height="52px" />
+            </div>
+          </div>
         ) : heroSlides?.length > 0 ? (
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -160,7 +168,35 @@ const DonationPage = () => {
           </div>
 
           {loading ? (
-            <div className="donation-loading">Loading campaigns...</div>
+            <div className="donation-campaigns-grid">
+              {[...Array(3)].map((_, index) => (
+                <div className="donation-campaign-card" key={index}>
+                  <div className="donation-card-image">
+                    <Skeleton type="rectangular" width="100%" height="250px" style={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }} />
+                  </div>
+                  <div className="donation-card-content">
+                    <Skeleton type="text" width="80%" height="24px" style={{ marginBottom: "15px" }} />
+                    <Skeleton type="text" width="100%" height="16px" style={{ marginBottom: "8px" }} />
+                    <Skeleton type="text" width="90%" height="16px" style={{ marginBottom: "25px" }} />
+                    
+                    <div className="donation-price-options">
+                      <div className="price-buttons-row">
+                        <Skeleton type="rectangular" width="100px" height="40px" style={{ borderRadius: "8px" }} />
+                        <Skeleton type="rectangular" width="100px" height="40px" style={{ borderRadius: "8px" }} />
+                        <Skeleton type="rectangular" width="100px" height="40px" style={{ borderRadius: "8px" }} />
+                      </div>
+                      <div className="custom-amount-wrapper">
+                        <Skeleton type="rectangular" width="100%" height="45px" style={{ borderRadius: "8px", marginTop: "15px" }} />
+                      </div>
+                    </div>
+                    
+                    <div className="donation-proceed-section">
+                      <Skeleton type="button" width="100%" height="52px" style={{ marginTop: "20px" }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : campaigns?.length === 0 ? (
             <div className="donation-empty-state">
               <p>No donation campaigns available at the moment.</p>

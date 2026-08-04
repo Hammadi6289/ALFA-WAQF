@@ -1,0 +1,47 @@
+.skeleton {
+  background-color: var(--brand-purple-light, #f0efff);
+  background-image: linear-gradient(
+    90deg,
+    var(--brand-purple-soft, rgba(108, 99, 255, 0.08)) 0px,
+    var(--brand-purple-light, #e6e5ff) 40px,
+    var(--brand-purple-soft, rgba(108, 99, 255, 0.08)) 80px
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  display: inline-block;
+  opacity: 0.7;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-rectangular {
+  border-radius: 4px;
+}
+
+.skeleton-circular {
+  border-radius: 50%;
+}
+
+.skeleton-text {
+  border-radius: 4px;
+  height: 16px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+}
+
+.skeleton-button {
+  border-radius: 2px;
+  height: 52px;
+  width: 172px;
+}
