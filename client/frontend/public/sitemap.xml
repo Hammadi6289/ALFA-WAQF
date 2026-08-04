@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
+<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/about</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/contact</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/gallery</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/register</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/login</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/doctors</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/careers</loc>
+  </url>
   <url>
     <loc>https://alfalah-waqf.vercel.app/careers/69cbaaabf6f8bba87a9793d4</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/news</loc>
+  </url>
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/donate</loc>
   </url>
 </urlset>

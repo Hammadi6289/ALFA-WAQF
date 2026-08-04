@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import care1 from "../../../assets/images/oldwomen.webp";
 import care2 from "../../../assets/images/oldwomen1.webp";
 import dna from "../../../assets/images/dna.jpg";
-import community from "../../../assets/images/childcommunity.jpg";
+import community from "../../../assets/images/childcommunity.webp";
 
 const WhyChoose = () => {
   const navigate = useNavigate();
