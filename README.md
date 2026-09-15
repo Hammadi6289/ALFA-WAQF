@@ -166,3 +166,4 @@ Prerequisites
 4. Added react-helmet on the client side for the SEO.
 5. Google search console. Added added the google-site-verification for client side.
 6. As of July 2026. The site is getting 100+ organic traffic a month..
+7. Refactored Doctors and appointments page Styling in client side frontend using claude.
