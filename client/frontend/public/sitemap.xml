@@ -1,36 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ══ HIGH PRIORITY — Core pages ══ -->
   <url>
     <loc>https://alfalah-waqf.vercel.app/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://alfalah-waqf.vercel.app/about</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://alfalah-waqf.vercel.app/contact</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/gallery</loc>
-  </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/register</loc>
-  </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/login</loc>
-  </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/doctors</loc>
-  </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/careers</loc>
-  </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/careers/69cbaaabf6f8bba87a9793d4</loc>
-  </url>
-  <url>
-    <loc>https://alfalah-waqf.vercel.app/news</loc>
-  </url>
+
   <url>
     <loc>https://alfalah-waqf.vercel.app/donate</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
+
+  <!-- ══ MEDICAL — Doctors & Specialties ══ -->
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/doctors</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ══ CONTENT — News, Gallery, Careers ══ -->
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/news</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/gallery</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://alfalah-waqf.vercel.app/careers</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!--
+    NOTE — Dynamic routes excluded intentionally:
+    ─────────────────────────────────────────────
+    /login, /register          → Auth pages, no SEO value; Google ignores them.
+    /user/*                    → Private/authenticated pages; must NOT be indexed.
+    /donation/checkout         → Transactional flow; no indexing benefit.
+    /donation/payment/:id      → Dynamic, session-scoped; exclude.
+    /user/reset-password/:id   → Token-based, private; exclude.
+    /doctor/:id                → Add individual doctor URLs here once you have
+                                 stable, human-readable slugs or a known ID list.
+    /careers/:id               → Add specific job listing URLs once stable.
+    /news/:slug                → Add individual article URLs once stable.
+    /specialties/:slug         → Add individual specialty URLs once stable.
+
+    For dynamic content (doctors, news, careers, specialties), consider generating
+    this sitemap server-side or with a build-time script so all live URLs are
+    automatically included.
+  -->
+
 </urlset>
