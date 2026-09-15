@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router";
 import { getUserData } from "../../../redux/actions/authActions";
 import "./Navbar.css";
 import specialtiesData from "../../../pages/Specialties/specialtiesData";
+import logo from "../../../assets/alfaLogo.jpg";
 
 const NavMenu = () => {
   const dispatch = useDispatch();
@@ -11,83 +12,128 @@ const NavMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [specialtiesDropdownOpen, setSpecialtiesDropdownOpen] = useState(false);
 
+  const aboutRef = useRef(null);
+  const specialtiesRef = useRef(null);
+
   useEffect(() => {
     dispatch(getUserData());
   }, [dispatch]);
+
   const { user } = useSelector((state) => state.auth);
+
+  // Close both dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (aboutRef.current && !aboutRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+      if (specialtiesRef.current && !specialtiesRef.current.contains(e.target)) {
+        setSpecialtiesDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 992) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const closeAll = () => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+    setSpecialtiesDropdownOpen(false);
+  };
+
   return (
     <>
-      {/* Make the navbar take full screen on smaller screens */}
+      {/* Mobile backdrop */}
       {isOpen && (
-        <div className="navbar-backdrop" onClick={() => setIsOpen(false)} />
+        <div
+          className="navbar-backdrop"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
       )}
 
-      <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
+      <nav className="navbar navbar-expand-lg" aria-label="Main navigation">
+        <div className="nav-inner">
+
+          {/* ── Logo ── */}
+          <NavLink to="/" className="nav-brand" onClick={closeAll} aria-label="Alfalah Home">
+            <img
+              className="nav-logo"
+              src={logo}
+              alt="Alfalah Hospital Logo"
+            />
+          </NavLink>
+
+          {/* ── Mobile hamburger ── */}
           <button
-            className="navbar-toggler"
+            className={`nav-hamburger ${isOpen ? "nav-hamburger--open" : ""}`}
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
             aria-expanded={isOpen}
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon" />
+            <span />
+            <span />
+            <span />
           </button>
-          <div
-            className={`collapse navbar-collapse align-items-baseline ${
-              isOpen ? "show" : ""
-            }`}
-            id="navbarTogglerDemo01"
-          >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  aria-current="page"
-                  to="/"
-                  onClick={() => setIsOpen(false)}
-                >
+
+          {/* ── Collapsible menu ── */}
+          <div className={`nav-collapse ${isOpen ? "nav-collapse--open" : ""}`}>
+
+            {/* Left links */}
+            <ul className="nav-links" role="menubar">
+
+              <li role="none">
+                <NavLink className="nav-link" to="/" onClick={closeAll} role="menuitem">
                   Home
                 </NavLink>
               </li>
 
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/doctors"
-                  onClick={() => setIsOpen(false)}
-                >
+              <li role="none">
+                <NavLink className="nav-link" to="/doctors" onClick={closeAll} role="menuitem">
                   Find a Doctor
                 </NavLink>
               </li>
 
-              <li className="nav-item dropdown">
+              {/* Specialities dropdown */}
+              <li className="nav-has-dropdown" ref={specialtiesRef} role="none">
                 <button
-                  className="nav-link dropdown-toggle"
-                  onClick={() =>
-                    setSpecialtiesDropdownOpen(!specialtiesDropdownOpen)
-                  }
+                  className="nav-link nav-dropdown-toggle"
+                  onClick={() => {
+                    setSpecialtiesDropdownOpen(!specialtiesDropdownOpen);
+                    setDropdownOpen(false);
+                  }}
                   aria-expanded={specialtiesDropdownOpen}
+                  aria-haspopup="true"
+                  role="menuitem"
                 >
                   Specialities
+                  <span className={`nav-chevron ${specialtiesDropdownOpen ? "nav-chevron--up" : ""}`} aria-hidden="true">
+                    ›
+                  </span>
                 </button>
                 <ul
-                  className={`dropdown-menu specialties-dropdown ${
-                    specialtiesDropdownOpen ? "show" : ""
-                  }`}
+                  className={`nav-dropdown nav-dropdown--wide ${specialtiesDropdownOpen ? "nav-dropdown--open" : ""}`}
+                  role="menu"
                 >
                   {specialtiesData.map((specialty) => (
-                    <li key={specialty.id}>
+                    <li key={specialty.id} role="none">
                       <NavLink
-                        className="dropdown-item"
+                        className="nav-dropdown-item"
                         to={`/specialties/${specialty.slug}`}
-                        onClick={() => {
-                          setIsOpen(false);
-                          setSpecialtiesDropdownOpen(false);
-                        }}
+                        onClick={closeAll}
+                        role="menuitem"
                       >
                         {specialty.name}
                       </NavLink>
@@ -96,121 +142,87 @@ const NavMenu = () => {
                 </ul>
               </li>
 
-              {/* About Us Dropdown containing Gallery and Contact */}
-              <li className="nav-item dropdown">
+              {/* About Alfalah dropdown */}
+              <li className="nav-has-dropdown" ref={aboutRef} role="none">
                 <button
-                  className="nav-link dropdown-toggle"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="nav-link nav-dropdown-toggle"
+                  onClick={() => {
+                    setDropdownOpen(!dropdownOpen);
+                    setSpecialtiesDropdownOpen(false);
+                  }}
                   aria-expanded={dropdownOpen}
+                  aria-haspopup="true"
+                  role="menuitem"
                 >
                   About Alfalah
+                  <span className={`nav-chevron ${dropdownOpen ? "nav-chevron--up" : ""}`} aria-hidden="true">
+                    ›
+                  </span>
                 </button>
                 <ul
-                  className={`dropdown-menu about-us-containing-dropdown ${
-                    dropdownOpen ? "show" : ""
-                  }`}
+                  className={`nav-dropdown ${dropdownOpen ? "nav-dropdown--open" : ""}`}
+                  role="menu"
                 >
-                  <li>
-                    <NavLink
-                      className="dropdown-item"
-                      to="/gallery"
-                      onClick={() => {
-                        setIsOpen(false);
-                        setDropdownOpen(false);
-                      }}
-                    >
+                  <li role="none">
+                    <NavLink className="nav-dropdown-item" to="/gallery" onClick={closeAll} role="menuitem">
                       Virtual Tour
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      className="dropdown-item"
-                      to="/about"
-                      onClick={() => setIsOpen(false)}
-                    >
+                  <li role="none">
+                    <NavLink className="nav-dropdown-item" to="/about" onClick={closeAll} role="menuitem">
                       Our Story
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      className="dropdown-item"
-                      to="/careers"
-                      onClick={() => setIsOpen(false)}
-                    >
+                  <li role="none">
+                    <NavLink className="nav-dropdown-item" to="/careers" onClick={closeAll} role="menuitem">
                       Careers
                     </NavLink>
                   </li>
-
-                  <li>
-                    <NavLink
-                      className="dropdown-item"
-                      to="/news"
-                      onClick={() => setIsOpen(false)}
-                    >
+                  <li role="none">
+                    <NavLink className="nav-dropdown-item" to="/news" onClick={closeAll} role="menuitem">
                       News
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      className="dropdown-item"
-                      to="/contact"
-                      onClick={() => setIsOpen(false)}
-                    >
+                  <li role="none">
+                    <NavLink className="nav-dropdown-item" to="/contact" onClick={closeAll} role="menuitem">
                       Contact Us
                     </NavLink>
                   </li>
                 </ul>
               </li>
 
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/donate"
-                  onClick={() => setIsOpen(false)}
-                >
+              <li role="none">
+                <NavLink className="nav-link" to="/donate" onClick={closeAll} role="menuitem">
                   Help Deserving Patients
                 </NavLink>
               </li>
 
-              <li className="nav-item">
-                <NavLink className="nav-link disabled" aria-disabled="true">
+              <li role="none">
+                <span className="nav-link nav-link--disabled" aria-disabled="true" role="menuitem">
                   E-Reports
-                </NavLink>
+                  <span className="nav-coming-soon">Soon</span>
+                </span>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <a
-                href="/doctors"
-                className="btn btn-outline-success"
-                type="submit"
-              >
-                Book an Appointment
-              </a>
-            </form>
-            {/* Login user? profile */}
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            {/* Right actions */}
+            <div className="nav-actions">
+              <NavLink to="/doctors" className="nav-book-btn" onClick={closeAll}>
+                Book Appointment
+              </NavLink>
+
               {user ? (
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to="/user/profile"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    My Account
-                  </NavLink>
-                </li>
+                <NavLink to="/user/profile" className="nav-account-btn" onClick={closeAll}>
+                  <span className="nav-account-icon" aria-hidden="true">👤</span>
+                  My Account
+                </NavLink>
               ) : (
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to="/login"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Login
-                  </NavLink>
-                </li>
+                <NavLink to="/login" className="nav-account-btn" onClick={closeAll}>
+                  Login
+                </NavLink>
               )}
-            </ul>
+            </div>
+
           </div>
         </div>
       </nav>
