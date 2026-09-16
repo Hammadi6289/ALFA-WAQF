@@ -54,6 +54,6 @@ describe("Smoke Test - Homepage", () => {
     cy.viewport("iphone-x");
     cy.get("nav").should("be.visible");
     // Check if mobile menu button exists
-    cy.get(".navbar-toggler").should("be.visible");
+    cy.get(".nav-hamburger").should("be.visible");
   });
 });

@@ -11,20 +11,43 @@ import { FaStar, FaStarHalfAlt, FaQuoteLeft } from "react-icons/fa";
 const PatientReviewsBlock = () => {
   return (
     <section className="reviews-section">
+      {/* Decorative background blobs */}
+      <div className="reviews-bg-blob reviews-bg-blob--1" aria-hidden="true" />
+      <div className="reviews-bg-blob reviews-bg-blob--2" aria-hidden="true" />
+
       <div className="reviews-container">
         {/* Section Header */}
         <div className="reviews-header">
           <span className="reviews-tagline">Testimonials</span>
-          <h2 className="reviews-title">What Our Patients</h2>
-          <h2 className="reviews-title highlight">Say About Us</h2>
-          <div className="title-underline"></div>
+          <h2 className="reviews-title">
+            What Our Patients
+            <span className="reviews-title__highlight"> Say About Us</span>
+          </h2>
+          <p className="reviews-title__sub">
+            Real experiences from real patients — we're proud to serve our
+            community with compassionate, world-class care.
+          </p>
+          <div className="title-underline" />
+        </div>
+
+        {/* Aggregate rating row */}
+        <div className="reviews-aggregate">
+          <div className="reviews-aggregate__stars">
+            {[...Array(5)].map((_, i) => (
+              <FaStar key={i} className="star filled" />
+            ))}
+          </div>
+          <span className="reviews-aggregate__score">4.8 / 5</span>
+          <span className="reviews-aggregate__count">
+            Based on {ReviewData.length}+ patient reviews
+          </span>
         </div>
 
         {/* Reviews Slider */}
         <div className="reviews-slider-wrapper">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={30}
+            spaceBetween={28}
             slidesPerView={1}
             autoplay={{
               delay: 4000,
@@ -37,28 +60,22 @@ const PatientReviewsBlock = () => {
             }}
             navigation={true}
             breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
             }}
             className="reviews-swiper"
           >
             {ReviewData.map((review, index) => (
               <SwiperSlide key={review.id || index}>
                 <div className="review-card">
-                  {/* Quote Icon */}
-                  <div className="review-quote-icon">
+                  {/* Large decorative quote */}
+                  <div className="review-quote-icon" aria-hidden="true">
                     <FaQuoteLeft />
                   </div>
 
                   {/* Star Rating */}
-                  <div className="review-stars">
+                  <div className="review-stars" aria-label={`Rating: ${review.rating} out of 5`}>
                     {[...Array(5)].map((_, i) => {
                       const starValue = i + 1;
                       if (review.rating >= starValue) {
@@ -69,30 +86,42 @@ const PatientReviewsBlock = () => {
                         return <FaStar key={i} className="star empty" />;
                       }
                     })}
+                    <span className="review-rating-num">{review.rating}.0</span>
                   </div>
 
-                  {/* Review Content */}
+                  {/* Comment title */}
+                  {review.commentTitle && (
+                    <h3 className="review-title">{review.commentTitle}</h3>
+                  )}
+
+                  {/* Review Content — fixed JSX expression bug */}
                   <p className="review-description">
-                    "{review.commentDescription || review.comment}"
+                    {review.commentDescription || review.comment}
                   </p>
 
                   {/* Patient Info */}
                   <div className="reviewer-info">
-                    <img
-                      src={review.pic}
-                      alt={review.name}
-                      className="reviewer-avatar"
-                    />
+                    <div className="reviewer-avatar-wrap">
+                      <span className="reviewer-initials" aria-hidden="true">
+                        {review.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .slice(0, 2)
+                          .toUpperCase()}
+                      </span>
+                    </div>
                     <div className="reviewer-details">
                       <h4 className="reviewer-name">{review.name}</h4>
-                      <p className="reviewer-location">{review.address}</p>
+                      {review.address && (
+                        <p className="reviewer-location">📍 {review.address}</p>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Verified Badge */}
-                  <div className="verified-badge">
-                    <span className="verified-icon">✓</span>
-                    <span>Verified Patient</span>
+                    {/* Verified Badge */}
+                    <div className="verified-badge" title="Verified Patient">
+                      <span className="verified-icon" aria-hidden="true">✓</span>
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>
@@ -108,9 +137,9 @@ const PatientReviewsBlock = () => {
             rel="noopener noreferrer"
             className="google-btn"
           >
-            <span className="google-icon">⭐</span>
+            <span className="google-icon" aria-hidden="true">⭐</span>
             See All Google Reviews
-            <span className="arrow">→</span>
+            <span className="arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
